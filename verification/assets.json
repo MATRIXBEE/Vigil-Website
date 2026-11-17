@@ -1,0 +1,318 @@
+{
+  "missingAssets": [],
+  "duplicateIds": [],
+  "brokenAnchors": [],
+  "remainingAssetCount": 54,
+  "validatedRasterAssets": 51,
+  "nuTheorySlots": 3,
+  "removedFilesAbsent": true,
+  "indexSha256": "068c977576101fbe0e4d2a7bfc6b79d62188fb77d2bddfe16ee7efc4c28bfdc1",
+  "images": [
+    {
+      "path": "assets/images/og-vigil-summit-2027.png",
+      "width": 1200,
+      "height": 630,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/images/vigil-hero-team.png",
+      "width": 1774,
+      "height": 887,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/speakers/bulat-almukhametov-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/bulat-almukhametov-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/bulat-almukhametov-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/bulat-almukhametov.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/claudia-soares-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/claudia-soares-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/claudia-soares-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/claudia-soares.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/funmi-adegbola-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/funmi-adegbola-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/funmi-adegbola-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/funmi-adegbola.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/ike-aigbogun-host-duo.webp",
+      "width": 1100,
+      "height": 1100,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/ike-aigbogun-host.webp",
+      "width": 1100,
+      "height": 1100,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/ike-aigbogun-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/isaac-ochulor-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/isaac-ochulor-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/isaac-ochulor-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/isaac-ochulor.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/jaina-ko-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/jaina-ko-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/jaina-ko-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/jaina-ko.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/sarah-powers-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/sarah-powers-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/sarah-powers-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/sarah-powers.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/subhrajeet-patra-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/subhrajeet-patra-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/subhrajeet-patra-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/subhrajeet-patra.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/supriya-naidu-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/supriya-naidu-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/supriya-naidu-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/supriya-naidu.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/zoe-borde-duo.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/zoe-borde-portrait-duo.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/zoe-borde-portrait.webp",
+      "width": 720,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/speakers/zoe-borde.webp",
+      "width": 900,
+      "height": 900,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/sponsors/cts.png",
+      "width": 241,
+      "height": 240,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/sponsors/cts.webp",
+      "width": 241,
+      "height": 240,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/sponsors/flocrunch.png",
+      "width": 640,
+      "height": 173,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/sponsors/flocrunch.webp",
+      "width": 640,
+      "height": 173,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/sponsors/hse-nations.png",
+      "width": 640,
+      "height": 226,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/sponsors/hse-nations.webp",
+      "width": 640,
+      "height": 226,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/sponsors/qhse-directory.png",
+      "width": 221,
+      "height": 240,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/sponsors/qhse-directory.webp",
+      "width": 221,
+      "height": 240,
+      "format": "WEBP"
+    },
+    {
+      "path": "assets/sponsors/shedai.png",
+      "width": 352,
+      "height": 240,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/sponsors/shedai.webp",
+      "width": 352,
+      "height": 240,
+      "format": "WEBP"
+    }
+  ]
+}

@@ -1,8 +1,36 @@
 # VIGIL Summit 2027 · Implementation update
 
+17 November 2026 · v4 · Content and programme update to the approved v3 homepage
+
+The full v4 record (changes, decisions A–D, items to confirm, missing assets, backend limits) is in
+`VIGIL-Implementation-Report.md`. Key points:
+
+- Agenda rebuilt from Speaker Guide v2 + Detailed Plan V3: Vision, Diagnose, Challenge (Challenge Voices), Evidence in Practice, Blueprint Day (five parallel rooms).
+- Checkpoint content uses three dimensions; the mini-Checkpoint no longer assigns an archetype.
+- Speakers: Ike first, reserved keynote card, Sarah and Claudia swapped; unconfirmed agenda speakers shown as "To be announced".
+- Prices retained; sponsorship prices removed; HeyLina removed (nuTheory logo still needed).
+- Confirm Sarah's surname (Power vs Powers).
+
+
+## Final cleanup · 17 November 2026
+
+- Removed unused assets/sponsors/heylina.png and heylina.webp after checking live source references. Historical notes and removal tests still mention the old partner; they do not load its files.
+- Removed the obsolete v3 VIGIL-Summit-2027-updated.zip. These three deletions are staged with git rm; there is no commit or push.
+- The v4 index.html and all remaining assets are preserved. The three nuTheory comment slots (two marquee groups and the Partners grid) are intact.
+- Added README.md as the current guide and updated README.txt, VALIDATION.md and the implementation report.
+- The original browser checker was executed, then its QA-only measurements were corrected: wait for lazy images before checking them, exclude the intentionally clipped background mark from content-overflow warnings, restore the fixed nav after capture styling, test speaker arrows and fail the process when a condition fails. No website code or approved content was changed.
+- Both Node suites were executed successfully after cleanup: 31 regression checks and 37 content checks. Final browser-run details, evidence and explicit limits are in VALIDATION.md and verification/.
+- Playwright was installed only in a temporary Python environment outside the repository and used the already-installed Chrome browser. No production package dependency was added.
+- All supplied v4 screenshots, tests, reports, the new Ike portrait and the original v4-changes.diff are retained. Older unused variants and historical screenshots are retained as well.
+- Current open items are the v4 report's confirmation/missing-asset list. The v1–v3 approval notes below are historical provenance, not a list of current v4 behaviour or approvals.
+
+---
+
+# Historical v3 record
+
 12 November 2026 · v3 · Existing homepage redesign
 
-## Current implementation
+## v3 implementation (historical; superseded by v4)
 
 - New hero and four-area countdown strip are implemented in the existing index.html.
 - Every free, VIP, VIP+, Corporate, timeline and footer registration CTA now links directly to https://summit.wearevigil.global/p/register. The old local registration simulation is removed.
@@ -28,7 +56,7 @@ The Apple Calendar button downloaded an ICS file and its schedule/format passed 
 
 # Historical v1/v2 approval and design record
 
-The material below is retained for provenance. Its implementation descriptions and old registration routes are superseded by v3 above. Outstanding approvals remain outstanding unless explicitly resolved by the client.
+The material below is retained for provenance. Its implementation descriptions and old registration routes are superseded by v4 above. Use the v4 report for current open items; old approval notes are retained only as a dated record.
 
 # VIGIL Summit 2027 · Homepage prototype notes
 
@@ -184,3 +212,16 @@ All supplied as PNG, RGB (no transparency), 17280 × 8640 px, on white with larg
 SEO is in place: a unique title and description, Open Graph tags and image, and Event structured data (JSON-LD) with dates and USD prices. In Webflow, make `og:image` an absolute URL. Add UTM tags to every campaign link (in-page Checkpoint links already carry `utm_source=site`).
 
 Still to scope (not in this build): VIP-only recordings and any gated area (Webflow no longer has native User Accounts), the form-submission limit on Ike's plan, and a live response count from the Checkpoint.
+
+
+## Publication preparation · 17 November 2026
+
+The cleanup-era staging and no-push statements above are historical snapshots.
+Publication includes the approved v4 source, required assets, tests, documentation,
+18 curated v4 screenshots and portable final validation evidence. Local delivery
+ZIPs, v4-changes.diff, generated browser captures and machine-specific audits are
+retained locally and excluded from the publication commit. Existing tracked
+historical assets remain preserved. Git history and the remote are unchanged.
+Vercel uses the existing vigil-website project and main production branch, with
+Other framework, empty build/install commands and output directory `.`.
+Post-push deployment and live verification results are reported separately.

@@ -1,0 +1,15 @@
+# Local delivery archives and historical implementation diff
+*.zip
+/v4-changes.diff
+# Local deployment and QA environments
+.vercel/
+.venv/
+__pycache__/
+/browser-shots/
+/verification/browser-shots/
+/verification/browser-results-initial.json
+/verification/browser-results-pre-event-wait.json
+/verification/browser-stderr*.txt
+/verification/git-audit.md
+/verification/package-manifest.json
+/verification/preservation.json

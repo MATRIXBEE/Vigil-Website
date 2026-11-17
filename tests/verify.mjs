@@ -26,7 +26,7 @@ check('Event metadata parses and all offers use official registration', () => {
 });
 check('all static and generated registration anchors use the exact official URL', () => {
   const tags = [...html.matchAll(/<a\b[^>]*data-register="[^"]*"[^>]*>/g)];
-  assert.equal(tags.length, 14); // Twelve static links, two timeline alternatives.
+  assert.equal(tags.length, 14); // Twelve static links (incl. FAQ Heartbeat link), two timeline alternatives.
   tags.forEach(([tag]) => assert.equal(tag.match(/href="([^"]+)"/)[1], official));
   assert.doesNotMatch(html, /<button\b[^>]*data-register/);
   assert.doesNotMatch(html, /wearevigil\.global\/register\?pass=/);
@@ -39,11 +39,10 @@ check('local static images, favicon and sharing artwork exist', () => {
   const paths = [...html.matchAll(/(?:src|href|content)="(assets\/[^"']+)"/g)].map(m => m[1]);
   paths.forEach(p => assert.ok(fs.existsSync(path.join(root, p)), p));
 });
-check('all nine generated colour portraits exist', () => {
-  const names = slice('  var SPEAKERS = ', '  var rail =');
-  [...names.matchAll(/'([^']+)'/g)].forEach(([, n]) => {
-    assert.ok(fs.existsSync(path.join(root, 'assets/speakers', n.toLowerCase().replace(/\s+/g, '-') + '-portrait.webp')));
-  });
+check('every listed speaker has a colour 4:5 portrait file', () => {
+  const files = [...slice('  var SPEAKERS = ', '  var rail =').matchAll(/f: '([^']+)'/g)].map(m => m[1]);
+  assert.equal(files.length, 10);
+  files.forEach(f => assert.ok(fs.existsSync(path.join(root, 'assets/speakers', f + '-portrait.webp')), f));
 });
 check('exact supplied hero source is referenced', () => assert.match(html, /src="assets\/images\/vigil-hero-team\.png"/));
 check('static IDs are unique', () => {
@@ -66,7 +65,7 @@ const START = Date.UTC(2027, 2, 1, 14), DAY = 864e5, SESSION = 108e5;
 const tz = vm.createContext({ Intl, Date, START, DAY, SESSION });
 vm.runInContext(slice('  var TZNAME =', '  function renderTz()'), tz);
 for (const [zone, expected] of [
-  ['Europe/London', '2:00–5:00pm GMT'], ['America/New_York', '9:00am–12:00pm ET'],
+  ['Europe/London', '2:00–5:00pm GMT'], ['America/New_York', '9:00am–12:00pm EST'],
   ['Asia/Dubai', '6:00–9:00pm Gulf (GST)'], ['Asia/Kolkata', '7:30–10:30pm IST'],
   ['Asia/Riyadh', '5:00–8:00pm KSA'], ['Asia/Qatar', '5:00–8:00pm Qatar'],
   ['Asia/Singapore', '10:00pm–1:00am (ends Tue) SGT'], ['Australia/Sydney', '1:00–4:00am AEDT'],
@@ -85,7 +84,7 @@ check('countdown immediately before opening is 000:00:00:01', () => {
 check('days remain three digits below 100', () => {
   now = START - 9 * DAY; count.tick(); assert.equal(count.cd.d.value, '009');
 });
-for (const [offset, message] of [[0, 'Live now: Day 1'], [SESSION, 'The Summit is under way: Day 1 done'], [DAY, 'Live now: Day 2'], [4 * DAY + SESSION, 'VIGIL Summit 2027 has ended. Recordings are for VIP pass holders.']]) {
+for (const [offset, message] of [[0, 'Live now: Day 1'], [SESSION, 'The Summit is under way: Day 1 done'], [DAY, 'Live now: Day 2'], [4 * DAY + SESSION, 'VIGIL Summit 2027 has ended. Thank you for taking part.']]) {
   check(`countdown boundary ${offset}ms`, () => {
     now = START + offset; count.tick();
     assert.equal(Object.values(count.cd).map(e => e.value).join(':'), '000:00:00:00');

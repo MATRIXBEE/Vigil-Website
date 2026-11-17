@@ -1,115 +1,140 @@
-# VIGIL Summit 2027 · v3 validation
+# VIGIL Summit 2027 · v4 final validation
 
-Tested 12 November 2026 against the local static site in the Codex Chromium browser.
+Executed 17 November 2026 against the integrated local v4 implementation after
+cleanup. These are fresh run results, not the supplied report's earlier claims.
 
-## Source and logic checks
+## Final result
 
-`node tests/verify.mjs` — **31 checks passed**. Uses only built-in Node modules.
+| Command | Result | Evidence |
+|---|---|---|
+| node tests/verify.mjs | 31 passed; exit 0 | verification/node-verify.txt |
+| node tests/content.mjs | 37 passed; exit 0 | verification/node-content.txt |
+| python tests/browser_check.py | 174 assertions passed, 0 failed; exit 0 | verification/browser-results.json |
 
-Coverage: application syntax, structured data, exact registration destinations,
-public placeholder removal, local asset paths, generated speaker portraits, hero
-path, unique static IDs, duplicated marquee sequences, reduced-motion CSS,
-timezone conversion (including midnight/date changes), three-digit days,
-countdown opening/session/end boundaries, staged and reduced-motion flap updates,
-ICS UTC times/recurrence/alarm/CRLF/UTF-8 folding, and Google Calendar URL fields.
+Machine-readable summary: verification/final-summary.json. There is no frontend
+build step. No production dependency was installed or changed. Browser QA used
+Python Playwright 1.65.2 from an isolated temporary environment outside the repo,
+and the existing Google Chrome installation.
 
-A separate basic HTML tag-nesting and closure check found no mismatches. No broken
-static in-page anchor targets were found. This is not a full HTML conformance audit.
+## Browser viewport matrix
 
-This is buildless HTML/CSS/JavaScript: there is no framework compilation step or
-package installation. Existing assets and the unrelated package-lock.json were
-preserved. No dependencies were added.
+| Width | Height | Document/content overflow | Broken images / console errors | Blueprint room columns |
+|---|---|---|---|---|
+| 1440 | 900 | None measured | None | 5 |
+| 1366 | 768 | None measured | None | 5 |
+| 1024 | 768 | None measured | None | 3 |
+| 768 | 1024 | None measured | None | 3 |
+| 390 | 844 | None measured | None | 1 |
+| 375 | 812 | None measured | None | 1 |
 
-## Browser checks completed
+At all six widths, the final script verified:
 
-- Loaded the actual redesigned page and inspected the hero, countdown strip,
-  Checkpoint result, chart and mobile layouts.
-- Requested viewport widths 360, 390, 768, 1024 and 1440px. In each, the document
-  had no measured horizontal overflow, the nine flap digits fitted their board,
-  and the quiz card fitted its own content area. Chromium's vertical scrollbar
-  uses approximately 15px of the requested viewport width.
-- At 360px, inspected all three timezone rows and both calendar buttons; their
-  content fitted their measured widths. At 768px the strip uses two columns; at
-  1440px it uses four. At 1024px the hero height is 692px including navigation space.
-- Inspected all four supplied faces in desktop and mobile hero crops. The source
-  file is unchanged and is not a five-person standalone photograph.
-- Completed the Checkpoint for Sentinel, Watcher, Starter, Builder and Navigator;
-  results and highlighted archetype matched the existing scoring. Restart returned
-  to Question 1 of 3. The pillar recommendation updated correctly.
-- Selected Day 5 and verified its VIP CTA. Home-key navigation returned to Day 1.
-- Selected Singapore and observed 22:00–01:00 with the next-day ending label;
-  selected-day timing updated as well. Restored automatic timezone detection.
-- Opened and closed the mobile menu; Escape closed it. The mobile registration
-  link navigated successfully and the menu/scroll lock were closed after returning.
-- Speaker Next advanced the rail, enabled Previous and updated the progress thumb.
-  All nine portrait frames measured 4:5, had no clip-path, and contained one colour
-  image. Original speaker files were not altered.
-- Opened and closed an FAQ disclosure.
-- Observed the marquee's running transform and matching group widths (1824px
-  per group at desktop). Duplicate markup and -50% loop geometry were checked.
-- Local-page console logs contained no captured warnings or errors during the
-  completed tests. External Google pages are outside this console result.
+- Nine split-flap digits fit and the seconds change; day count has three digits.
+- All three fixed timezone rows fit and have equal heights.
+- Registration links exist and all data-register targets equal exactly
+  https://summit.wearevigil.global/p/register.
+- All five agenda days render with the correct names, schedule-row counts
+  (10/8/8/8/5), no overflowing panel content and five rooms only on Blueprint Day.
+- The three-answer Checkpoint result contains its answer recap and full-assessment
+  link; restart returns to Question 1 of 3. It assigns no score or archetype.
+- FAQ opens and closes. The mobile menu opens and closes with Escape at applicable
+  widths. The navigation returns to its real fixed positioning after capture CSS.
+- Every speaker image finishes loading, there are eleven cards and one host image,
+  and Next/Previous speaker controls update the scroll and button states.
+- Outlook downloads VIGIL-Summit-2027.ics with the 14:00 UTC start and daily x5
+  recurrence. The Google Calendar URL contains the same correct dates and rule.
+- All requested images finish loading with no broken images, no failed local
+  requests and no captured console errors or warnings.
 
-## Registration click results
+Separate browser contexts verified that reduced motion stops marquee/flap
+animation and that timeline End/Home select Blueprint Day/Vision.
 
-All **14 tested placements/states** reached exactly:
-`https://summit.wearevigil.global/p/register`
+The Node tests additionally execute countdown boundary and reduced-motion paths,
+calendar escaping/folding and UTC duration/recurrence logic, timezone/date changes,
+registration metadata, programme content, supplied speaker paths, FAQ wording and
+public placeholder/removal expectations.
 
-1. Desktop navbar
-2. Hero Register free
-3. Hero VIP
-4. Free pass card
-5. VIP pass card
-6. VIP+ pass card
-7. Corporate pass card
-8. Final CTA Register free
-9. Final CTA VIP
-10. Footer Register
-11. Timeline free day
-12. Timeline VIP day
-13. FAQ corporate enquiry
-14. Mobile-menu Register free
+## Static asset and preservation checks
 
-The official registration page itself loaded. No registration, payment or enquiry
-was submitted. All live data-register anchors and all structured-data offers were
-also checked for the exact URL.
+verification/assets.json records:
 
-## Calendar results
+- No missing static or generated local asset references.
+- No duplicate static IDs or broken in-page anchors.
+- 54 remaining assets; 51 raster asset files passed image-integrity decoding.
+- All three nuTheory comment slots retained.
+- Only the two unused HeyLina assets and obsolete v3 ZIP removed.
 
-The Apple Calendar button downloaded `VIGIL-Summit-2027.ics` through the actual
-browser interaction. Its downloaded bytes were checked:
+verification/preservation.json compares against the pre-cleanup snapshot:
 
-- DTSTART 2027-03-01 14:00 UTC; DTEND 17:00 UTC.
-- RRULE FREQ=DAILY;COUNT=5 (1–5 March).
-- Display reminder 30 minutes before each session.
-- CRLF content lines; maximum physical line length 75 UTF-8 octets.
+- index.html unchanged, SHA-256
+  068c977576101fbe0e4d2a7bfc6b79d62188fb77d2bddfe16ee7efc4c28bfdc1.
+- Every surviving asset and supplied screenshots/v4-*.jpg unchanged.
+- Git HEAD, refs and remote configuration unchanged.
+- No unexpected file modifications.
 
-The generated Google URL has the same UTC schedule and recurrence. Browser popup
-activation was unreliable in this test environment. Opening the generated URL
-directly reached Google's Calendar product/sign-in page in the signed-out browser.
-The authenticated prefilled editor and calendar saving were **not verified**.
-Import into Apple Calendar or Outlook was **not performed**.
+## Checker corrections and diagnostic history
 
-## Captured proof
+The original supplied browser script was executed first. It exited 0 while merely
+printing observations; portraitsLoaded was sampled before waiting for lazy images,
+and wideEls included the intentionally clipped decorative CTA mark.
 
-- screenshots/redesign-desktop-1440-hero.jpg
-- screenshots/redesign-laptop-1024-hero.jpg
-- screenshots/redesign-mobile-390-hero.jpg
-- screenshots/redesign-mobile-360-countdown.jpg
-- screenshots/redesign-tablet-768-countdown.jpg
+Only tests/browser_check.py was corrected: wait for image completion, exclude the
+known decorative crop, restore temporary screenshot navigation styling, test
+speaker arrows, wait for scroll-event state updates, and assert results before a
+successful process exit. No production source was changed to satisfy tests.
 
-Historical screenshots are preserved and do not represent the current redesign.
+- verification/browser-results-initial.json: initial unmodified checker output;
+  retained diagnostic only, not the final pass record.
+- verification/browser-results-pre-event-wait.json and matching stderr: a strict
+  intermediate run that exposed an asynchronous test measurement race; retained.
+- verification/browser-results.json: authoritative final run, 174 passed / 0 failed.
+- verification/browser-stderr.txt: final run stderr (empty).
 
-## Remaining limits
+## Visual evidence
 
-- Supplied hero PNG is byte-identical to the composite design reference and shows
-  four people. A clean five-person photograph remains missing. No people, facial
-  features, equipment or clothing were generated or altered.
-- Reduced-motion paths were checked in source/logic tests; an OS-level preference
-  toggle and screen-reader testing were not performed.
-- Marquee loop geometry was verified; a precisely timed full-cycle recording and
-  an automated hover/focus interaction check were not completed.
-- Browser testing used one Chromium environment; Safari, Firefox and actual
-  mobile hardware were not tested.
-- Existing non-registration page routes and backend services are not implemented
-  by this homepage project. Pending client content remains documented in NOTES.md.
+68 fresh PNG captures are retained in verification/browser-shots/, including
+viewport, agenda, Checkpoint, event strip, speakers, host, partners, chart, passes,
+FAQ and desktop/mobile full-page captures. Representative hero, countdown and
+mobile Blueprint Day captures were visually inspected. Existing screenshots/v4-*.jpg
+and earlier captures are retained, not relabelled as results of this run.
+
+## Git and packaging
+
+Only the three requested deletions were staged with git rm. Existing v4 changes
+and new files remain available; none were discarded. No commit, push, reset,
+rebase or remote change occurred. git fsck --full passed. See
+verification/git-audit.md for the intended/untracked inventory.
+
+VIGIL-Summit-2027-v4-final.zip is the complete source/evidence delivery. It excludes
+.git, temporary environments and nested ZIPs. Its file manifest is verified against
+the delivered bytes. Existing Git history remains in the original repository.
+
+## Known verification and launch limits
+
+- This run checks registration targets; it submits no registration, payment or
+  enquiry. The preceding integration audit reached the official registration page
+  in a representative live click; the browser script itself does not test that
+  external page's forms.
+- Google Calendar's authenticated editor/save and Outlook import were not tested.
+  Calendar URL fields and the actual ICS download were tested.
+- Safari, Firefox, physical devices and screen-reader use were not tested.
+- nuTheory and employer logos remain unavailable; the supplied hero has four
+  visible people. No replacement artwork was fabricated.
+- Client confirmation items and programme-duration conflicts remain documented in
+  VIGIL-Implementation-Report.md. Calendar times remain the approved 14:00–17:00 UTC.
+- Inner pages and external Heartbeat/Zoom/payments/recordings/certificates/full
+  Checkpoint services are outside the static homepage implementation. Their
+  end-to-end operation is not certified by these passing local checks.
+
+
+## Publication preparation · 17 November 2026
+
+The cleanup-era staging and no-push statements above are historical snapshots.
+Publication includes the approved v4 source, required assets, tests, documentation,
+18 curated v4 screenshots and portable final validation evidence. Local delivery
+ZIPs, v4-changes.diff, generated browser captures and machine-specific audits are
+retained locally and excluded from the publication commit. Existing tracked
+historical assets remain preserved. Git history and the remote are unchanged.
+Vercel uses the existing vigil-website project and main production branch, with
+Other framework, empty build/install commands and output directory `.`.
+Post-push deployment and live verification results are reported separately.

@@ -206,8 +206,9 @@ section{position:relative;padding:var(--sec) 0}
 .event-info b{display:block;font-size:clamp(15px,1.25vw,19px);font-weight:700;line-height:1.45}.event-info small{display:block;color:#C9D4D9;font-size:13px;line-height:1.5;margin-top:3px}
 .strip-label{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;line-height:1.5;margin-bottom:22px;color:#D5DEE2}
 .zones{list-style:none;display:grid;gap:10px}
-.zones li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);align-items:center;border:1px solid var(--line-2);border-radius:var(--r);padding:14px 12px;font-size:clamp(10px,.85vw,13px);line-height:1.4}
-.zones li span{font-weight:700;padding-right:10px}.zones li b{border-left:1px solid var(--line-2);padding-left:12px;font-weight:300;white-space:nowrap}
+.zones{grid-template-columns:max-content minmax(0,1fr)}
+.zones li{grid-column:1/-1;display:grid;grid-template-columns:subgrid;align-items:center;border:1px solid var(--line-2);border-radius:var(--r);padding:14px 12px;font-size:clamp(10px,.85vw,13px);line-height:1.4}
+.zones li span{font-weight:700;padding-right:10px;white-space:nowrap}.zones li b{border-left:1px solid var(--line-2);padding-left:12px;font-weight:300;white-space:nowrap}
 .timezone-tools{margin-top:16px;font-size:12px;color:var(--mist)}.timezone-tools summary{cursor:pointer;display:list-item;list-style-position:inside}.timezone-tools summary:hover{color:var(--teal)}
 .yours{margin-top:12px;display:grid;gap:10px}.yours-out{font-size:12px;line-height:1.6}.yours-out b{font-weight:500;color:var(--teal)}
 .select-wrap{position:relative}.select-wrap select{width:100%;background:var(--night);border:1px solid var(--line-2);border-radius:var(--r);padding:10px;font-size:12px;cursor:pointer}
@@ -339,6 +340,48 @@ section{position:relative;padding:var(--sec) 0}
 .pillar-legend{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:44px;font-size:13.5px;color:var(--mist)}
 .pillar-legend span{display:inline-flex;align-items:center;gap:8px}
 .pillar-legend .tri{color:var(--c)}
+/* Day outcome, programme schedule and Day 5 parallel rooms (v4) */
+.outcome{margin-top:22px;padding:16px 18px;border:1px solid var(--line-2);border-left:2px solid var(--teal);border-radius:var(--r);font-size:15px;line-height:1.5}
+.outcome .sub-h{margin-bottom:6px;color:var(--teal)}
+.tbc{color:var(--mist);font-style:italic}
+.sched,.rooms-wrap{grid-column:1/-1}
+.sched-list{list-style:none;border-top:1px solid var(--line)}
+.sched-list>li{display:grid;grid-template-columns:112px minmax(0,1fr) minmax(0,.62fr);gap:6px 24px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.s-time{font-weight:500;color:var(--teal);font-variant-numeric:tabular-nums;white-space:nowrap}
+.s-t{font-weight:500}
+.s-w{color:#C9D4D9;font-size:14.5px}
+.sched-list>li.brk .s-t{font-weight:300;color:var(--mist);font-size:14px}
+.sched-list>li.brk .s-time{color:var(--mist)}
+.s-par{grid-column:2/-1;list-style:none;display:grid;gap:8px;margin-top:8px}
+.s-par li{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,.62fr);gap:4px 24px;align-items:baseline;font-size:14.5px}
+.s-par li .s-t{font-weight:300}
+.s-par .tri{color:var(--teal);transform:translateY(-1px)}
+.sched-note{display:flex;gap:10px;margin-top:16px;font-size:13.5px;color:var(--mist);line-height:1.5;max-width:760px}
+.sched-note .tri{color:var(--mist);margin-top:6px}
+.rooms-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:14px}
+.rooms-head .sub-h{margin:0}
+.rooms-bar{flex:1 1 320px;max-width:640px;display:flex;align-items:center;gap:12px;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--teal)}
+.rooms-bar i{flex:1;height:1.5px;background:var(--teal);position:relative}
+.rooms-bar i::before,.rooms-bar i::after{content:"";position:absolute;top:-4px;width:1.5px;height:9px;background:var(--teal)}
+.rooms-bar i::before{left:0}.rooms-bar i::after{right:0}
+.rooms{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.room{display:flex;flex-direction:column;gap:10px;min-width:0;background:var(--deep);border:1px solid var(--line-2);border-top:2px solid var(--c);border-radius:var(--r);padding:20px 18px}
+.room-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.room-type{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+.room h4{font-size:17px;font-weight:500;line-height:1.3;letter-spacing:-.005em}
+.room-by{font-size:13.5px;color:var(--mist);line-height:1.45}.room-by b{font-weight:500;color:var(--white)}
+.room-d{font-size:14px;color:#C9D4D9;line-height:1.5}
+.room-o{margin-top:auto;padding-top:12px;border-top:1px solid var(--line-2);font-size:14px;line-height:1.5}
+.room-o .sub-h{display:block;margin-bottom:4px;font-size:10.5px}
+@media (max-width:1180px){.rooms{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.rooms{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .sched-list>li{grid-template-columns:76px minmax(0,1fr);gap:4px 14px;font-size:15px}
+  .sched-list>li>.s-w{grid-column:2}
+  .s-time{white-space:normal}
+  .s-par li{grid-template-columns:auto minmax(0,1fr)}.s-par li .s-w{grid-column:2}
+}
+@media (max-width:520px){.rooms{grid-template-columns:1fr}}
 @media (max-width:860px){
   .tl-stage{display:none}
   .day-tabs{display:flex;gap:8px;overflow-x:auto;margin:36px calc(var(--gutter) * -1) 0;padding:0 var(--gutter) 6px;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -360,11 +403,13 @@ section{position:relative;padding:var(--sec) 0}
 .rung .ic{width:44px;height:46px;background:var(--night);padding:2px}
 .rung b{display:block;font-weight:500;font-size:17px}
 .rung span{display:block;font-size:14px;color:var(--mist);line-height:1.4}
-.ladder.has-hit .rung{opacity:.38}
-.ladder.has-hit .rung.hit{opacity:1}
-.rung.hit b{color:var(--teal)}
-.arche polygon.o{fill:none;stroke:var(--teal);stroke-width:2.6;stroke-linejoin:miter}
-.arche .f{fill:var(--teal)}
+.dims-h{margin-top:36px;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
+.ladder.dims{margin-top:14px}
+.dims .ic polygon{fill:var(--c)}
+.dims .ic{background:transparent}
+.ladder.dims::before{display:none}
+.dims-get{margin-top:18px;font-size:15.5px;color:#C9D4D9;max-width:520px}
+.dims-cta{margin-top:24px}
 
 .quiz{width:100%;max-width:580px;justify-self:center;background:var(--deep);border:1px solid var(--line-2);border-radius:var(--r);padding:clamp(24px,2.8vw,36px);min-height:500px;display:flex;flex-direction:column}
 .quiz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
@@ -378,14 +423,10 @@ section{position:relative;padding:var(--sec) 0}
 .opt:hover,.opt:focus-visible{border-color:var(--teal);outline:none;background:#061219}
 .opt:hover .k,.opt:focus-visible .k{border-color:var(--teal);color:var(--teal)}
 .result[hidden]{display:none}
-.result-head{display:flex;align-items:center;gap:22px;margin:16px 0 18px}
-.result-head .big{width:84px;height:88px;flex-shrink:0}
-.result-head h3{font-size:clamp(34px,3.4vw,46px)}
-.result-head p{color:var(--mist);font-size:15px;margin-top:4px}
-.meter{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:6px 0 8px}
-.meter i{height:6px;background:var(--line-2)}
-.meter i.on{background:var(--teal)}
-.meter-l{display:flex;justify-content:space-between;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+.q-dim{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.r-title{font-size:clamp(26px,2.6vw,34px);line-height:1.15;margin:14px 0 12px;letter-spacing:-.015em}
+.r-intro{color:var(--mist);font-size:15px;margin-bottom:20px}
+.r-answers{font-size:14.5px}.r-answers b{font-weight:500}
 .r-pillar{margin-top:20px;font-size:15.5px}
 .r-pillar b{font-weight:500}
 .result .cta-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:24px}
@@ -415,9 +456,12 @@ section{position:relative;padding:var(--sec) 0}
 .spk:hover .pframe::before{transform:translate(3px,-3px)}
 .vframe{position:relative;aspect-ratio:4/5;background:var(--deep);overflow:hidden;border-radius:var(--r)}
 .vframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;transition:opacity .5s var(--ease),transform .8s var(--ease)}
-.host-v:hover .col{opacity:1}
 .spk h3{font-size:19px;font-weight:500;letter-spacing:-.005em;margin-top:22px}
-.spk .role{display:block;font-size:14px;color:var(--mist);margin-top:4px}
+.spk .role{display:block;font-size:14px;color:var(--mist);margin-top:4px;line-height:1.45}
+.spk h3+.role{margin-top:6px}
+.tba-frame{display:grid;place-items:center;align-content:center;gap:18px;border:1px dashed var(--line-2)}
+.tba-frame img{position:static;width:30%;height:auto;opacity:.35;object-fit:contain}
+.tba-txt{font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
 .spk .sess{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
 .spk .sess .tri{color:var(--line-2);background:var(--mist)}
 .spk.cta-card{display:flex;flex-direction:column;justify-content:flex-end;gap:14px;border:1px dashed var(--line-2);border-radius:var(--r);padding:28px;min-height:100%}
@@ -481,7 +525,6 @@ section{position:relative;padding:var(--sec) 0}
 .host-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,6vw,104px);align-items:center}
 .host-v{position:relative;aspect-ratio:1/1.04;clip-path:polygon(0 0,100% 0,50% 100%);background:var(--deep)}
 .host-v img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:opacity .6s var(--ease)}
-.host-v .col{opacity:0}
 .host-name{font-size:clamp(22px,2vw,28px);font-weight:500;margin-top:22px}
 .host-bio{color:var(--mist);margin-top:4px}
 .host-years{display:flex;align-items:baseline;gap:14px;margin-top:30px}
@@ -493,6 +536,9 @@ section{position:relative;padding:var(--sec) 0}
 .proofs h4{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
 .proofs p{font-size:14.5px;color:#C9D4D9;margin-top:10px;line-height:1.5}
 .quote{margin-top:36px;font-size:clamp(19px,1.7vw,23px);font-weight:300;line-height:1.5;border-left:2px solid var(--teal);padding-left:20px}
+.exp{margin-top:30px}
+.exp-h{font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.exp-list{margin-top:14px}
 .disclose{margin-top:28px;font-size:14px;color:var(--mist);display:flex;gap:12px;align-items:flex-start;max-width:620px}
 .disclose .tri{color:var(--mist);margin-top:6px}
 @media (max-width:900px){.host-grid{grid-template-columns:1fr}.host-v{max-width:440px;width:86%;margin:0 auto}.proofs{grid-template-columns:1fr}.proofs div,.proofs div+div{padding:18px 0;border-left:0;border-bottom:1px solid var(--line-2)}}
@@ -503,10 +549,6 @@ section{position:relative;padding:var(--sec) 0}
 .pt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start}
 .indep{display:flex;gap:14px;align-items:flex-start;margin-top:28px;padding:18px 20px;border:1px solid var(--line-2);border-left:2px solid var(--teal);border-radius:var(--r);font-size:15.5px}
 .indep .tri{color:var(--teal);margin-top:7px}
-.tiers{list-style:none;margin-top:32px;border-top:1px solid var(--line)}
-.tiers li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
-.tiers li span:last-child{color:var(--mist);text-align:right}
-.tiers li b{font-weight:500}
 .pt-grid .btn{margin-top:32px}
 .pt-logos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .pt-logos .plate{height:148px;padding:18px 24px}
@@ -529,6 +571,7 @@ section{position:relative;padding:var(--sec) 0}
 .faq summary:hover{color:var(--teal)}
 .faq .ans{color:var(--mist);padding:0 40px 24px 0;max-width:700px}
 .faq .ans a{color:var(--teal)}
+.faq .ans p+p{margin-top:12px}
 @media (max-width:900px){.faq-grid{grid-template-columns:1fr}}
 
 /* =========================================================================
@@ -602,10 +645,10 @@ footer ul a:hover{color:var(--teal)}
       <stop offset="0" stop-color="#00B89E" stop-opacity=".35"/>
       <stop offset="1" stop-color="#00B89E"/>
     </linearGradient>
-    <!-- Days 2–4 run three parallel pillar tracks -->
+    <!-- Days 2–4 run three tracks in sequence: Data & Evidence, Tools & Systems, AI & Automation -->
     <linearGradient id="triPillar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset=".333" stop-color="#4DA8FF"/><stop offset=".333" stop-color="#FF9F43"/>
-      <stop offset=".666" stop-color="#FF9F43"/><stop offset=".666" stop-color="#A78BFA"/>
+      <stop offset=".333" stop-color="#FF9F43"/><stop offset=".333" stop-color="#4DA8FF"/>
+      <stop offset=".666" stop-color="#4DA8FF"/><stop offset=".666" stop-color="#A78BFA"/>
     </linearGradient>
   </defs>
 </svg>
@@ -641,7 +684,7 @@ footer ul a:hover{color:var(--teal)}
   <a class="m" href="#partners">Partners <span class="tri"></span></a>
   <a class="m" href="#host">About <span class="tri"></span></a>
   <a class="btn btn-primary" data-register="free" href="https://summit.wearevigil.global/p/register">Register free</a>
-  <p class="fine">1–5 March 2027 · 2:00–5:00pm GMT · 9:00am–12:00pm ET · 6:00–9:00pm Gulf (GST)</p>
+  <p class="fine">1–5 March 2027 · 2:00–5:00pm GMT · 9:00am–12:00pm EST · 6:00–9:00pm Gulf (GST)</p>
 </nav>
 
 <main id="main">
@@ -690,8 +733,8 @@ footer ul a:hover{color:var(--teal)}
       <h3 class="strip-label">Global time zones</h3>
       <ul class="zones">
         <li><span>GMT</span><b>2:00 PM – 5:00 PM</b></li>
-        <li><span>US EASTERN</span><b>9:00 AM – 12:00 PM</b></li>
-        <li><span>GULF (GST)</span><b>6:00 PM – 9:00 PM</b></li>
+        <li><span>US Eastern (EST)</span><b>9:00 AM – 12:00 PM</b></li>
+        <li><span>Gulf (GST)</span><b>6:00 PM – 9:00 PM</b></li>
       </ul>
       <details class="timezone-tools"><summary>Show your local time</summary>
       <div class="yours">
@@ -701,12 +744,11 @@ footer ul a:hover{color:var(--teal)}
           <select id="tzSelect">
             <option value="local">My time zone (automatic)</option>
             <option value="Europe/London">London (GMT)</option>
-            <option value="America/New_York">New York (ET)</option>
+            <option value="America/New_York">New York (EST)</option>
             <option value="Asia/Dubai">Dubai (Gulf, GST)</option>
             <option value="Asia/Riyadh">Riyadh (KSA)</option>
             <option value="Asia/Qatar">Doha (Qatar)</option>
             <option value="Africa/Lagos">Lagos (WAT)</option>
-            <option value="Asia/Kolkata">India (IST)</option>
             <option value="Asia/Singapore">Singapore (SGT)</option>
             <option value="Australia/Sydney">Sydney (AEDT)</option>
           </select>
@@ -720,15 +762,15 @@ footer ul a:hover{color:var(--teal)}
         <div class="count-board" aria-hidden="true">
           <div class="cu"><span class="digits" id="cdD" data-value=""></span><span class="lbl">Days</span></div>
           <div class="cu"><span class="digits" id="cdH" data-value=""></span><span class="lbl">Hours</span></div>
-          <div class="cu"><span class="digits" id="cdM" data-value=""></span><span class="lbl">Minutes</span></div>
-          <div class="cu"><span class="digits" id="cdS" data-value=""></span><span class="lbl">Seconds</span></div>
+          <div class="cu"><span class="digits" id="cdM" data-value=""></span><span class="lbl">Mins</span></div>
+          <div class="cu"><span class="digits" id="cdS" data-value=""></span><span class="lbl">Secs</span></div>
         </div>
         <span class="sr-only" id="cdSr" aria-live="polite" aria-atomic="true"></span>
       </div>
       <p class="count-live" id="countLive" role="status" hidden></p>
       <div class="atc">
         <a class="btn btn-primary" id="atcGoogle" href="https://calendar.google.com/" target="_blank" rel="noopener"><svg class="ui-icon" viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="5" width="22" height="20" rx="2"/><path d="M8 2v6M20 2v6M3 11h22"/></svg>Google Calendar</a>
-        <button class="btn btn-ghost" id="atcIcs" type="button"><svg class="ui-icon" viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="5" width="22" height="20" rx="2"/><path d="M8 2v6M20 2v6M3 11h22"/></svg>Apple Calendar</button>
+        <button class="btn btn-ghost" id="atcIcs" type="button" aria-label="Microsoft Outlook: download a calendar file with all five summit days"><svg class="ui-icon" viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="5" width="22" height="20" rx="2"/><path d="M8 2v6M20 2v6M3 11h22"/></svg>Microsoft Outlook</button>
       </div>
     </div>
   </div>
@@ -741,21 +783,21 @@ footer ul a:hover{color:var(--teal)}
   <div class="wrap">
     <div class="stats">
       <div class="stat reveal"><span class="num" data-count="15">15<span class="unit">hrs</span></span><span class="what">of live programme</span><span class="src">5 days × 3 hours · VIGIL Summit 2027 schedule</span></div>
-      <div class="stat reveal d1"><span class="num" data-count="5">5</span><span class="what">pillars, one framework</span><span class="src">Vision to Roadmap · the VIGIL Checkpoint framework</span></div>
-      <div class="stat reveal d2"><span class="num" data-count="4">4</span><span class="what">days free to attend live</span><span class="src">Days 1–4 · Day 5 for VIP pass holders</span></div>
-      <div class="stat stat-format reveal d3"><span class="num">Live</span><span class="what">online, wherever you are</span><span class="src">Streamed on Zoom · VIGIL Summit 2027</span></div>
+      <div class="stat reveal d1"><span class="num" data-count="3">3</span><span class="what">Checkpoint dimensions</span><span class="src">Data &amp; Evidence · Digital Tools &amp; Systems · AI &amp; Automation</span></div>
+      <div class="stat reveal d2"><span class="num" data-count="4">4</span><span class="what">days free to attend live</span><span class="src">Days 1–4 · Day 5, Blueprint Day, for VIP pass holders</span></div>
+      <div class="stat stat-format reveal d3"><span class="num">Live</span><span class="what">online, wherever you are</span><span class="src">Streamed via Zoom and Heartbeat · VIGIL Summit 2027</span></div>
     </div>
     <div class="partners-row reveal">
       <div class="partners-head"><p class="label mist">Current partners</p><p class="fine">Hover or focus to pause</p></div>
       <!-- Seamless marquee: group 2 is an exact copy of group 1 (hidden from screen readers); the track moves -50% and loops -->
-      <div class="marquee" tabindex="0" role="region" aria-label="Current partners: Flocrunch, QHSE Directory, CTS Globe, HeyLina, HSE Nations and SHEDAI. Scrolling strip, pauses on hover or focus.">
+      <div class="marquee" tabindex="0" role="region" aria-label="Current partners: Flocrunch, QHSE Directory, CTS Globe, HSE Nations and SHEDAI. Scrolling strip, pauses on hover or focus.">
         <div class="marquee-view">
           <div class="marquee-track">
             <ul class="marquee-group">
             <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="Flocrunch" width="640" height="173"></li>
             <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory" width="221" height="240"></li>
             <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe" width="241" height="240"></li>
-            <li class="mplate dark"><img src="assets/sponsors/heylina.webp" alt="HeyLina" width="640" height="138"></li>
+            <!-- nuTheory logo slot · add to both groups once the approved file is supplied -->
             <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations" width="640" height="226"></li>
             <li class="mplate tall"><img src="assets/sponsors/shedai.webp" alt="SHEDAI" width="352" height="240"></li>
             </ul>
@@ -763,7 +805,7 @@ footer ul a:hover{color:var(--teal)}
             <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="" width="640" height="173"></li>
             <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="" width="221" height="240"></li>
             <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="" width="241" height="240"></li>
-            <li class="mplate dark"><img src="assets/sponsors/heylina.webp" alt="" width="640" height="138"></li>
+            <!-- nuTheory logo slot · add to both groups once the approved file is supplied -->
             <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="" width="640" height="226"></li>
             <li class="mplate tall"><img src="assets/sponsors/shedai.webp" alt="" width="352" height="240"></li>
             </ul>
@@ -795,12 +837,12 @@ footer ul a:hover{color:var(--teal)}
     </div>
     <div class="day-tabs" role="tablist" aria-label="Summit days" id="dayTabs"></div>
 
-    <div class="day-panel" id="dayPanel" role="tabpanel" tabindex="0" aria-live="polite"></div>
+    <div class="day-panel" id="dayPanel" role="tabpanel" tabindex="0"></div>
 
     <div class="pillar-legend" aria-label="Pillar colours">
       <span style="--c:var(--p-vision)"><span class="tri"></span>Vision</span>
-      <span style="--c:var(--p-tools)"><span class="tri"></span>Tools &amp; Systems</span>
       <span style="--c:var(--p-data)"><span class="tri"></span>Data &amp; Evidence</span>
+      <span style="--c:var(--p-tools)"><span class="tri"></span>Tools &amp; Systems</span>
       <span style="--c:var(--p-ai)"><span class="tri"></span>AI &amp; Automation</span>
       <span style="--c:var(--p-roadmap)"><span class="tri"></span>Roadmap</span>
     </div>
@@ -808,38 +850,44 @@ footer ul a:hover{color:var(--teal)}
 </section>
 
 <!-- =====================================================================
-     04 MINI-CHECKPOINT + archetype ladder
+     04 MINI-CHECKPOINT · three-question warm-up that points to the full Checkpoint (no archetype)
      ===================================================================== -->
 <section class="check" id="check" aria-labelledby="checkTitle">
   <div class="wrap mc-grid">
     <div class="reveal">
       <p class="label"><span class="tri"></span>VIGIL Checkpoint</p>
       <h2 class="h2" id="checkTitle">Where does your safety team <span class="su">really</span> stand?</h2>
-      <p class="lead">Three questions for a first read. The full Checkpoint takes 10 minutes: 30 questions across five pillars, with your archetype, a pillar radar and next steps.</p>
-      <ol class="ladder" id="ladder" aria-label="Checkpoint archetypes, most to least mature"></ol>
+      <p class="lead">Start with three quick questions. For a real answer, take the full VIGIL Checkpoint: a free 10-minute, 30-question digital HSE maturity assessment.</p>
+      <p class="dims-h">The full Checkpoint covers three dimensions</p>
+      <ul class="ladder dims" aria-label="VIGIL Checkpoint dimensions">
+        <li class="rung" style="--c:var(--p-data)"><svg class="ic" viewBox="-3 -3 84 89" aria-hidden="true"><polygon points="0,0 58.38,0 27.6,62.19"/></svg><div><b>Data &amp; Evidence</b><span>Data ownership, quality and how data drives decisions.</span></div></li>
+        <li class="rung" style="--c:var(--p-tools)"><svg class="ic" viewBox="-3 -3 84 89" aria-hidden="true"><polygon points="0,0 58.38,0 27.6,62.19"/></svg><div><b>Digital Tools &amp; Systems</b><span>From digitised processes to connected systems.</span></div></li>
+        <li class="rung" style="--c:var(--p-ai)"><svg class="ic" viewBox="-3 -3 84 89" aria-hidden="true"><polygon points="0,0 58.38,0 27.6,62.19"/></svg><div><b>AI &amp; Automation</b><span>AI readiness, governance and awareness.</span></div></li>
+      </ul>
+      <p class="dims-get">You get an archetype, a report sent to your inbox and some recommended next steps.</p>
+      <p class="dims-cta"><a class="btn btn-primary" href="https://checkpoint.wearevigil.global/?utm_source=site&amp;utm_medium=checkpoint-section&amp;utm_campaign=summit2027" target="_blank" rel="noopener">Take the full Checkpoint <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
     </div>
 
     <div class="quiz reveal d1" id="quiz">
       <div class="quiz-top">
         <p class="label mist" id="qLabel">Question 1 of 3</p>
+        <p class="q-dim" id="qDim"></p>
       </div>
       <div class="q-prog" id="qProg" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
       <div id="qBody" aria-live="polite"></div>
-      <div class="result" id="qResult" hidden aria-live="polite">
-        <p class="label">Your first read</p>
-        <div class="result-head">
-          <svg class="big arche" id="rIcon" viewBox="-3 -3 84 89" aria-hidden="true"></svg>
-          <div><h3 id="rName" tabindex="-1">Builder</h3><p id="rDesc"></p></div>
-        </div>
-        <div class="meter" id="rMeter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="meter-l" aria-hidden="true"><span>Watcher</span><span>Sentinel</span></div>
+      <div class="result" id="qResult" hidden>
+        <p class="label">Your next step</p>
+        <h3 class="r-title" id="rTitle" tabindex="-1">Get your full Checkpoint result.</h3>
+        <p class="r-intro">Three questions can’t measure digital maturity. The full VIGIL Checkpoint can: 30 questions in about 10 minutes, across Data &amp; Evidence, Digital Tools &amp; Systems, and AI &amp; Automation.</p>
+        <p class="sub-h">Your answers</p>
+        <ul class="formats r-answers" id="rAnswers"></ul>
         <p class="r-pillar" id="rPillar"></p>
         <div class="cta-row">
           <a class="btn btn-primary" id="rFull" href="https://checkpoint.wearevigil.global/?utm_source=site&amp;utm_medium=mini-check&amp;utm_campaign=summit2027" target="_blank" rel="noopener">Take the full Checkpoint <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
           <button class="link" type="button" id="qRestart">Start again</button>
         </div>
       </div>
-      <p class="disclaimer"><span class="tri"></span><span>A three-question snapshot, not a validated assessment. Take the full 30-question Checkpoint for your complete profile.</span></p>
+      <p class="disclaimer"><span class="tri"></span><span>A three-question warm-up, not an assessment. It does not score you or assign an archetype. Your answers stay in your browser.</span></p>
     </div>
   </div>
 </section>
@@ -881,16 +929,16 @@ footer ul a:hover{color:var(--teal)}
       <div class="regions" aria-label="Target regions"><span><span class="tri"></span>United Kingdom</span><span><span class="tri"></span>United States</span><span><span class="tri"></span>Middle East</span></div>
     </div>
     <figure class="chart reveal d1">
-      <figcaption class="chart-title">Role mix · VIGIL Checkpoint respondents</figcaption>
+      <figcaption class="chart-title">Role mix · VIGIL Checkpoint 2026 respondents</figcaption>
       <ol class="bars" id="bars">
-        <li class="bar key"><span class="lab">HSE Advisor / Officer</span><span class="track"><span class="fill" style="--w:calc(41.3% / 41.3 * 82)"></span><b class="val">41.3%</b></span></li>
-        <li class="bar"><span class="lab">HSE Manager</span><span class="track"><span class="fill" style="--w:calc(23.8% / 41.3 * 82)"></span><b class="val">23.8%</b></span></li>
         <li class="bar"><span class="lab">C-suite / Executive</span><span class="track"><span class="fill" style="--w:calc(17.5% / 41.3 * 82)"></span><b class="val">17.5%</b></span></li>
-        <li class="bar"><span class="lab">Other</span><span class="track"><span class="fill" style="--w:calc(7.9% / 41.3 * 82)"></span><b class="val">7.9%</b></span></li>
+        <li class="bar"><span class="lab">Leader / Manager</span><span class="track"><span class="fill" style="--w:calc(23.8% / 41.3 * 82)"></span><b class="val">23.8%</b></span></li>
+        <li class="bar key"><span class="lab">Advisor / Officer</span><span class="track"><span class="fill" style="--w:calc(41.3% / 41.3 * 82)"></span><b class="val">41.3%</b></span></li>
         <li class="bar"><span class="lab">HSE Consultant</span><span class="track"><span class="fill" style="--w:calc(6.3% / 41.3 * 82)"></span><b class="val">6.3%</b></span></li>
         <li class="bar"><span class="lab">Operations / Site</span><span class="track"><span class="fill" style="--w:calc(3.2% / 41.3 * 82)"></span><b class="val">3.2%</b></span></li>
+        <li class="bar"><span class="lab">Other</span><span class="track"><span class="fill" style="--w:calc(7.9% / 41.3 * 82)"></span><b class="val">7.9%</b></span></li>
       </ol>
-      <p class="src">Source: VIGIL Checkpoint 2026, completed responses</p>
+      <p class="src">Source: VIGIL Checkpoint 2026, completed responses. Ordered from senior decision-makers to practitioners; totals 100%. Shows 2026 Checkpoint respondents, not confirmed 2027 Summit attendees.</p>
     </figure>
   </div>
 </section>
@@ -909,33 +957,33 @@ footer ul a:hover{color:var(--teal)}
         <div class="ptop"><h3 class="pname">Free</h3></div>
         <p class="price">$0</p><p class="cur">USD</p>
         <p class="per">Days 1–4, live</p>
-        <ul><li><span class="tri"></span>Days 1–4 live on Zoom</li><li><span class="tri"></span>All three tracks on Days 2–4</li></ul>
+        <ul><li><span class="tri"></span>Access to Days 1–4 live sessions</li><li><span class="tri"></span>48-hour access to session recordings</li></ul>
         <a class="btn btn-ghost" data-register="free" href="https://summit.wearevigil.global/p/register">Register free</a>
       </article>
       <article class="pass feat">
         <div class="ptop"><h3 class="pname">VIP</h3><span class="access-tag vip">Includes Day 5</span></div>
         <p class="price">$197</p><p class="cur">USD</p>
         <p class="per">All five days</p>
-        <ul><li><span class="tri"></span>Everything in Free</li><li><span class="tri"></span>Day 5: Roadmap</li><li><span class="tri"></span>Session recordings</li></ul>
+        <ul><li><span class="tri"></span>Everything in Free, plus:</li><li><span class="tri"></span>Full access to Day 5, Blueprint Day</li><li><span class="tri"></span>The three Roadmap Labs and two Masterclasses</li><li><span class="tri"></span>Live Zoom rooms</li><li><span class="tri"></span>CPD certificate</li><li><span class="tri"></span>Summit platform access</li><li><span class="tri"></span>Session recordings</li></ul>
         <a class="btn btn-primary" data-register="vip" href="https://summit.wearevigil.global/p/register">Get your VIP pass</a>
       </article>
       <article class="pass">
         <div class="ptop"><h3 class="pname">VIP+</h3></div>
         <p class="price">$997</p><p class="cur">USD</p>
-        
-        
+        <p class="per">All five days + clinics</p>
+        <ul><li><span class="tri"></span>Everything in VIP, plus:</li><li><span class="tri"></span>Post-summit 4-week implementation clinics</li><li><span class="tri"></span>Ongoing implementation support</li></ul>
         <a class="btn btn-ghost" data-register="vipplus" href="https://summit.wearevigil.global/p/register">Get VIP+</a>
       </article>
       <article class="pass">
         <div class="ptop"><h3 class="pname">Corporate</h3></div>
         <p class="price"><small>from</small>$3,997</p><p class="cur">USD</p>
         <p class="per">Up to 5 people</p>
-        
+        <ul><li><span class="tri"></span>Everything in VIP+, for up to 5 people</li><li><span class="tri"></span>Corporate team access</li><li><span class="tri"></span>A CPD certificate for each person</li></ul>
         <a class="btn btn-ghost" data-register="corporate" href="https://summit.wearevigil.global/p/register">Enquire for your team</a>
       </article>
     </div>
     <div class="pass-foot">
-      <p class="fine">Prices in USD. Days 1–4 are free for everyone.</p>
+      <p class="fine">Prices in USD. Days 1–4 are free for everyone. Register once and join the Summit on Heartbeat.</p>
     </div>
   </div>
 </section>
@@ -946,19 +994,24 @@ footer ul a:hover{color:var(--teal)}
 <section class="host rule" id="host" aria-labelledby="hostTitle">
   <div class="wrap host-grid">
     <div class="host-v reveal">
-      <img src="assets/speakers/ike-aigbogun-host-duo.webp" alt="" aria-hidden="true" loading="lazy" width="1100" height="1100">
-      <img class="col" src="assets/speakers/ike-aigbogun-host.webp" alt="Ike Aigbogun, host of VIGIL Summit 2027" loading="lazy" width="1100" height="1100">
+      <img src="assets/speakers/ike-aigbogun-host.webp" alt="Ike Aigbogun, host of VIGIL Summit 2027" loading="lazy" width="1100" height="1100">
     </div>
     <div class="reveal d1">
       <p class="label"><span class="tri"></span>Your host</p>
       <h2 class="h2" id="hostTitle">Meet your <span class="su">summit host.</span></h2>
       <p class="host-name">Ike Aigbogun</p>
-      <p class="host-bio">London-based health and safety professional.</p>
+      <p class="host-bio">HSE Digital Transformation &amp; Workforce Capability Specialist</p>
       <div class="host-years"><b data-count="17">17+</b><span>years in health and safety</span></div>
       <div class="proofs">
         <div><h4><span class="tri"></span>Practitioner-built</h4><p>Created by an HSE professional with 17+ years in the field.</p></div>
-        <div><h4><span class="tri"></span>Data-first</h4><p>Built on the VIGIL Checkpoint benchmark.</p></div>
-        <div><h4><span class="tri"></span>Independent</h4><p>Sponsors support VIGIL but never steer content, speakers or data.</p></div>
+        <div><h4><span class="tri"></span>Data-first</h4><p>Grounded in VIGIL Checkpoint evidence.</p></div>
+        <div><h4><span class="tri"></span>Digital specialist</h4><p>Implementation, training and adoption specialist for global teams.</p></div>
+      </div>
+      <div class="exp">
+        <p class="exp-h">Experience built across</p>
+        <!-- Approved Morrisons, Cority and Unilever logo files were not supplied. Names are shown as plain text until
+             the files arrive; swap each <span> for an <img> in assets/logos/ (see VIGIL-Implementation-Report.md). -->
+        <div class="regions exp-list" role="list" aria-label="Previous experience"><span role="listitem">Morrisons</span><span role="listitem">Cority</span><span role="listitem">Unilever</span></div>
       </div>
       <p style="margin-top:28px"><a class="link" href="/about#host" data-proto="/about#host">Meet the host</a></p>
     </div>
@@ -975,14 +1028,7 @@ footer ul a:hover{color:var(--teal)}
       <h2 class="h2" id="ptTitle">Reach the people who <span class="su">shortlist</span> safety tools.</h2>
       <p class="lead">The practitioners and managers who choose the tools, and the C-suite who sign off.</p>
       <p class="indep"><span class="tri"></span><span><b style="font-weight:500">Our independence promise.</b> Sponsors support VIGIL but never steer content, speakers or data.</span></p>
-      <ul class="tiers" aria-label="Sponsorship tiers">
-        <li><b>Media Partner</b><span>In-kind</span></li>
-        <li><b>Contributor</b><span>$2,500</span></li>
-        <li><b>Hall Partner</b><span>$4,500 · own Sponsor Hall page</span></li>
-        <li><b>Teaser</b><span>$7,500 · on-stage spotlight and fireside chat</span></li>
-        <li><b>Headline</b><span>$20,000–25,000 · "Presented in partnership with"</span></li>
-      </ul>
-      <a class="btn btn-primary" href="/partners" data-proto="/partners">Partner with VIGIL <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <a class="btn btn-primary" href="mailto:ike@wearevigil.global?subject=Partnering%20with%20VIGIL">Partner with VIGIL <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
     <div class="reveal d1">
       <div class="pt-logos-l"><p class="label mist">Current partners</p></div>
@@ -990,7 +1036,7 @@ footer ul a:hover{color:var(--teal)}
         <div class="plate"><img src="assets/sponsors/flocrunch.webp" alt="Flocrunch" loading="lazy"></div>
         <div class="plate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory" loading="lazy"></div>
         <div class="plate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe" loading="lazy"></div>
-        <div class="plate dark"><img src="assets/sponsors/heylina.webp" alt="HeyLina" loading="lazy"></div>
+        <!-- nuTheory logo slot: add a plate for the approved nuTheory logo here once the file is supplied. -->
         <div class="plate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations" loading="lazy"></div>
         <div class="plate tall"><img src="assets/sponsors/shedai.webp" alt="SHEDAI" loading="lazy"></div>
       </div>
@@ -1010,21 +1056,34 @@ footer ul a:hover{color:var(--teal)}
     </div>
     <div class="faq reveal d1">
       <details open><summary>What is VIGIL Summit 2027? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>The global summit for evidence-led safety leaders: a five-day, live online summit for health, safety and environment professionals, 1–5 March 2027. Each day follows the five pillars of the VIGIL Checkpoint, ending with a 90-day plan.</p></div></details>
+        <div class="ans"><p>The global summit for evidence-led safety leaders: a five-day, live online summit for health, safety and environment professionals, 1–5 March 2027. The days move from Vision to Diagnose, Challenge and Evidence in Practice, ending with Blueprint Day, where VIP attendees turn the week’s evidence into a practical plan.</p></div></details>
       <details><summary>Is the event online? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Yes. It runs live online, streamed on Zoom, three hours a day for five days: 2:00–5:00pm GMT, which is 9:00am–12:00pm ET and 6:00–9:00pm Gulf (GST). This page shows the times in your own time zone too.</p></div></details>
-      <details><summary>Which days are free? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Days 1–4 are free to attend live. Day 5, Roadmap, and the recordings are for VIP pass holders.</p></div></details>
-      <details><summary>What is included with VIP? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>The VIP pass ($197) adds Day 5, Roadmap, where you build a 90-day plan or join the HSE Digital Skills Masterclass, plus the session recordings.</p></div></details>
+        <div class="ans"><p>Yes. VIGIL 2027 is an online summit streamed via Zoom and Heartbeat.</p></div></details>
       <details><summary>How do I attend? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Register free, then join live on Zoom each day.</p></div></details>
+        <div class="ans"><p>Heartbeat is your home for VIGIL 2027.</p>
+          <p>While VIGIL will be streamed across our online channels, registered attendees should join us on Heartbeat for the full summit experience.</p>
+          <p>It’s where you’ll find the daily programme, session links, speaker and partner information, VIGIL workbooks and resources, session recordings, and important updates throughout the week.</p>
+          <p>Register once. <a data-register="heartbeat" href="https://summit.wearevigil.global/p/register">Join Heartbeat.</a> Everything you need for VIGIL will be waiting for you there.</p></div></details>
+      <details><summary>Which days are free? <span class="tg" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Days 1–4 are free to attend live, with 48-hour access to session recordings. Day 5, Blueprint Day, is for VIP pass holders.</p></div></details>
+      <details><summary>What is included in VIP? <span class="tg" aria-hidden="true"></span></summary>
+        <div class="ans"><p>VIP includes everything in the Free pass, plus access to the full Blueprint Day experience, including the Roadmap Labs and Masterclasses.</p>
+          <p>VIP attendees also receive a CPD certificate and access to the live Zoom rooms, along with the additional summit resources and recording access included in their ticket.</p></div></details>
       <details><summary>Can my company send a team? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Yes. Corporate passes start from $3,997 and cover up to five people. <a class="link" data-register="corporate" href="https://summit.wearevigil.global/p/register">Enquire for your team</a></p></div></details>
+        <div class="ans"><p>Absolutely. VIGIL is designed to be valuable across teams, with different sessions offering perspectives for leaders, managers and practitioners.</p>
+          <p>Each registered team member gets their own access to the VIGIL Heartbeat space, including the programme, workbooks and resources, speaker and partner information, event updates, and session recordings included with their ticket.</p>
+          <p>Bringing a team also means you can divide and explore different sessions and tracks, then bring the learning back together within your organisation.</p></div></details>
       <details><summary>What is VIGIL Checkpoint? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>A free, 10-minute, 30-question digital HSE maturity assessment across five pillars. You get an archetype, a pillar radar and next steps. <a href="https://checkpoint.wearevigil.global/?utm_source=site&amp;utm_medium=faq&amp;utm_campaign=summit2027" target="_blank" rel="noopener">Take the Checkpoint</a></p></div></details>
+        <div class="ans"><p>The VIGIL Checkpoint is our industry diagnostic exploring how HSE professionals and organisations are progressing across Data &amp; Evidence, Digital Tools &amp; Systems, and AI &amp; Automation. It helps us understand what is happening in practice, where progress is being made, where challenges remain and what organisations and professionals are experiencing.</p>
+          <p>The findings inform the State of Digital HSE Report and help ground VIGIL conversations in evidence rather than assumptions.</p>
+          <p>Take the free 10-minute, 30-question digital HSE maturity assessment, and you will get an archetype, a report sent to your inbox and some recommended next steps. <a href="https://checkpoint.wearevigil.global/?utm_source=site&amp;utm_medium=faq&amp;utm_campaign=summit2027" target="_blank" rel="noopener">Take the Checkpoint</a></p></div></details>
       <details><summary>Can I speak at VIGIL? <span class="tg" aria-hidden="true"></span></summary>
-        <div class="ans"><p>If you're an HSE leader with evidence to share, yes. Speakers get a free VIP pass, their recording, a promo kit and a profile page. Vendors who want to showcase a product should look at partnership instead. <a href="/speak" data-proto="/speak">Speak at VIGIL</a></p></div></details>
+        <div class="ans"><p>Our speakers may come from HSE, technology, data, AI, digital transformation, academia and other fields that can contribute meaningfully to the conversations we are exploring.</p>
+          <p>Speaker opportunities are curated around the VIGIL programme, so we look for people whose experience and perspective align with the themes and outcomes of each session. Vendors who want to showcase a product should look at partnership instead.</p></div></details>
+      <details><summary>How can I partner with VIGIL? <span class="tg" aria-hidden="true"></span></summary>
+        <div class="ans"><p>We work with organisations that share VIGIL’s interest in advancing how HSE uses data, technology and digital capability.</p>
+          <p>Partnership can take different forms: from strategic and industry partnerships to supporting the event through sponsorship, expertise, resources or audience reach.</p>
+          <p>If your organisation would like to explore working with VIGIL, please get in touch with our team. We’ll discuss your objectives and where there may be a meaningful fit. <a href="mailto:ike@wearevigil.global?subject=Partnering%20with%20VIGIL">Partner with VIGIL</a></p></div></details>
     </div>
   </div>
 </section>
@@ -1044,7 +1103,7 @@ footer ul a:hover{color:var(--teal)}
       <a class="btn btn-primary" data-register="free" href="https://summit.wearevigil.global/p/register">Register free <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
       <a class="btn btn-ghost" data-register="vip" href="https://summit.wearevigil.global/p/register">Get your VIP pass</a>
     </div>
-    <p class="fine">2:00–5:00pm GMT · 9:00am–12:00pm ET · 6:00–9:00pm Gulf (GST)</p>
+    <p class="fine">2:00–5:00pm GMT · 9:00am–12:00pm EST · 6:00–9:00pm Gulf (GST)</p>
   </div>
 </section>
 </main>
@@ -1057,15 +1116,15 @@ footer ul a:hover{color:var(--teal)}
     <div class="f-grid">
       <div class="f-brand">
         <img src="assets/branding/vigil-logo-horizontal-night.svg" alt="VIGIL" width="136" height="31">
-        <p>VIGIL is the independent, practitioner-built platform for digital safety. The VIGIL Checkpoint benchmarks how HSE teams use tools, data and AI across five pillars. Each March, the VIGIL Summit brings the profession together for five days of evidence, debate and planning, so safety leaders act on data, not instinct.</p>
+        <p>VIGIL is the independent, practitioner-built platform for digital safety. The VIGIL Checkpoint is our industry diagnostic exploring how HSE professionals and organisations are progressing across Data &amp; Evidence, Digital Tools &amp; Systems, and AI &amp; Automation. Each March, the VIGIL Summit brings the profession together for five days of evidence, debate and planning, so safety leaders act on data, not instinct.</p>
         <a class="mail" href="mailto:ike@wearevigil.global">ike@wearevigil.global</a>
       </div>
       <div><h4>Summit</h4><ul><li><a href="/agenda" data-proto="/agenda">Agenda</a></li><li><a href="/speakers" data-proto="/speakers">Speakers</a></li><li><a data-register="free" href="https://summit.wearevigil.global/p/register">Register</a></li><li><a href="/faq" data-proto="/faq">FAQ</a></li></ul></div>
-      <div><h4>Platform</h4><ul><li><a href="/checkpoint" data-proto="/checkpoint">Checkpoint</a></li><li><a href="/report" data-proto="/report">Report</a></li><li><a href="/about" data-proto="/about">About</a></li></ul></div>
-      <div><h4>Get involved</h4><ul><li><a href="/speak" data-proto="/speak">Speak at VIGIL</a></li><li><a href="/partners" data-proto="/partners">Partners</a></li><li><a href="/contact" data-proto="/contact">Contact</a></li></ul></div>
+      <div><h4>Platform</h4><ul><li><a href="https://checkpoint.wearevigil.global/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=summit2027" target="_blank" rel="noopener">Checkpoint</a></li><li><a href="/report" data-proto="/report">Report</a></li><li><a href="/about" data-proto="/about">About</a></li></ul></div>
+      <div><h4>Get involved</h4><ul><li><a href="/partners" data-proto="/partners">Partners</a></li><li><a href="/contact" data-proto="/contact">Contact</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="/privacy" data-proto="/privacy">Privacy</a></li><li><a href="/terms" data-proto="/terms">Terms</a></li><li><a href="/code-of-conduct" data-proto="/code-of-conduct">Code of conduct</a></li></ul></div>
     </div>
-    <div class="f-bottom"><span>© 2027 VIGIL · Times shown in GMT first, then ET and Gulf</span><span class="so">Keep watch. Lead with evidence.</span></div>
+    <div class="f-bottom"><span>© 2027 VIGIL · Times shown in GMT first, then US Eastern (EST) and Gulf (GST)</span><span class="so">Keep watch. Lead with evidence.</span></div>
   </div>
 </footer>
 
@@ -1083,6 +1142,7 @@ footer ul a:hover{color:var(--teal)}
   doc.classList.remove('no-js'); doc.classList.add('js');
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
   var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   var reduced = motionQuery.matches;
   function updateMotion(e) { reduced = e.matches; }
@@ -1145,7 +1205,7 @@ footer ul a:hover{color:var(--teal)}
   var tzSel = $('#tzSelect');
   var localTz = 'UTC';
   try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch (e) {}
-  var TZNAME = { 'Europe/London': 'GMT', 'Europe/Dublin': 'GMT', 'UTC': 'GMT', 'Etc/UTC': 'GMT', 'America/New_York': 'ET', 'America/Toronto': 'ET',
+  var TZNAME = { 'Europe/London': 'GMT', 'Europe/Dublin': 'GMT', 'UTC': 'GMT', 'Etc/UTC': 'GMT', 'America/New_York': 'EST', 'America/Toronto': 'EST',
     'Asia/Dubai': 'Gulf (GST)', 'Asia/Muscat': 'Gulf (GST)', 'Asia/Riyadh': 'KSA', 'Asia/Qatar': 'Qatar', 'Asia/Kolkata': 'IST', 'Asia/Calcutta': 'IST',
     'Africa/Lagos': 'WAT', 'Asia/Singapore': 'SGT', 'Australia/Sydney': 'AEDT' };
   function tzLabel(tz) {
@@ -1226,7 +1286,7 @@ footer ul a:hover{color:var(--teal)}
     if (now < LAST_END) {
       var d = Math.min(4, Math.floor((now - START) / DAY)), inSession = (now - (START + d * DAY)) < SESSION;
       live.textContent = inSession ? 'Live now: Day ' + (d + 1) : 'The Summit is under way: Day ' + (d + 1) + ' done';
-    } else live.textContent = 'VIGIL Summit 2027 has ended. Recordings are for VIP pass holders.';
+    } else live.textContent = 'VIGIL Summit 2027 has ended. Thank you for taking part.';
   }
   var countdownTimer = null;
   function startCountdown() {
@@ -1247,12 +1307,12 @@ footer ul a:hover{color:var(--teal)}
 
   /* ---------- Add to calendar: Google link + .ics (repeats daily for 5 days) ---------- */
   var TITLE = 'VIGIL Summit 2027';
-  var DESC = 'The global summit for evidence-led safety leaders. Live online, 1–5 March 2027, 2:00–5:00pm GMT (9:00am–12:00pm ET, 6:00–9:00pm Gulf). Days 1–4 free; Day 5 for VIP pass holders. Zoom joining details to follow. https://wearevigil.global';
+  var DESC = 'The global summit for evidence-led safety leaders. Live online, 1–5 March 2027, 2:00–5:00pm GMT (9:00am–12:00pm EST, 6:00–9:00pm Gulf GST). Days 1–4 free; Day 5, Blueprint Day, for VIP pass holders. Register once and join on Heartbeat: https://summit.wearevigil.global/p/register';
   var gUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
     '&text=' + encodeURIComponent(TITLE) +
     '&dates=20270301T140000Z/20270301T170000Z' +
     '&details=' + encodeURIComponent(DESC) +
-    '&location=' + encodeURIComponent('Online (Zoom)') +
+    '&location=' + encodeURIComponent('Online (Zoom and Heartbeat)') +
     '&recur=' + encodeURIComponent('RRULE:FREQ=DAILY;COUNT=5');
   $('#atcGoogle').href = gUrl;
   function icsEsc(s) { return s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n'); }
@@ -1270,31 +1330,153 @@ footer ul a:hover{color:var(--teal)}
     var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//VIGIL//Summit 2027//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
       'BEGIN:VEVENT', 'UID:vigil-summit-2027@wearevigil.global', 'DTSTAMP:' + stamp,
       'DTSTART:20270301T140000Z', 'DTEND:20270301T170000Z', 'RRULE:FREQ=DAILY;COUNT=5',
-      'SUMMARY:' + icsEsc(TITLE), 'DESCRIPTION:' + icsEsc(DESC), 'LOCATION:Online (Zoom)', 'URL:https://wearevigil.global',
+      'SUMMARY:' + icsEsc(TITLE), 'DESCRIPTION:' + icsEsc(DESC), 'LOCATION:' + icsEsc('Online (Zoom and Heartbeat)'), 'URL:https://summit.wearevigil.global/p/register',
       'BEGIN:VALARM', 'TRIGGER:-PT30M', 'ACTION:DISPLAY', 'DESCRIPTION:VIGIL Summit starts in 30 minutes', 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR'].map(foldIcsLine).join('\r\n') + '\r\n';
     var url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
     var a = document.createElement('a'); a.href = url; a.download = 'VIGIL-Summit-2027.ics';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
-    showToast('Open <b>VIGIL-Summit-2027.ics</b> in Apple Calendar or Outlook to add all five days.');
+    showToast('Open <b>VIGIL-Summit-2027.ics</b> in Microsoft Outlook to add all five days.');
   }
   $('#atcIcs').addEventListener('click', downloadIcs);
 
   /* ---------- Five-day streak timeline ---------- */
   var P = {
     vision: { n: 'Vision', c: 'var(--p-vision)', q: 'Where are we going, and who is leading it?' },
-    tools: { n: 'Tools & Systems', c: 'var(--p-tools)', q: 'What platforms and workflows do we actually run on?' },
-    data: { n: 'Data & Evidence', c: 'var(--p-data)', q: 'Does our data turn into decisions?' },
-    ai: { n: 'AI & Automation', c: 'var(--p-ai)', q: 'Are we ready, and are the guardrails in place?' },
-    roadmap: { n: 'Roadmap', c: 'var(--p-roadmap)', q: 'What is the plan to close the gap?' }
+    data: { n: 'Data & Evidence', c: 'var(--p-data)' },
+    tools: { n: 'Tools & Systems', c: 'var(--p-tools)' },
+    ai: { n: 'AI & Automation', c: 'var(--p-ai)' },
+    roadmap: { n: 'Roadmap', c: 'var(--p-roadmap)' }
   };
+  /* Programme source: VIGIL 2027 Speaker Guide v2 + Programme Main.xlsx (Detailed Plan V3).
+     Unconfirmed speakers are shown as TBA (see VIGIL-Implementation-Report.md). Times are GMT. */
+  var TBA = { tba: 'To be announced' }, IKE = 'Ike Aigbogun';
   var DAYS = [
-    { n: 1, name: 'Vision', focus: 'Where digital safety is heading, and the five-pillar framework that runs through the week.', tracks: ['vision'], formats: ['Vision keynote', 'Fireside chat'], vip: false, c: 'var(--p-vision)' },
-    { n: 2, name: 'Diagnosis', focus: 'Where the industry really stands, using live Checkpoint data.', tracks: ['tools', 'data', 'ai'], formats: ['Diagnosis voice (reacting to data)', 'Fireside chat'], vip: false, multi: true },
-    { n: 3, name: 'Challenge', focus: 'The hardest problems in digital safety, worked through live.', tracks: ['tools', 'data', 'ai'], formats: ['Challenge panel', 'Fireside chat'], vip: false, multi: true },
-    { n: 4, name: 'Evidence in Practice', focus: 'Real case studies, including what didn’t work.', tracks: ['tools', 'data', 'ai'], formats: ['Case study', 'Fireside chat'], vip: false, multi: true },
-    { n: 5, name: 'Roadmap', focus: 'Build your 90-day plan with experts, or join the HSE Digital Skills Masterclass.', tracks: ['roadmap'], formats: ['Roadmap expert', 'HSE Digital Skills Masterclass'], vip: true, c: 'var(--p-roadmap)' }
+    { n: 1, name: 'Vision', vip: false, c: 'var(--p-vision)',
+      focus: 'Establish what digital HSE is, what it is not, and where organisations are starting from. The day introduces the Checkpoint, emerging digital HSE challenges and the confidence to challenge, question, decide and act.',
+      tracks: [{ k: 'vision', t: 'Where are we going, and who is leading it?' }],
+      formats: ['Host-led sessions', 'Keynote', 'Guest speaker', 'Director-level interview'],
+      outcome: 'A clear understanding of digital HSE, your own starting point and the confidence to challenge existing processes, vendors and assumptions.',
+      sessions: [
+        ['14:00', 'Welcome + What is VIGIL about?', IKE],
+        ['14:15', 'Launch the Checkpoint', IKE],
+        ['14:35', 'Keynote: HSE Digital Transformation: Us vs Them? (working title)', TBA],
+        ['14:50', 'Are We Digitally Capable to Challenge, Question, Decide & Act?', IKE],
+        ['15:10', 'Break'],
+        ['15:25', 'Beyond Traditional HSE', 'Cori Carroll'],
+        ['15:55', 'Director-level interview', 'Ayomide Ojo'],
+        ['16:20', 'Break'],
+        ['16:35', 'Plan for the week', IKE],
+        ['16:50', 'Checkpoint reminder + close', IKE]
+      ] },
+    { n: 2, name: 'Diagnose', vip: false, multi: true,
+      focus: 'Understand what the interim VIGIL Checkpoint data reveals about the state of digital HSE, one track at a time.',
+      tracks: [
+        { k: 'data', t: 'Examine the evidence, data ownership, quality and how organisations use data to make decisions.' },
+        { k: 'tools', t: 'Examine the difference between digitised processes and properly integrated, connected systems.' },
+        { k: 'ai', t: 'Examine actual AI readiness, governance, awareness and the challenges surrounding automation.' }
+      ],
+      formats: ['Interim Checkpoint data reveal', 'One Diagnose session per track', 'Cross-Lens Diagnosis'],
+      outcome: 'Understand the three biggest gaps identified in the interim Checkpoint data, and decide which are relevant to your own organisation.',
+      note: 'Checkpoint findings shared during the Summit are interim results from the current respondent sample, not final industry benchmarks.',
+      sessions: [
+        ['14:00', 'Open: frame today’s mode', IKE],
+        ['14:20', 'Reveal: interim Checkpoint data', IKE],
+        ['14:35', 'Diagnose: Data & Evidence', 'Sarah Power'],
+        ['15:05', 'Break'],
+        ['15:20', 'Diagnose: Tools & Systems', 'Zoe Borde'],
+        ['15:50', 'Diagnose: AI & Automation', 'Subhrajeet Patra'],
+        ['16:20', 'Cross-Lens Diagnosis', 'Ike Aigbogun with the day’s track speakers'],
+        ['16:50', 'Close', IKE]
+      ] },
+    { n: 3, name: 'Challenge', vip: false, multi: true,
+      focus: 'Question and test assumptions, add perspective and deepen the conversation. Day 3 builds on Day 2, but speakers are not required to agree with its diagnosis.',
+      tracks: [
+        { k: 'data', t: 'A new perspective on Data & Evidence, backed by evidence.' },
+        { k: 'tools', t: 'A new perspective on Tools & Systems, backed by evidence.' },
+        { k: 'ai', t: 'A new perspective on AI & Automation, backed by evidence.' }
+      ],
+      formats: ['One Challenge session per track', 'Challenge Voices'],
+      outcome: 'New perspectives, evidence-backed challenges to accepted views and a clearer understanding of whether the Day 2 diagnosis still holds.',
+      note: 'Each track speaker brings their own topic, grounded in Checkpoint evidence. Session titles will be announced.',
+      sessions: [
+        ['14:00', 'Open: frame Challenge', IKE],
+        ['14:20', 'Recap Day 2', IKE],
+        ['14:35', 'Challenge: Data & Evidence', 'Bulat Almukhametov'],
+        ['15:05', 'Break'],
+        ['15:20', 'Challenge: Tools & Systems', 'Claudia Soares'],
+        ['15:50', 'Challenge: AI & Automation', 'Jaina Ko'],
+        ['16:20', 'Challenge Voices: cross-lens challenge', 'Funmi Adegbola with the day’s track speakers'],
+        ['16:50', 'Close', IKE]
+      ] },
+    { n: 4, name: 'Evidence in Practice', vip: false, multi: true,
+      focus: 'Real implementation stories exploring what went wrong, what organisations did about it and what remains difficult. The focus is on friction, mistakes, adaptation and lessons learned, not polished success stories.',
+      tracks: [
+        { k: 'data', t: 'Real lessons from a Data & Evidence implementation, including the messy parts.' },
+        { k: 'tools', t: 'Real lessons from a tools rollout, including the messy parts.' },
+        { k: 'ai', t: 'Real lessons from an AI or automation pilot, including the messy parts.' }
+      ],
+      formats: ['One case study per track', 'Cross-Lens Evidence'],
+      outcome: 'Recognise implementation risks and warning signs, learn from real experiences and prepare to address these challenges.',
+      sessions: [
+        ['14:00', 'Open: implementation stories', IKE],
+        ['14:20', 'Recap Day 3', IKE],
+        ['14:35', 'Case study: Data & Evidence', TBA],
+        ['15:05', 'Break'],
+        ['15:20', 'Case study: Tools & Systems', TBA],
+        ['15:50', 'Case study: AI & Automation', 'Isaac Ochulor'],
+        ['16:20', 'Cross-Lens Evidence', 'The day’s case-study speakers'],
+        ['16:50', 'Close', IKE]
+      ] },
+    { n: 5, name: 'Blueprint Day', vip: true, c: 'var(--p-roadmap)',
+      focus: 'Turn the week’s evidence into a practical next step for your organisation. Choose one of five parallel rooms: three Roadmap Labs and two Masterclasses.',
+      tracks: [
+        { k: 'data', n: 'Data & Evidence Roadmap Lab' },
+        { k: 'tools', n: 'Tools & Systems Roadmap Lab' },
+        { k: 'ai', n: 'AI & Automation Roadmap Lab' },
+        { k: 'roadmap', n: 'Human + AI Masterclass' },
+        { k: 'roadmap', n: 'Digital Skills Masterclass' }
+      ],
+      formats: ['Three Roadmap Labs', 'Two Masterclasses', 'Choose one room'],
+      outcome: 'A drafted roadmap piece or a redesigned process, plus a commitment with an owner, a first milestone and a date.',
+      rooms: [
+        { k: 'data', type: 'Roadmap Lab', n: 'Data & Evidence Roadmap Lab', by: 'Bulat Almukhametov',
+          d: 'Short expert input, then facilitated working time, peer challenge and a cross-lens dependency check.',
+          o: 'A drafted Data roadmap piece built from your Evidence Log.' },
+        { k: 'tools', type: 'Roadmap Lab', n: 'Tools & Systems Roadmap Lab', by: 'Zoe Borde', byNote: 'Co-facilitator to be announced',
+          d: 'Short expert input, then facilitated working time, peer challenge and a cross-lens dependency check.',
+          o: 'A drafted Tools roadmap piece.' },
+        { k: 'ai', type: 'Roadmap Lab', n: 'AI & Automation Roadmap Lab', by: 'Claudia Soares',
+          d: 'Short expert input, then facilitated working time, peer challenge and a cross-lens dependency check.',
+          o: 'A drafted AI roadmap piece.' },
+        { k: 'roadmap', type: 'Masterclass', n: 'Human + AI: Designing Better HSE Work', by: 'Supriya Naidu',
+          d: 'Bring one real HSE workflow and decide which steps should remain human-controlled, be automated, be AI-assisted or be left alone.',
+          o: 'A redesigned workflow with clear human checkpoints.' },
+        { k: 'roadmap', type: 'Masterclass', n: 'Digital Skills: Design, Build, Automate, Analyse', by: IKE,
+          d: 'Practical digital skills with a Microsoft 365 focus: Microsoft Forms, Power Automate, data design, the Process-to-System Canvas and workflow design, with a practical flow demonstration showing where AI can help.',
+          o: 'One process redesigned into a simple digital system, and a method to repeat the approach.' }
+      ],
+      note: 'VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.',
+      sessions: [
+        ['14:00', 'Welcome and room orientation', IKE],
+        ['14:15', 'Room introductions, in parallel', null, [
+          ['Data Roadmap Lab introduction', 'Bulat Almukhametov'],
+          ['Tools Roadmap Lab introduction', 'Zoe Borde'],
+          ['AI Roadmap Lab introduction', 'Claudia Soares'],
+          ['Human + AI Masterclass introduction', 'Supriya Naidu'],
+          ['Digital Skills Masterclass (14:15–16:30)', IKE]
+        ]],
+        ['14:35–16:30', 'Working sessions, in parallel', null, [
+          ['Data Roadmap working session', 'Bulat Almukhametov'],
+          ['Tools Roadmap working session', 'Zoe Borde with a co-facilitator to be announced'],
+          ['AI Roadmap working session', 'Claudia Soares'],
+          ['Human + AI working session', 'Supriya Naidu'],
+          ['Digital Skills Masterclass continues', IKE]
+        ]],
+        ['16:30', 'Guided orientation and support options', IKE],
+        ['16:55', 'Closing and commitments', IKE]
+      ] }
   ];
   var stage = $('#tlStage'), nodesBox = $('#tlNodes'), tabsBox = $('#dayTabs'), panel = $('#dayPanel');
   var POS = [[3, 96.5], [22, 74.4], [41, 52.3], [60, 30.2], [79, 8.1]]; /* % along the streak, bottom-left to top-right */
@@ -1334,6 +1516,22 @@ footer ul a:hover{color:var(--teal)}
   window.addEventListener('resize', function () {
     panel.setAttribute('aria-labelledby', (window.innerWidth <= 860 ? 'm-tab-' : 'tl-tab-') + current);
   });
+  function who(w) { return w && w.tba ? '<span class="tbc">' + w.tba + '</span>' : esc(w || ''); }
+  function schedRow(r) {
+    var isBreak = r.length === 2;
+    var html = '<li' + (isBreak ? ' class="brk"' : r[3] ? ' class="par"' : '') + '><span class="s-time">' + r[0] + '</span>' +
+      '<span class="s-t">' + esc(r[1]) + '</span>' + (r[2] ? '<span class="s-w">' + who(r[2]) + '</span>' : '');
+    if (r[3]) html += '<ul class="s-par">' + r[3].map(function (x) {
+      return '<li><span class="tri" aria-hidden="true"></span><span class="s-t">' + esc(x[0]) + '</span><span class="s-w">' + who(x[1]) + '</span></li>';
+    }).join('') + '</ul>';
+    return html + '</li>';
+  }
+  function roomCard(r) {
+    return '<li class="room" style="--c:' + P[r.k].c + '"><div class="room-top"><span class="room-type">' + r.type + '</span>' +
+      '<span class="access-tag vip">VIP</span></div><h4>' + esc(r.n) + '</h4>' +
+      '<p class="room-by">Facilitator: <b>' + esc(r.by) + '</b>' + (r.byNote ? '<br><span class="tbc">' + r.byNote + '</span>' : '') + '</p>' +
+      '<p class="room-d">' + esc(r.d) + '</p><p class="room-o"><span class="sub-h">You leave with</span>' + esc(r.o) + '</p></li>';
+  }
   function select(i, user) {
     current = i;
     [nodesBox, tabsBox].forEach(function (box) {
@@ -1343,59 +1541,54 @@ footer ul a:hover{color:var(--teal)}
     });
     panel.setAttribute('aria-labelledby', (window.innerWidth <= 860 ? 'm-tab-' : 'tl-tab-') + i);
     var d = DAYS[i];
-    var tracks = d.tracks.map(function (k) {
-      return '<li style="--c:' + P[k].c + '"><span class="tri"></span><span><b>' + P[k].n + '</b><small>' + P[k].q + '</small></span></li>';
+    var tracks = d.tracks.map(function (t) {
+      return '<li style="--c:' + P[t.k].c + '"><span class="tri"></span><span><b>' + esc(t.n || P[t.k].n) + '</b>' + (t.t ? '<small>' + esc(t.t) + '</small>' : '') + '</span></li>';
     }).join('');
-    var formats = d.formats.map(function (f) { return '<li><span class="tri"></span>' + f + '</li>'; }).join('');
+    var formats = d.formats.map(function (f) { return '<li><span class="tri"></span>' + esc(f) + '</li>'; }).join('');
+    var trackHead = d.rooms ? 'Five parallel rooms' : d.multi ? 'Three tracks, one after another' : 'Pillar';
     panel.innerHTML =
-      '<div><p class="label mist">Day ' + d.n + (d.multi ? ' · three parallel tracks' : '') + '</p>' +
+      '<div><p class="label mist">Day ' + d.n + (d.multi ? ' · three tracks' : d.rooms ? ' · five parallel rooms' : '') + '</p>' +
       '<h3>' + d.name + ' <span class="access-tag' + (d.vip ? ' vip' : '') + '">' + (d.vip ? 'VIP only' : 'Free') + '</span></h3>' +
       '<p class="when-line" data-slot="' + i + '"></p>' +
-      '<p class="focus">' + d.focus + '</p>' +
+      '<p class="focus">' + esc(d.focus) + '</p>' +
       '<div class="act">' + (d.vip
         ? '<a class="btn btn-primary btn-sm" data-register="vip" href="https://summit.wearevigil.global/p/register">Get your VIP pass</a>'
         : '<a class="btn btn-ghost btn-sm" data-register="free" href="https://summit.wearevigil.global/p/register">Register free</a>') + '</div></div>' +
-      '<div><p class="sub-h">' + (d.tracks.length > 1 ? 'Pillar tracks' : 'Pillar') + '</p><ul class="tracks">' + tracks + '</ul></div>' +
+      '<div><p class="sub-h">' + trackHead + '</p><ul class="tracks">' + tracks + '</ul></div>' +
       '<div><p class="sub-h">Session formats</p><ul class="formats">' + formats + '</ul>' +
-      '</div>';
+      '<div class="outcome"><p class="sub-h">You leave with</p><p>' + esc(d.outcome) + '</p></div></div>' +
+      (d.rooms ? '<div class="rooms-wrap"><div class="rooms-head"><p class="sub-h">Choose one room</p>' +
+        '<p class="rooms-bar"><span>14:15</span><i aria-hidden="true"></i><span>16:30 GMT</span><span class="sr-only"> All five rooms run at the same time.</span></p></div>' +
+        '<ul class="rooms">' + d.rooms.map(roomCard).join('') + '</ul></div>' : '') +
+      '<div class="sched"><p class="sub-h">Day ' + d.n + ' programme · times in GMT</p><ol class="sched-list">' + d.sessions.map(schedRow).join('') + '</ol>' +
+      (d.note ? '<p class="sched-note"><span class="tri" aria-hidden="true"></span><span>' + esc(d.note) + '</span></p>' : '') + '</div>';
     renderTz();
   }
 
-  /* ---------- Mini-Checkpoint (DRAFT questions and scoring, for Ike to approve) ---------- */
-  /* Mark geometry from the logo: triangle (0,0)(58.38,0)(27.6,62.19); streak (78.06,0)(48.23,82.5)(34.27,82.5) */
-  var TRI = '0,0 58.38,0 27.6,62.19', STREAK = '78.06,0 48.23,82.5 34.27,82.5';
-  var ARCH = [
-    { k: 'Watcher', d: 'Aware of the shift, not yet acting.', svg: '<polygon class="o" points="' + TRI + '"/><circle class="f" cx="28.5" cy="19" r="4.6"/>' },
-    { k: 'Starter', d: 'First digital tools in place.', svg: '<polygon class="o" points="' + TRI + '"/><polygon class="f" points="17.75,40 38.58,40 27.6,62.19"/>' },
-    { k: 'Builder', d: 'Systems connecting, data flowing.', svg: '<polygon class="o" points="' + TRI + '"/><polygon class="f" points="8.88,20 48.48,20 27.6,62.19"/>' },
-    { k: 'Navigator', d: 'Data steers the decisions.', svg: '<polygon class="f" points="' + TRI + '"/><polygon class="f" points="34.27,82.5 48.23,82.5 56.36,60 46.21,60"/>' },
-    { k: 'Sentinel', d: 'Evidence-led and looking ahead.', svg: '<polygon class="f" points="' + TRI + '"/><polygon class="f" points="' + STREAK + '"/>' }
-  ];
-  var ladder = $('#ladder');
-  ARCH.slice().reverse().forEach(function (a) {
-    var li = document.createElement('li'); li.className = 'rung'; li.dataset.a = a.k;
-    li.innerHTML = '<svg class="ic arche" viewBox="-3 -3 84 89" aria-hidden="true">' + a.svg + '</svg><div><b>' + a.k + '</b><span>' + a.d + '</span></div>';
-    ladder.appendChild(li);
-  });
+  /* ---------- Mini-Checkpoint: three-question warm-up, no scoring or archetype (13 Nov walkthrough) ---------- */
   var Q = [
-    { q: 'How are inspections and observations recorded today?', o: ['Mostly on paper', 'Spreadsheets and email', 'A digital tool in some teams', 'One connected system everywhere'] },
-    { q: 'How do you report safety performance to leadership?', o: ['Compiled by hand each month', 'Spreadsheet charts', 'Live dashboards', 'Live dashboards that drive decisions'] },
-    { q: 'Which pillar is your biggest challenge right now?', o: ['Vision', 'Tools & Systems', 'Data & Evidence', 'AI & Automation', 'Roadmap'], pillar: true }
+    { dim: 'Data & Evidence', q: 'How do you report safety performance to leadership?', o: ['Compiled by hand each month', 'Spreadsheet charts', 'Live dashboards', 'Live dashboards that drive decisions'] },
+    { dim: 'Digital Tools & Systems', q: 'How are inspections and observations recorded today?', o: ['Mostly on paper', 'Spreadsheets and email', 'A digital tool in some teams', 'One connected system everywhere'] },
+    { dim: 'Your focus', q: 'Which area is your biggest challenge right now?', o: ['Data & Evidence', 'Digital Tools & Systems', 'AI & Automation', 'Not sure yet'], focus: true }
   ];
-  var DAYFOR = { 'Vision': 'Day 1, Vision', 'Tools & Systems': 'Days 2–4, Tools & Systems track', 'Data & Evidence': 'Days 2–4, Data & Evidence track', 'AI & Automation': 'Days 2–4, AI & Automation track', 'Roadmap': 'Day 5, Roadmap (VIP)' };
-  var step = 0, score = 0, pillar = '';
-  var qBody = $('#qBody'), qRes = $('#qResult'), qProg = $$('#qProg i'), qLabel = $('#qLabel');
-  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  var FOCUS = {
+    'Data & Evidence': 'Follow the Data & Evidence sessions on Days 2–4, then the Data & Evidence Roadmap Lab on Blueprint Day (VIP).',
+    'Digital Tools & Systems': 'Follow the Tools & Systems sessions on Days 2–4, then the Tools & Systems Roadmap Lab on Blueprint Day (VIP).',
+    'AI & Automation': 'Follow the AI & Automation sessions on Days 2–4, then the AI & Automation Roadmap Lab on Blueprint Day (VIP).',
+    'Not sure yet': 'The full Checkpoint will show you where to focus first.'
+  };
+  var step = 0, answers = [];
+  var qBody = $('#qBody'), qRes = $('#qResult'), qProg = $$('#qProg i'), qLabel = $('#qLabel'), qDim = $('#qDim');
   function showQ(focus) {
     qProg.forEach(function (p, i) { p.classList.toggle('on', i <= step); });
     qLabel.textContent = 'Question ' + (step + 1) + ' of 3';
     var it = Q[step];
+    qDim.textContent = it.dim;
     qBody.innerHTML = '<div class="q-step"><h3 id="qText" tabindex="-1">' + esc(it.q) + '</h3><div class="opts" role="group" aria-labelledby="qText">' +
       it.o.map(function (o, i) { return '<button class="opt" type="button" data-i="' + i + '"><span class="k">' + String.fromCharCode(65 + i) + '</span>' + esc(o) + '</button>'; }).join('') + '</div></div>';
     $$('.opt', qBody).forEach(function (b) {
       b.addEventListener('click', function () {
-        var i = +b.dataset.i;
-        if (it.pillar) pillar = it.o[i]; else score += i;
+        answers[step] = it.o[+b.dataset.i];
         step++;
         if (step < Q.length) showQ(true); else showResult();
       });
@@ -1403,39 +1596,48 @@ footer ul a:hover{color:var(--teal)}
     if (focus) $('#qText').focus({ preventScroll: true });
   }
   function showResult() {
-    var idx = score <= 1 ? 0 : score === 2 ? 1 : score === 3 ? 2 : score <= 5 ? 3 : 4, a = ARCH[idx];
-    qBody.innerHTML = ''; qRes.hidden = false; qLabel.textContent = 'First read';
+    qBody.innerHTML = ''; qRes.hidden = false; qLabel.textContent = 'Warm-up complete'; qDim.textContent = '';
     qProg.forEach(function (p) { p.classList.add('on'); });
-    $('#rName').textContent = a.k; $('#rDesc').textContent = a.d;
-    $('#rIcon').innerHTML = a.svg;
-    $$('#rMeter i').forEach(function (m, i) { m.classList.toggle('on', i <= idx); });
-    $('#rPillar').innerHTML = 'Your focus: <b>' + esc(pillar) + '</b>. Start with ' + DAYFOR[pillar] + '.';
-    ladder.classList.add('has-hit');
-    $$('.rung', ladder).forEach(function (r) { r.classList.toggle('hit', r.dataset.a === a.k); });
-    $('#rName').focus({ preventScroll: true });
+    $('#rAnswers').innerHTML = Q.map(function (it, i) {
+      return '<li><span class="tri"></span><span><b>' + esc(it.dim) + ':</b> ' + esc(answers[i]) + '</span></li>';
+    }).join('');
+    var f = answers[2];
+    $('#rPillar').textContent = FOCUS[f];
+    $('#rTitle').focus({ preventScroll: true });
   }
   $('#qRestart').addEventListener('click', function () {
-    step = 0; score = 0; pillar = ''; qRes.hidden = true;
-    ladder.classList.remove('has-hit'); $$('.rung', ladder).forEach(function (r) { r.classList.remove('hit'); });
+    step = 0; answers = []; qRes.hidden = true;
     showQ(true);
   });
   showQ(false);
 
-  /* ---------- Speakers rail (supplied photos; names from filenames only) ---------- */
-  var SPEAKERS = ['Bulat Almukhametov', 'Claudia Soares', 'Funmi Adegbola', 'Isaac Ochulor', 'Jaina Ko', 'Sarah Powers', 'Subhrajeet Patra', 'Supriya Naidu', 'Zoe Borde'];
+  /* ---------- Speakers rail · order per latest instructions: Ike first, keynote slot, Sarah and Claudia swapped.
+     Session lines come from the 2027 programme; no roles, organisations or bios are invented. ---------- */
+  var SPEAKERS = [
+    { n: 'Ike Aigbogun', f: 'ike-aigbogun', r: ['Summit host · Days 1–5', 'Day 5 · Digital Skills Masterclass'] },
+    { tba: true, n: 'Keynote speaker', r: ['Day 1 · Keynote'] },
+    { n: 'Bulat Almukhametov', f: 'bulat-almukhametov', r: ['Day 3 · Challenge: Data & Evidence', 'Day 5 · Data & Evidence Roadmap Lab'] },
+    { n: 'Sarah Power', f: 'sarah-powers', r: ['Day 2 · Diagnose: Data & Evidence'] },
+    { n: 'Funmi Adegbola', f: 'funmi-adegbola', r: ['Day 3 · Challenge Voices'] },
+    { n: 'Isaac Ochulor', f: 'isaac-ochulor', r: ['Day 4 · Case study: AI & Automation'] },
+    { n: 'Jaina Ko', f: 'jaina-ko', r: ['Day 3 · Challenge: AI & Automation'] },
+    { n: 'Claudia Soares', f: 'claudia-soares', r: ['Day 3 · Challenge: Tools & Systems', 'Day 5 · AI & Automation Roadmap Lab'] },
+    { n: 'Subhrajeet Patra', f: 'subhrajeet-patra', r: ['Day 2 · Diagnose: AI & Automation'] },
+    { n: 'Supriya Naidu', f: 'supriya-naidu', r: ['Day 5 · Human + AI Masterclass'] },
+    { n: 'Zoe Borde', f: 'zoe-borde', r: ['Day 2 · Diagnose: Tools & Systems', 'Day 5 · Tools & Systems Roadmap Lab'] }
+  ];
   var rail = $('#rail');
-  rail.innerHTML = SPEAKERS.map(function (n) {
-    var s = n.toLowerCase().replace(/\s+/g, '-');
+  rail.innerHTML = SPEAKERS.map(function (sp) {
+    var roles = sp.r.map(function (x) { return '<span class="role">' + esc(x) + '</span>'; }).join('');
+    if (sp.tba) {
+      return '<article class="spk spk-tba"><div class="pframe"><div class="vframe tba-frame">' +
+        '<img src="assets/branding/vigil-mark.svg" alt="" width="78" height="83"><span class="tba-txt">To be announced</span></div></div>' +
+        '<h3>' + esc(sp.n) + '</h3><span class="role tbc">To be announced</span>' + roles + '</article>';
+    }
     return '<article class="spk"><div class="pframe"><div class="vframe">' +
-      '<img src="assets/speakers/' + s + '-portrait.webp" alt="Portrait of ' + n + '" loading="lazy" width="720" height="900"></div></div>' +
-      '<h3>' + n + '</h3></article>';
-  }).join('') +
-    '<article class="spk cta-card"><p class="label"><span class="tri"></span>Open slots</p><h3>Have evidence worth sharing?</h3>' +
-    '<p>Keynotes, panels, case studies and fireside chats across all five days. Speakers get a free VIP pass, their recording, a promo kit and a profile page.</p>' +
-    '<a class="btn btn-ghost btn-sm" href="/speak" data-proto="/speak">Speak at VIGIL</a></article>';
-  $$('[data-proto]', rail).forEach(function (a) {
-    a.addEventListener('click', function (e) { e.preventDefault(); showToast('Interested in speaking? Contact <a href="mailto:ike@wearevigil.global">ike@wearevigil.global</a>.'); });
-  });
+      '<img src="assets/speakers/' + sp.f + '-portrait.webp" alt="Portrait of ' + esc(sp.n) + '" loading="lazy" width="720" height="900"></div></div>' +
+      '<h3>' + esc(sp.n) + '</h3>' + roles + '</article>';
+  }).join('');
   var prev = $('#railPrev'), next = $('#railNext'), bar = $('#railBar');
   function railStep() { var c = rail.querySelector('.spk'); return c ? c.getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 28) : 300; }
   function railUpdate() {

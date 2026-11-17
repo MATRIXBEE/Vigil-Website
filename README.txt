@@ -1,55 +1,39 @@
-VIGIL Summit 2027 · Existing homepage redesign
-v3 · 12 November 2026
+VIGIL Summit 2027 · v4
+Final cleanup · 17 November 2026
+
+README.md is the complete current guide. The website is buildless HTML/CSS and
+vanilla JavaScript; no npm installation or frontend build is required.
 
 OPEN
-Open index.html directly, or run a local static server from this folder:
   python -m http.server 5501 --bind 127.0.0.1
-Then visit http://localhost:5501/
-No install, framework build or package dependencies are required.
-Internet access is used for Poppins (Google Fonts) and external destinations.
-
-REGISTRATION
-All registration CTAs go to the exact official destination:
-https://summit.wearevigil.global/p/register
-VIP and Corporate buttons were registration actions in the original implementation
-and now use that same official destination, without unapproved query parameters.
-
-FEATURES
-- Responsive team-image hero and four-area event/countdown strip
-- Mechanical split-flap countdown to 1 March 2027, 14:00 UTC
-- Fixed GMT, US Eastern and Gulf rows plus an optional local-time selector
-- Google Calendar template link and Apple/Outlook-compatible ICS download
-- Larger continuously looping sponsor logos; hover/focus pause; reduced-motion grid
-- Five-day timeline with keyboard controls
-- Three-question Checkpoint with five archetypes and restart
-- Natural-colour rectangular speaker portraits and keyboard/arrow rail controls
-- Native FAQ disclosures, scroll reveals and count-up effects
-- No public review toggle, yellow approval notes or bracketed placeholders
+Visit http://localhost:5501/, or open index.html directly.
+Poppins uses Google Fonts. External destinations require internet access.
 
 VERIFY
   node tests/verify.mjs
-Runs 31 dependency-free source/logic regression checks.
-See VALIDATION.md for actual browser checks and their limits.
+  node tests/content.mjs
+  python tests/browser_check.py
+The Node checks need no packages. The browser check requires Python Playwright
+and Chromium, or an installed Chrome path in the CHROME environment variable.
+Start the server first. VIGIL_URL sets its URL; VIGIL_SHOTS sets the capture folder.
+Actual final-run results and limits are in VALIDATION.md and verification/.
 
-HERO ASSET
-Uses assets/images/vigil-hero-team.png exactly as supplied, without image editing.
-It is a composite reference containing four visible professionals, not a clean
-five-person photograph. CSS shows its photographic region and preserves the
-four existing faces. A separate five-person photograph is still needed if required.
+CURRENT V4
+- Countdown: 1 March 2027, 14:00 UTC; fixed GMT/EST/GST and local-time conversion.
+- Google Calendar template URL and Microsoft Outlook ICS (daily x5).
+- Vision, Diagnose, Challenge, Evidence in Practice and Blueprint Day agendas.
+- Blueprint Day: three Roadmap Labs and two Masterclasses in parallel.
+- Three-question Checkpoint warm-up with no scoring or archetype; restart works.
+- Eleven speaker cards: ten portraits and one reserved keynote slot.
+- Five current partners, accessible looping marquee, nine FAQ disclosures.
+- All registration CTAs: https://summit.wearevigil.global/p/register
 
-CONTENT AND SCOPE
-NOTES.md retains unresolved client approvals and the historical design record.
-Unconfirmed statistics, benefits and personal details were omitted, not invented.
-Only this homepage is implemented. Other original page links show a contact
-message; their destination pages, legal content and backend services are not built.
-The optional quiz email simulation and old registration simulation are removed;
-real registration is handled by the official external website.
-Calendar saving/import requires the user's calendar application/account.
+CLEANUP
+Only the two unused HeyLina logos and obsolete v3 ZIP were removed. The three
+Git deletions are included in the v4 publication. V4 implementation and all
+other assets, tests, reports and screenshots are preserved. README.md and the
+implementation report describe known missing assets and external-service limits.
 
-FILES
-index.html          Existing homepage markup, CSS and vanilla JavaScript
-assets/             Original branding, speaker and sponsor files; supplied hero
-screenshots/        Historical captures plus v3 redesign verification captures
-NOTES.md            Implementation decisions and outstanding approvals
-VALIDATION.md       Browser results, regression checks and remaining limitations
-tests/verify.mjs    Built-in Node regression checks; no npm install required
+DELIVERY
+VIGIL-Summit-2027-v4-final.zip is the complete source package, excluding .git,
+temporary Python environments and nested ZIPs. Preserve the original repository.

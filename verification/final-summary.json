@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-17",
+  "nodeVerify": {
+    "passed": 31,
+    "failed": 0,
+    "exitCode": 0
+  },
+  "nodeContent": {
+    "passed": 37,
+    "failed": 0,
+    "exitCode": 0
+  },
+  "browser": {
+    "passed": 174,
+    "failed": 0,
+    "exitCode": 0,
+    "viewports": [
+      1440,
+      1366,
+      1024,
+      768,
+      390,
+      375
+    ],
+    "captures": 68
+  },
+  "applicationModified": false,
+  "commitOrPushPerformed": false
+}

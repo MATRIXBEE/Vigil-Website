@@ -1,0 +1,33 @@
+PASS application JavaScript compiles
+PASS Event metadata parses and all offers use official registration
+PASS all static and generated registration anchors use the exact official URL
+PASS no public review controls or bracketed placeholders remain
+PASS local static images, favicon and sharing artwork exist
+PASS every listed speaker has a colour 4:5 portrait file
+PASS exact supplied hero source is referenced
+PASS static IDs are unique
+PASS marquee groups match and duplicate is hidden from accessibility tree
+PASS reduced-motion static marquee and flap overrides exist
+PASS timezone Europe/London
+PASS timezone America/New_York
+PASS timezone Asia/Dubai
+PASS timezone Asia/Kolkata
+PASS timezone Asia/Riyadh
+PASS timezone Asia/Qatar
+PASS timezone Asia/Singapore
+PASS timezone Australia/Sydney
+PASS Sydney session starts on next local date
+PASS countdown immediately before opening is 000:00:00:01
+PASS days remain three digits below 100
+PASS countdown boundary 0ms
+PASS countdown boundary 10800000ms
+PASS countdown boundary 86400000ms
+PASS countdown boundary 356400000ms
+PASS mechanical flip preserves old bottom while new top is displayed
+PASS reduced-motion digit update has no staged flip
+PASS ICS has CRLF termination and no physical line over 75 UTF-8 octets
+PASS ICS schedules all five daily 14:00–17:00 UTC sessions and a 30-minute alarm
+PASS ICS folding round-trips Unicode content
+PASS Google Calendar contains the same UTC schedule and recurrence
+
+31 source and logic regression checks passed. No dependencies or build step required.
