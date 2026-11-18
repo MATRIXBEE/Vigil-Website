@@ -272,7 +272,7 @@ section{position:relative;padding:var(--sec) 0}
 /* Current partners · seamless infinite marquee (two identical groups, track moves -50%) */
 .partners-row{margin-top:clamp(44px,5vw,64px);padding-top:28px;border-top:1px solid var(--line)}
 .partners-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
-.marquee{--mg:24px;--mw:280px;--mh:128px;--dur:48s;position:relative;border-radius:var(--r)}
+.marquee{--mg:24px;--mw:280px;--mh:128px;--dur:130s;position:relative;border-radius:var(--r)}
 .marquee:focus-visible{outline:2px solid var(--teal);outline-offset:6px}
 .marquee-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
 .marquee-track{display:flex;width:max-content;animation:marquee var(--dur) linear infinite;will-change:transform}
@@ -283,7 +283,8 @@ section{position:relative;padding:var(--sec) 0}
 .mplate img{max-width:100%;max-height:calc(var(--mh) * .72);width:auto;height:auto;object-fit:contain}
 .mplate.tall img{max-height:calc(var(--mh) * .84)}
 .mplate.dark{background:var(--deep);border:1px solid var(--line-2)}
-@media (max-width:640px){.marquee{--mg:16px;--mw:220px;--mh:108px;--dur:38s}.mplate{padding:12px 18px}}
+@media (max-width:640px){.marquee{--mg:16px;--mw:220px;--mh:108px;--dur:110s}.mplate{padding:12px 18px}}
+.marquee .mplate img{max-height:calc(var(--mh) * .68)}
 @media (max-width:900px){
   .stats{grid-template-columns:repeat(2,1fr);row-gap:36px}
   .stat:nth-child(3){padding-left:0;border-left:0}
@@ -358,6 +359,11 @@ section{position:relative;padding:var(--sec) 0}
 .s-par .tri{color:var(--teal);transform:translateY(-1px)}
 .sched-note{display:flex;gap:10px;margin-top:16px;font-size:13.5px;color:var(--mist);line-height:1.5;max-width:760px}
 .sched-note .tri{color:var(--mist);margin-top:6px}
+.sched summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;color:var(--teal);font-size:14px;font-weight:500;padding:14px 0;border-top:1px solid var(--line-2)}
+.sched summary::-webkit-details-marker{display:none}
+.sched summary::after{content:'+';margin-left:auto;font-size:22px;font-weight:300;line-height:1}
+.sched[open] summary::after{content:'−'}
+.sched .sched-list{margin-top:8px}
 .rooms-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:14px}
 .rooms-head .sub-h{margin:0}
 .rooms-bar{flex:1 1 320px;max-width:640px;display:flex;align-items:center;gap:12px;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--teal)}
@@ -539,6 +545,8 @@ section{position:relative;padding:var(--sec) 0}
 .exp{margin-top:30px}
 .exp-h{font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
 .exp-list{margin-top:14px}
+.exp-list .plate{width:clamp(114px,10vw,150px);height:74px;padding:10px 14px}
+.exp-list .plate img{display:block;max-width:100%;max-height:54px;width:auto;height:auto;object-fit:contain}
 .disclose{margin-top:28px;font-size:14px;color:var(--mist);display:flex;gap:12px;align-items:flex-start;max-width:620px}
 .disclose .tri{color:var(--mist);margin-top:6px}
 @media (max-width:900px){.host-grid{grid-template-columns:1fr}.host-v{max-width:440px;width:86%;margin:0 auto}.proofs{grid-template-columns:1fr}.proofs div,.proofs div+div{padding:18px 0;border-left:0;border-bottom:1px solid var(--line-2)}}
@@ -546,17 +554,23 @@ section{position:relative;padding:var(--sec) 0}
 /* =========================================================================
    09 PARTNERS
    ========================================================================= */
-.pt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start}
+.pt-grid{display:grid;grid-template-columns:1fr;gap:clamp(36px,4vw,56px);align-items:start}
+.pt-intro{max-width:800px}
 .indep{display:flex;gap:14px;align-items:flex-start;margin-top:28px;padding:18px 20px;border:1px solid var(--line-2);border-left:2px solid var(--teal);border-radius:var(--r);font-size:15.5px}
 .indep .tri{color:var(--teal);margin-top:7px}
 .pt-grid .btn{margin-top:32px}
-.pt-logos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.pt-logos .plate{height:148px;padding:18px 24px}
-.pt-logos .plate img{max-height:90px}
-.pt-logos .plate.tall img{max-height:110px}
+.headline-sponsor{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px 32px;padding:clamp(28px,4vw,48px);border:1px solid var(--teal);border-left:3px solid var(--teal);background:linear-gradient(115deg,rgba(0,210,197,.12),var(--deep) 70%);border-radius:var(--r)}
+.headline-sponsor .label{color:var(--teal);margin-bottom:12px}
+.headline-sponsor h3{font-size:clamp(23px,2.6vw,36px);font-weight:500;line-height:1.2}
+.headline-sponsor .headline-mark{font-size:clamp(38px,5vw,70px);color:var(--teal);opacity:.65;line-height:1}
+.pt-logos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.pt-logos .plate{height:124px;padding:14px 18px;min-width:0}
+.pt-logos .plate img{display:block;max-height:82px;max-width:100%;width:auto;height:auto;object-fit:contain}
+.pt-logos .plate.tall img{max-height:94px}
 .pt-logos-l{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-@media (max-width:900px){.pt-grid{grid-template-columns:1fr}}
-@media (max-width:420px){.pt-logos .plate{height:96px;padding:16px 18px}}
+@media (max-width:1050px){.pt-logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.pt-logos{grid-template-columns:repeat(2,minmax(0,1fr))}.headline-sponsor{grid-template-columns:1fr}.headline-sponsor .headline-mark{display:none}}
+@media (max-width:420px){.pt-logos .plate{height:104px;padding:12px}.pt-logos .plate img,.pt-logos .plate.tall img{max-height:68px}.exp-list .plate{width:calc((100% - 20px)/2)}}
 
 /* =========================================================================
    10 FAQ
@@ -790,24 +804,42 @@ footer ul a:hover{color:var(--teal)}
     <div class="partners-row reveal">
       <div class="partners-head"><p class="label mist">Current partners</p><p class="fine">Hover or focus to pause</p></div>
       <!-- Seamless marquee: group 2 is an exact copy of group 1 (hidden from screen readers); the track moves -50% and loops -->
-      <div class="marquee" tabindex="0" role="region" aria-label="Current partners: Flocrunch, QHSE Directory, CTS Globe, HSE Nations and SHEDAI. Scrolling strip, pauses on hover or focus.">
+      <div class="marquee" tabindex="0" role="region" aria-label="Current partners: 15 organisations. Scrolling strip, pauses on hover or focus.">
         <div class="marquee-view">
           <div class="marquee-track">
             <ul class="marquee-group">
-            <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="Flocrunch" width="640" height="173"></li>
-            <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory" width="221" height="240"></li>
-            <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe" width="241" height="240"></li>
-            <!-- nuTheory logo slot · add to both groups once the approved file is supplied -->
-            <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations" width="640" height="226"></li>
-            <li class="mplate tall"><img src="assets/sponsors/shedai.webp" alt="SHEDAI" width="352" height="240"></li>
+              <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="FloCrunch logo" width="640" height="173"></li>
+              <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory logo" width="221" height="240"></li>
+              <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe logo" width="241" height="240"></li>
+              <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations logo" width="640" height="226"></li>
+              <li class="mplate"><img src="assets/sponsors/shedai.webp" alt="SHEDAI logo" width="352" height="240"></li>
+              <li class="mplate"><img src="assets/sponsors/ai-in-hse.webp" alt="AI in HSE logo" width="1200" height="287"></li>
+              <li class="mplate"><img src="assets/sponsors/ensured-safety.webp" alt="Ensured Safety logo" width="1200" height="260"></li>
+              <li class="mplate"><img src="assets/sponsors/evex-safety.webp" alt="EvexSafety logo" width="1200" height="795"></li>
+              <li class="mplate tall"><img src="assets/sponsors/flowforms.webp" alt="FLOWforms logo" width="908" height="850"></li>
+              <li class="mplate"><img src="assets/sponsors/haop.webp" alt="HAOP logo" width="1200" height="739"></li>
+              <li class="mplate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="HSZ Solutions logo" width="937" height="850"></li>
+              <li class="mplate"><img src="assets/sponsors/korviaone.webp" alt="KorviaOne logo" width="1200" height="221"></li>
+              <li class="mplate"><img src="assets/sponsors/own-the-prompt.webp" alt="OwnThePrompt logo" width="1200" height="309"></li>
+              <li class="mplate"><img src="assets/sponsors/nutheory.webp" alt="nuTheory logo" width="1200" height="320"></li>
+              <li class="mplate"><img src="assets/sponsors/sowshe-a.webp" alt="SOWSHE-A logo" width="1200" height="798"></li>
             </ul>
             <ul class="marquee-group" aria-hidden="true">
-            <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="" width="640" height="173"></li>
-            <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="" width="221" height="240"></li>
-            <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="" width="241" height="240"></li>
-            <!-- nuTheory logo slot · add to both groups once the approved file is supplied -->
-            <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="" width="640" height="226"></li>
-            <li class="mplate tall"><img src="assets/sponsors/shedai.webp" alt="" width="352" height="240"></li>
+              <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="" width="640" height="173"></li>
+              <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="" width="221" height="240"></li>
+              <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="" width="241" height="240"></li>
+              <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="" width="640" height="226"></li>
+              <li class="mplate"><img src="assets/sponsors/shedai.webp" alt="" width="352" height="240"></li>
+              <li class="mplate"><img src="assets/sponsors/ai-in-hse.webp" alt="" width="1200" height="287"></li>
+              <li class="mplate"><img src="assets/sponsors/ensured-safety.webp" alt="" width="1200" height="260"></li>
+              <li class="mplate"><img src="assets/sponsors/evex-safety.webp" alt="" width="1200" height="795"></li>
+              <li class="mplate tall"><img src="assets/sponsors/flowforms.webp" alt="" width="908" height="850"></li>
+              <li class="mplate"><img src="assets/sponsors/haop.webp" alt="" width="1200" height="739"></li>
+              <li class="mplate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="" width="937" height="850"></li>
+              <li class="mplate"><img src="assets/sponsors/korviaone.webp" alt="" width="1200" height="221"></li>
+              <li class="mplate"><img src="assets/sponsors/own-the-prompt.webp" alt="" width="1200" height="309"></li>
+              <li class="mplate"><img src="assets/sponsors/nutheory.webp" alt="" width="1200" height="320"></li>
+              <li class="mplate"><img src="assets/sponsors/sowshe-a.webp" alt="" width="1200" height="798"></li>
             </ul>
           </div>
         </div>
@@ -826,7 +858,7 @@ footer ul a:hover{color:var(--teal)}
         <p class="label"><span class="tri"></span>The format</p>
         <h2 class="h2" id="daysTitle">Five pillars. Five days.<br>One <span class="su">90-day plan.</span></h2>
       </div>
-      <a class="link" href="/agenda" data-proto="/agenda">See the full agenda</a>
+      <a class="link" data-register="heartbeat" href="https://summit.wearevigil.global/p/register">Join Heartbeat for the full schedule</a>
     </div>
 
     <div class="tl-stage" id="tlStage">
@@ -931,9 +963,9 @@ footer ul a:hover{color:var(--teal)}
     <figure class="chart reveal d1">
       <figcaption class="chart-title">Role mix · VIGIL Checkpoint 2026 respondents</figcaption>
       <ol class="bars" id="bars">
-        <li class="bar"><span class="lab">C-suite / Executive</span><span class="track"><span class="fill" style="--w:calc(17.5% / 41.3 * 82)"></span><b class="val">17.5%</b></span></li>
-        <li class="bar"><span class="lab">Leader / Manager</span><span class="track"><span class="fill" style="--w:calc(23.8% / 41.3 * 82)"></span><b class="val">23.8%</b></span></li>
-        <li class="bar key"><span class="lab">Advisor / Officer</span><span class="track"><span class="fill" style="--w:calc(41.3% / 41.3 * 82)"></span><b class="val">41.3%</b></span></li>
+        <li class="bar key"><span class="lab">C-suite / Executive</span><span class="track"><span class="fill" style="--w:calc(17.5% / 41.3 * 82)"></span><b class="val">17.5%</b></span></li>
+        <li class="bar key"><span class="lab">Leader / Manager</span><span class="track"><span class="fill" style="--w:calc(23.8% / 41.3 * 82)"></span><b class="val">23.8%</b></span></li>
+        <li class="bar"><span class="lab">Advisor / Officer</span><span class="track"><span class="fill" style="--w:calc(41.3% / 41.3 * 82)"></span><b class="val">41.3%</b></span></li>
         <li class="bar"><span class="lab">HSE Consultant</span><span class="track"><span class="fill" style="--w:calc(6.3% / 41.3 * 82)"></span><b class="val">6.3%</b></span></li>
         <li class="bar"><span class="lab">Operations / Site</span><span class="track"><span class="fill" style="--w:calc(3.2% / 41.3 * 82)"></span><b class="val">3.2%</b></span></li>
         <li class="bar"><span class="lab">Other</span><span class="track"><span class="fill" style="--w:calc(7.9% / 41.3 * 82)"></span><b class="val">7.9%</b></span></li>
@@ -971,7 +1003,7 @@ footer ul a:hover{color:var(--teal)}
         <div class="ptop"><h3 class="pname">VIP+</h3></div>
         <p class="price">$997</p><p class="cur">USD</p>
         <p class="per">All five days + clinics</p>
-        <ul><li><span class="tri"></span>Everything in VIP, plus:</li><li><span class="tri"></span>Post-summit 4-week implementation clinics</li><li><span class="tri"></span>Ongoing implementation support</li></ul>
+        <ul><li><span class="tri"></span>Everything in VIP, plus:</li><li><span class="tri"></span>Post-summit four-week Digital Sprint: implementation clinics and support to deliver your plan</li></ul>
         <a class="btn btn-ghost" data-register="vipplus" href="https://summit.wearevigil.global/p/register">Get VIP+</a>
       </article>
       <article class="pass">
@@ -1009,9 +1041,11 @@ footer ul a:hover{color:var(--teal)}
       </div>
       <div class="exp">
         <p class="exp-h">Experience built across</p>
-        <!-- Approved Morrisons, Cority and Unilever logo files were not supplied. Names are shown as plain text until
-             the files arrive; swap each <span> for an <img> in assets/logos/ (see VIGIL-Implementation-Report.md). -->
-        <div class="regions exp-list" role="list" aria-label="Previous experience"><span role="listitem">Morrisons</span><span role="listitem">Cority</span><span role="listitem">Unilever</span></div>
+        <div class="regions exp-list" role="list" aria-label="Previous experience">
+          <div class="plate" role="listitem"><img src="assets/experience/morrisons.webp" alt="Morrisons logo" loading="lazy" width="1200" height="615"></div>
+          <div class="plate" role="listitem"><img src="assets/experience/cority.webp" alt="Cority logo" loading="lazy" width="1200" height="451"></div>
+          <div class="plate" role="listitem"><img src="assets/experience/unilever.webp" alt="Unilever logo" loading="lazy" width="791" height="850"></div>
+        </div>
       </div>
       <p style="margin-top:28px"><a class="link" href="/about#host" data-proto="/about#host">Meet the host</a></p>
     </div>
@@ -1023,22 +1057,35 @@ footer ul a:hover{color:var(--teal)}
      ===================================================================== -->
 <section class="rule" id="partners" aria-labelledby="ptTitle">
   <div class="wrap pt-grid">
-    <div class="reveal">
+    <div class="reveal pt-intro">
       <p class="label"><span class="tri"></span>Partner with VIGIL</p>
       <h2 class="h2" id="ptTitle">Reach the people who <span class="su">shortlist</span> safety tools.</h2>
-      <p class="lead">The practitioners and managers who choose the tools, and the C-suite who sign off.</p>
+      <p class="lead">Reach HSE decision-makers who choose and approve safety tools.</p>
       <p class="indep"><span class="tri"></span><span><b style="font-weight:500">Our independence promise.</b> Sponsors support VIGIL but never steer content, speakers or data.</span></p>
       <a class="btn btn-primary" href="mailto:ike@wearevigil.global?subject=Partnering%20with%20VIGIL">Partner with VIGIL <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </div>
+    <div class="headline-sponsor reveal d1" aria-label="Headline Sponsor space">
+      <div><p class="label">Headline Sponsor</p><h3>Reserved for Headline Sponsor</h3></div>
+      <span class="headline-mark" aria-hidden="true">▽</span>
     </div>
     <div class="reveal d1">
       <div class="pt-logos-l"><p class="label mist">Current partners</p></div>
       <div class="pt-logos">
-        <div class="plate"><img src="assets/sponsors/flocrunch.webp" alt="Flocrunch" loading="lazy"></div>
-        <div class="plate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory" loading="lazy"></div>
-        <div class="plate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe" loading="lazy"></div>
-        <!-- nuTheory logo slot: add a plate for the approved nuTheory logo here once the file is supplied. -->
-        <div class="plate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations" loading="lazy"></div>
-        <div class="plate tall"><img src="assets/sponsors/shedai.webp" alt="SHEDAI" loading="lazy"></div>
+        <div class="plate"><img src="assets/sponsors/flocrunch.webp" alt="FloCrunch logo" loading="lazy" width="640" height="173"></div>
+        <div class="plate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory logo" loading="lazy" width="221" height="240"></div>
+        <div class="plate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe logo" loading="lazy" width="241" height="240"></div>
+        <div class="plate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations logo" loading="lazy" width="640" height="226"></div>
+        <div class="plate"><img src="assets/sponsors/shedai.webp" alt="SHEDAI logo" loading="lazy" width="352" height="240"></div>
+        <div class="plate"><img src="assets/sponsors/ai-in-hse.webp" alt="AI in HSE logo" loading="lazy" width="1200" height="287"></div>
+        <div class="plate"><img src="assets/sponsors/ensured-safety.webp" alt="Ensured Safety logo" loading="lazy" width="1200" height="260"></div>
+        <div class="plate"><img src="assets/sponsors/evex-safety.webp" alt="EvexSafety logo" loading="lazy" width="1200" height="795"></div>
+        <div class="plate tall"><img src="assets/sponsors/flowforms.webp" alt="FLOWforms logo" loading="lazy" width="908" height="850"></div>
+        <div class="plate"><img src="assets/sponsors/haop.webp" alt="HAOP logo" loading="lazy" width="1200" height="739"></div>
+        <div class="plate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="HSZ Solutions logo" loading="lazy" width="937" height="850"></div>
+        <div class="plate"><img src="assets/sponsors/korviaone.webp" alt="KorviaOne logo" loading="lazy" width="1200" height="221"></div>
+        <div class="plate"><img src="assets/sponsors/own-the-prompt.webp" alt="OwnThePrompt logo" loading="lazy" width="1200" height="309"></div>
+        <div class="plate"><img src="assets/sponsors/nutheory.webp" alt="nuTheory logo" loading="lazy" width="1200" height="320"></div>
+        <div class="plate"><img src="assets/sponsors/sowshe-a.webp" alt="SOWSHE-A logo" loading="lazy" width="1200" height="798"></div>
       </div>
     </div>
   </div>
@@ -1238,8 +1285,8 @@ footer ul a:hover{color:var(--teal)}
     $('#yourTime').innerHTML = (tzSel.value === 'local' ? 'Your time: ' : 'Shown in: ') + '<b>' + first.time + '</b><br>' +
       first.date.replace(/ March$/, '') + ' – ' + last.date;
     $$('[data-slot]').forEach(function (el) {
-      var s = slot(+el.getAttribute('data-slot'), tz);
-      el.innerHTML = '<b>' + s.date + '</b> · ' + s.time + (tz === 'Europe/London' ? '' : ' · 2:00–5:00pm GMT');
+      var gmt = slot(+el.getAttribute('data-slot'), 'Europe/London');
+      el.innerHTML = '<b>' + gmt.date + '</b> · ' + gmt.time;
     });
   }
   tzSel.addEventListener('change', renderTz);
@@ -1444,7 +1491,7 @@ footer ul a:hover{color:var(--teal)}
         { k: 'data', type: 'Roadmap Lab', n: 'Data & Evidence Roadmap Lab', by: 'Bulat Almukhametov',
           d: 'Short expert input, then facilitated working time, peer challenge and a cross-lens dependency check.',
           o: 'A drafted Data roadmap piece built from your Evidence Log.' },
-        { k: 'tools', type: 'Roadmap Lab', n: 'Tools & Systems Roadmap Lab', by: 'Zoe Borde', byNote: 'Co-facilitator to be announced',
+        { k: 'tools', type: 'Roadmap Lab', n: 'Tools & Systems Roadmap Lab', by: 'Zoe Borde',
           d: 'Short expert input, then facilitated working time, peer challenge and a cross-lens dependency check.',
           o: 'A drafted Tools roadmap piece.' },
         { k: 'ai', type: 'Roadmap Lab', n: 'AI & Automation Roadmap Lab', by: 'Claudia Soares',
@@ -1457,26 +1504,7 @@ footer ul a:hover{color:var(--teal)}
           d: 'Practical digital skills with a Microsoft 365 focus: Microsoft Forms, Power Automate, data design, the Process-to-System Canvas and workflow design, with a practical flow demonstration showing where AI can help.',
           o: 'One process redesigned into a simple digital system, and a method to repeat the approach.' }
       ],
-      note: 'VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.',
-      sessions: [
-        ['14:00', 'Welcome and room orientation', IKE],
-        ['14:15', 'Room introductions, in parallel', null, [
-          ['Data Roadmap Lab introduction', 'Bulat Almukhametov'],
-          ['Tools Roadmap Lab introduction', 'Zoe Borde'],
-          ['AI Roadmap Lab introduction', 'Claudia Soares'],
-          ['Human + AI Masterclass introduction', 'Supriya Naidu'],
-          ['Digital Skills Masterclass (14:15–16:30)', IKE]
-        ]],
-        ['14:35–16:30', 'Working sessions, in parallel', null, [
-          ['Data Roadmap working session', 'Bulat Almukhametov'],
-          ['Tools Roadmap working session', 'Zoe Borde with a co-facilitator to be announced'],
-          ['AI Roadmap working session', 'Claudia Soares'],
-          ['Human + AI working session', 'Supriya Naidu'],
-          ['Digital Skills Masterclass continues', IKE]
-        ]],
-        ['16:30', 'Guided orientation and support options', IKE],
-        ['16:55', 'Closing and commitments', IKE]
-      ] }
+      note: 'VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.' }
   ];
   var stage = $('#tlStage'), nodesBox = $('#tlNodes'), tabsBox = $('#dayTabs'), panel = $('#dayPanel');
   var POS = [[3, 96.5], [22, 74.4], [41, 52.3], [60, 30.2], [79, 8.1]]; /* % along the streak, bottom-left to top-right */
@@ -1529,7 +1557,7 @@ footer ul a:hover{color:var(--teal)}
   function roomCard(r) {
     return '<li class="room" style="--c:' + P[r.k].c + '"><div class="room-top"><span class="room-type">' + r.type + '</span>' +
       '<span class="access-tag vip">VIP</span></div><h4>' + esc(r.n) + '</h4>' +
-      '<p class="room-by">Facilitator: <b>' + esc(r.by) + '</b>' + (r.byNote ? '<br><span class="tbc">' + r.byNote + '</span>' : '') + '</p>' +
+      '<p class="room-by">Facilitator: <b>' + esc(r.by) + '</b></p>' +
       '<p class="room-d">' + esc(r.d) + '</p><p class="room-o"><span class="sub-h">You leave with</span>' + esc(r.o) + '</p></li>';
   }
   function select(i, user) {
@@ -1558,10 +1586,11 @@ footer ul a:hover{color:var(--teal)}
       '<div><p class="sub-h">Session formats</p><ul class="formats">' + formats + '</ul>' +
       '<div class="outcome"><p class="sub-h">You leave with</p><p>' + esc(d.outcome) + '</p></div></div>' +
       (d.rooms ? '<div class="rooms-wrap"><div class="rooms-head"><p class="sub-h">Choose one room</p>' +
-        '<p class="rooms-bar"><span>14:15</span><i aria-hidden="true"></i><span>16:30 GMT</span><span class="sr-only"> All five rooms run at the same time.</span></p></div>' +
+        '<p class="rooms-bar"><span>14:00–17:00 GMT</span><i aria-hidden="true"></i><span class="sr-only"> All five rooms run at the same time.</span></p></div>' +
         '<ul class="rooms">' + d.rooms.map(roomCard).join('') + '</ul></div>' : '') +
-      '<div class="sched"><p class="sub-h">Day ' + d.n + ' programme · times in GMT</p><ol class="sched-list">' + d.sessions.map(schedRow).join('') + '</ol>' +
-      (d.note ? '<p class="sched-note"><span class="tri" aria-hidden="true"></span><span>' + esc(d.note) + '</span></p>' : '') + '</div>';
+      (d.rooms ? '<p class="sched-note"><span class="tri" aria-hidden="true"></span><span>' + esc(d.note) + '</span></p>' :
+        '<details class="sched"><summary>Day ' + d.n + ' programme · times in GMT</summary><ol class="sched-list">' + d.sessions.map(schedRow).join('') + '</ol></details>' +
+        (d.note ? '<p class="sched-note"><span class="tri" aria-hidden="true"></span><span>' + esc(d.note) + '</span></p>' : ''));
     renderTz();
   }
 

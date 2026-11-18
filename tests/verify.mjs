@@ -26,7 +26,7 @@ check('Event metadata parses and all offers use official registration', () => {
 });
 check('all static and generated registration anchors use the exact official URL', () => {
   const tags = [...html.matchAll(/<a\b[^>]*data-register="[^"]*"[^>]*>/g)];
-  assert.equal(tags.length, 14); // Twelve static links (incl. FAQ Heartbeat link), two timeline alternatives.
+  assert.equal(tags.length, 15); // Thirteen static links (incl. Heartbeat schedule), two timeline alternatives.
   tags.forEach(([tag]) => assert.equal(tag.match(/href="([^"]+)"/)[1], official));
   assert.doesNotMatch(html, /<button\b[^>]*data-register/);
   assert.doesNotMatch(html, /wearevigil\.global\/register\?pass=/);

@@ -1,5 +1,67 @@
 # VIGIL Summit 2027 · Implementation Report
 
+## 18 November 2026 update (current local state)
+
+The v4 homepage now displays **15 distinct partners** in both the accessible
+marquee and the static Partners grid. The original five remain: FloCrunch,
+QHSE Directory, CTS Globe, HSE Nations and SHEDAI. The ten additions are
+AI in HSE, Ensured Safety, EvexSafety, FLOWforms, HAOP, HSZ Solutions,
+KorviaOne, OwnThePrompt, nuTheory and SOWSHE-A. Each uses the supplied artwork;
+optimised WebP copies were created while the original PNGs remain intact.
+HeyLina remains excluded from the website. A prominent, responsive Headline
+Sponsor area says "Reserved for Headline Sponsor" and claims no sponsor.
+
+The host section now displays the supplied Morrisons, Cority and Unilever
+logos from `assets/experience/`. The files were visually checked: the
+SOWSHE-A sponsor logo is separate from the Unilever experience logo.
+
+Ike's latest email removes the separate ongoing-support VIP+ benefit and
+the Tools & Systems Roadmap Lab co-facilitator placeholder. VIP+ now names
+the four-week Digital Sprint implementation clinics and support to deliver
+the attendee's plan. Blueprint Day retains its five simultaneous rooms,
+choice of one primary experience, closing overview, VIP labels and pillar
+legend. Its detailed timeline is removed, and the room header reads
+**14:00–17:00 GMT**. The chart highlights C-suite / Executive and Leader /
+Manager; all percentages remain unchanged.
+
+The five-day overview remains. Days 1–4 keep their approved programme
+details inside collapsed disclosures for easier scanning. The full-schedule
+CTA uses the verified Heartbeat registration URL. Day panel times display
+GMT only; the separate local-time calculator still supports Australia and
+automatic detection. Google Calendar, Outlook ICS, the Checkpoint links,
+speaker order and responsive navigation remain in place. Partner copy now
+uses "HSE decision-makers".
+
+The final local runs passed **31 regression checks, 41 content checks and 198
+browser checks with zero failures**, including the six specified widths.
+Results are in `VALIDATION.md`. Curated screenshots remain local under
+`screenshots/v4-20261118-*.jpg` and are excluded from the production commit.
+The first browser run exposed two mobile logo fit failures; the mobile plate
+height was corrected, and the complete suite passed on rerun.
+
+Files modified: `index.html`, `tests/verify.mjs`, `tests/content.mjs`,
+`tests/browser_check.py`, `README.md`, `README.txt`, `NOTES.md`,
+`VALIDATION.md` and this report. Added to the production source: 10 optimised
+partner WebPs, three experience WebPs and three dated validation files.
+Five curated screenshots were saved locally for review.
+The 10 supplied partner PNGs, three experience PNGs and HeyLina source PNG
+remain untouched and untracked; no file was removed from the supplied assets.
+The only removed files were two temporary contact sheets created for visual
+inspection.
+
+The 18 November changes were validated locally before publication. GitHub
+`main` and the existing Vercel project record the published revision. The
+17 November report below documents the previous baseline; its old logo and
+test statements describe that earlier state. The separate website-edits PDF mentioned in the brief
+was not included with this request. The latest connected Gmail thread was
+reviewed, and the written brief specified its screenshot-based edits.
+Remaining launch items are
+the four-person composite hero, unconfirmed speakers and sample size,
+programme-duration questions, unbuilt inner pages, and external ticket,
+Heartbeat, Zoom and Checkpoint flows.
+
+## 17 November 2026 published baseline (historical)
+
 v4 · 17 November 2026 · Integrated implementation and final cleanup
 
 ## Summary

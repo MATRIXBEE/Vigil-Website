@@ -53,7 +53,7 @@ async def main():
                 await page.locator(sel).nth(i).click()
                 await page.wait_for_timeout(120)
                 info = await page.evaluate("""(()=>{const p=document.querySelector('#dayPanel');const vw=document.documentElement.clientWidth;let wide=0;p.querySelectorAll('*').forEach(e=>{if(e.getBoundingClientRect().right>vw+1)wide++});
-                  return {h:p.querySelector('h3').textContent, rows:p.querySelectorAll('.sched-list>li').length, rooms:p.querySelectorAll('.room').length, when:p.querySelector('.when-line').textContent, wide}})()""")
+                  return {h:p.querySelector('h3').textContent, rows:p.querySelectorAll('.sched-list>li').length, rooms:p.querySelectorAll('.room').length, when:p.querySelector('.when-line').textContent, note:p.querySelector('.sched-note')?.textContent||'', roomTime:p.querySelector('.rooms-bar')?.textContent||'', scheduleOpen:p.querySelector('details.sched')?.open??null, wide}})()""")
                 days.append(info)
             r['days'] = days
             # Day 5 rooms layout
@@ -102,6 +102,9 @@ async def main():
             await page.evaluate("document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager')"); await page.wait_for_timeout(500)
             await page.wait_for_function("[...document.images].every(i=>i.complete&&i.naturalWidth>0)")
             r['brokenImages'] = await page.evaluate("[...document.images].filter(i=>i.complete&&i.naturalWidth===0).map(i=>i.src)")
+            r['partnerLogos'] = await page.evaluate("""(()=>{const grid=[...document.querySelectorAll('.pt-logos img')], marquee=[...document.querySelectorAll('.marquee-group:not([aria-hidden]) img')], ghost=[...document.querySelectorAll('.marquee-group[aria-hidden] img')];const fits=i=>{const a=i.getBoundingClientRect(),b=i.parentElement.getBoundingClientRect();return i.naturalWidth>0&&a.width>0&&a.height>0&&a.left>=b.left-1&&a.right<=b.right+1&&a.top>=b.top-1&&a.bottom<=b.bottom+1&&Math.abs(a.width/a.height-i.naturalWidth/i.naturalHeight)<.03};return {grid:grid.length,marquee:marquee.length,ghost:ghost.length,unique:new Set(grid.map(i=>i.src)).size,allAlt:grid.every(i=>i.alt.endsWith(' logo')),fit:grid.every(fits)&&marquee.every(fits),ghostHidden:ghost.every(i=>i.alt==='')}})()""")
+            r['experienceLogos'] = await page.evaluate("""(()=>{const imgs=[...document.querySelectorAll('.exp-list img')];return {names:imgs.map(i=>i.alt),loaded:imgs.every(i=>i.naturalWidth>0)}})()""")
+            r['headlineSponsor'] = await page.evaluate("document.querySelector('.headline-sponsor')?.textContent.includes('Reserved for Headline Sponsor')")
             # hover check: speaker card computed filter/colour unchanged
             r['hostImgs'] = await page.evaluate("document.querySelectorAll('.host-v img').length")
             # mobile menu
@@ -115,8 +118,10 @@ async def main():
             # screenshots
             await page.evaluate("window.scrollTo(0,0)"); await page.wait_for_timeout(300)
             await page.screenshot(path=f'{OUT}/top-{w}.png')
+            nav_capture_style = await page.add_style_tag(content='.nav{position:absolute!important}')
             for sec in ['#event', '#speakers', '#who', '#passes', '#host', '#partners', '#faq']:
                 await page.locator(sec).screenshot(path=f'{OUT}/{sec[1:]}-{w}.png')
+            await nav_capture_style.evaluate('(el) => el.remove()')
             if w in (1440, 390):
                 await page.screenshot(path=f'{OUT}/full-{w}.png', full_page=True)
             r['consoleErrors'] = errs; r['failedLocal'] = failed
@@ -152,8 +157,12 @@ async def main():
         verify(prefix + 'registration links present', r['registerLinks'] > 0)
         for i, day in enumerate(r['days']):
             verify(prefix + f'day {i + 1}', day['h'].startswith(names[i]) and day['wide'] == 0
-                   and day['rows'] == [10, 8, 8, 8, 5][i] and day['rooms'] == (5 if i == 4 else 0))
+                   and day['rows'] == [10, 8, 8, 8, 0][i] and day['rooms'] == (5 if i == 4 else 0)
+                   and day['when'].endswith('GMT') and (day['scheduleOpen'] is None if i == 4 else day['scheduleOpen'] is False))
         verify(prefix + 'five agenda days', len(r['days']) == 5)
+        verify(prefix + 'Day 5 compact programme', '14:00–17:00 GMT' in r['days'][4]['roomTime']
+               and 'All five rooms run at the same time' in r['days'][4]['note']
+               and 'overview of the rooms you did not attend' in r['days'][4]['note'])
         verify(prefix + 'room columns', r['roomCols'] == (5 if width > 1180 else 3 if width > 760 else 1))
         quiz = r['quizResult']
         verify(prefix + 'Checkpoint result', not quiz['hidden'] and quiz['answers'] == 3
@@ -163,6 +172,12 @@ async def main():
         verify(prefix + 'Outlook ICS', r['ics']['name'] == 'VIGIL-Summit-2027.ics'
                and all(r['ics'][k] for k in ['start', 'rrule', 'outlookToast']))
         verify(prefix + 'all images healthy', not r['brokenImages'])
+        logos = r['partnerLogos']
+        verify(prefix + '15 distinct partner logos', logos['grid'] == logos['marquee'] == logos['ghost'] == logos['unique'] == 15
+               and logos['allAlt'] and logos['fit'] and logos['ghostHidden'])
+        verify(prefix + 'three experience logos', r['experienceLogos']['names'] == ['Morrisons logo', 'Cority logo', 'Unilever logo']
+               and r['experienceLogos']['loaded'])
+        verify(prefix + 'headline sponsor placeholder', r['headlineSponsor'])
         verify(prefix + 'speaker and host cards', len(r['speakers']) == 11 and r['hostImgs'] == 1)
         verify(prefix + 'console clean', not r['consoleErrors'])
         verify(prefix + 'local requests successful', not r['failedLocal'])

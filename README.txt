@@ -1,4 +1,7 @@
 VIGIL Summit 2027 · v4
+18 November update: see README.md and VIGIL-Implementation-Report.md for the
+current local website, 15 partners, experience logos and schedule corrections.
+The cleanup and delivery details below describe the 17 November release.
 Final cleanup · 17 November 2026
 
 README.md is the complete current guide. The website is buildless HTML/CSS and

@@ -1,5 +1,30 @@
 # VIGIL Summit 2027 · v4 final validation
 
+## 18 November 2026 local update
+
+| Command | Result | Evidence |
+|---|---|---|
+| `node tests/verify.mjs` | 31 passed; exit 0 | `verification/node-verify-20261118.txt` |
+| `node tests/content.mjs` | 41 passed; exit 0 | `verification/node-content-20261118.txt` |
+| `python tests/browser_check.py` | 198 passed, 0 failed; exit 0 | `verification/browser-results-20261118.json` |
+
+The browser suite used installed Chrome at 1440×900, 1366×768, 1024×768,
+768×1024, 390×844 and 375×812. It checked all five agenda days, the
+collapsed GMT programmes, the compact Blueprint Day, the 15 partner logos,
+three experience logos, responsive navigation, registration destinations,
+countdown, calendar actions, speakers, Checkpoint, FAQ, image loading,
+horizontal overflow and console errors. Curated 18 November captures remain
+local in `screenshots/v4-20261118-*.jpg` and are excluded from the production
+commit.
+
+The first browser run found two mobile logo containers whose images exceeded
+their available height. The mobile CSS was corrected and the full suite was
+rerun successfully. The original PNGs were kept; optimised WebP copies are
+used by the page. These checks ran locally before publication; deployment
+and live verification are reported separately.
+
+## 17 November 2026 published baseline (historical)
+
 Executed 17 November 2026 against the integrated local v4 implementation after
 cleanup. These are fresh run results, not the supplied report's earlier claims.
 

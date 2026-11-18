@@ -71,7 +71,7 @@ check('unconfirmed speakers are placeholders, not names', () => {
   assert.equal(DAYS[0].sessions[2][2].tba, 'To be announced');
   assert.equal(DAYS[3].sessions[2][2].tba, 'To be announced');
   assert.equal(DAYS[3].sessions[4][2].tba, 'To be announced');
-  assert.doesNotMatch(html, /Mogollon|Laura|Kraemer|Serhat|Ngozi|Karly|Category Sponsor|Headline Sponsor|AI summit companion/);
+  assert.doesNotMatch(html, /Mogollon|Laura|Kraemer|Serhat|Ngozi|Karly|Category Sponsor|AI summit companion/);
   assert.match(DAYS[0].sessions[2][1], /\(working title\)$/);
 });
 check('Day 5 offers five parallel rooms: three Roadmap Labs and two Masterclasses', () => {
@@ -83,14 +83,22 @@ check('Day 5 offers five parallel rooms: three Roadmap Labs and two Masterclasse
   assert.equal(r[0].o, 'A drafted Data roadmap piece built from your Evidence Log.');
   assert.equal(r[3].o, 'A redesigned workflow with clear human checkpoints.');
 });
-check('Day 5 schedule keeps every Detailed Plan slot, with parallel groups', () => {
-  assert.deepEqual(times(DAYS[4]), ['14:00', '14:15', '14:35–16:30', '16:30', '16:55']);
-  assert.equal(DAYS[4].sessions[1][3].length, 5); assert.equal(DAYS[4].sessions[2][3].length, 5);
+check('Day 5 has no detailed timeline and preserves the parallel-room explanation', () => {
+  assert.equal(DAYS[4].sessions, undefined);
+  assert.match(DAYS[4].note, /All five rooms run at the same time: choose one as your primary experience/);
+  assert.match(DAYS[4].note, /day closes with an overview of the rooms you did not attend/);
+  assert.equal(DAYS[4].rooms[1].byNote, undefined);
+  assert.doesNotMatch(html, /co-facilitator to be announced/i);
 });
-check('panel renderer shows outcome, schedule and room cards', () => {
+check('panel renderer shows outcome, collapsed Days 1–4 schedule and Day 5 rooms', () => {
   const r = slice('  function select(i, user) {', '  /* ---------- Mini-Checkpoint');
-  ['You leave with', 'sched-list', 'rooms-bar', 'roomCard', 'programme · times in GMT'].forEach(k => assert.ok(r.includes(k), k));
+  ['You leave with', '<details class="sched">', 'sched-list', 'rooms-bar', '14:00–17:00 GMT', 'roomCard', 'programme · times in GMT'].forEach(k => assert.ok(r.includes(k), k));
   assert.match(slice('  function roomCard(r)', '  function select'), /access-tag vip">VIP</);
+});
+
+check('agenda link uses verified Heartbeat registration and day times stay GMT', () => {
+  assert.match(html, /data-register="heartbeat" href="https:\/\/summit\.wearevigil\.global\/p\/register">Join Heartbeat for the full schedule/);
+  assert.match(slice('  function renderTz()', '  tzSel.addEventListener'), /slot\(\+el\.getAttribute\('data-slot'\), 'Europe\/London'\)/);
 });
 
 /* ---------- Event strip ---------- */
@@ -147,11 +155,15 @@ check('speaker cards and host photo have no duotone or colour-swap hover', () =>
 });
 
 /* ---------- Host ---------- */
-check('host profile: new title, digital specialist, experience names', () => {
+check('host profile: new title, digital specialist, experience logos', () => {
   const h = text(slice('<section class="host rule"', '</section>'));
   assert.match(h, /HSE Digital Transformation & Workforce Capability Specialist/);
   assert.match(h, /Digital specialist Implementation, training and adoption specialist for global teams\./);
-  assert.match(h, /Experience built across Morrisons Cority Unilever/);
+  const host = slice('<section class="host rule"', '</section>');
+  for (const [name, file] of [['Morrisons', 'morrisons.webp'], ['Cority', 'cority.webp'], ['Unilever', 'unilever.webp']]) {
+    assert.ok(host.includes(`src="assets/experience/${file}" alt="${name} logo"`));
+    assert.ok(fs.existsSync(path.join(root, 'assets/experience', file)));
+  }
   assert.doesNotMatch(html, /London-based|H&S professional|>Independent</);
 });
 
@@ -164,12 +176,19 @@ check('role chart runs senior → practitioner → Other and totals 100%', () =>
 });
 
 /* ---------- Passes ---------- */
+check('chart highlights C-suite and Leader, not Advisor', () => {
+  const rows = [...slice('<ol class="bars" id="bars">', '</ol>').matchAll(/<li class="bar( key)?"><span class="lab">([^<]+)<[\s\S]*?class="val">([\d.]+)%/g)];
+  assert.deepEqual(rows.filter(r => r[1]).map(r => r[2]), ['C-suite / Executive', 'Leader / Manager']);
+  assert.deepEqual(rows.map(r => r[3]), ['17.5', '23.8', '41.3', '6.3', '3.2', '7.9']);
+});
+
 check('pass prices and benefits match the approved decisions', () => {
   const t = text(slice('<div class="passes', '<div class="pass-foot">'));
   ['$0', '$197', '$997', 'from $3,997', 'Up to 5 people', 'Access to Days 1–4 live sessions', '48-hour access to session recordings',
     'Full access to Day 5, Blueprint Day', 'The three Roadmap Labs and two Masterclasses', 'Live Zoom rooms', 'CPD certificate',
-    'Summit platform access', 'Post-summit 4-week implementation clinics', 'Ongoing implementation support', 'Corporate team access']
+    'Summit platform access', 'four-week Digital Sprint: implementation clinics and support to deliver your plan', 'Corporate team access']
     .forEach(k => assert.ok(t.includes(k), k));
+  assert.doesNotMatch(t, /ongoing support|ongoing implementation support/i);
   assert.doesNotMatch(html, /Day 5: Roadmap|Day 5, Roadmap|Recordings are for VIP/);
 });
 
@@ -181,6 +200,26 @@ check('partners: HeyLina removed, no public sponsorship prices, enquiry uses ver
   assert.doesNotMatch(pt, /\$|class="tiers"|In-kind/);
   assert.match(pt, /href="mailto:ike@wearevigil\.global\?subject=Partnering%20with%20VIGIL">Partner with VIGIL/);
   ['flocrunch', 'qhse-directory', 'cts', 'hse-nations', 'shedai'].forEach(l => assert.match(pt, new RegExp(`sponsors/${l}\\.webp`)));
+});
+
+check('all 15 partners appear once in each visible collection with healthy assets', () => {
+  const files = ['flocrunch', 'qhse-directory', 'cts', 'hse-nations', 'shedai', 'ai-in-hse', 'ensured-safety', 'evex-safety', 'flowforms', 'haop', 'hsz-solutions', 'korviaone', 'own-the-prompt', 'nutheory', 'sowshe-a'];
+  const marquee = slice('<ul class="marquee-group">', '<ul class="marquee-group" aria-hidden="true">');
+  const grid = slice('<div class="pt-logos">', '</section>');
+  for (const source of [marquee, grid]) {
+    const refs = [...source.matchAll(/src="assets\/sponsors\/([^\"]+\.webp)" alt="([^\"]+)"/g)];
+    assert.equal(refs.length, 15);
+    assert.equal(new Set(refs.map(x => x[1])).size, 15);
+    assert.deepEqual(refs.map(x => x[1]), files.map(x => `${x}.webp`));
+    refs.forEach(x => { assert.ok(x[2].endsWith(' logo')); assert.ok(fs.existsSync(path.join(root, 'assets/sponsors', x[1]))); });
+  }
+  const duplicate = slice('<ul class="marquee-group" aria-hidden="true">', '</ul>');
+  assert.equal((duplicate.match(/alt=""/g) || []).length, 15);
+});
+check('headline sponsor space is visible without an invented sponsor', () => {
+  const pt = slice('<section class="rule" id="partners"', '</section>');
+  assert.match(pt, /<div class="headline-sponsor reveal d1"/);
+  assert.match(pt, /<h3>Reserved for Headline Sponsor<\/h3>/);
 });
 
 /* ---------- FAQ ---------- */

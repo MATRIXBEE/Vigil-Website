@@ -1,5 +1,8 @@
 # VIGIL Summit 2027 · Implementation update
 
+The sections below are the historical design and approval record. For the
+18 November local update, see README.md and VIGIL-Implementation-Report.md.
+
 17 November 2026 · v4 · Content and programme update to the approved v3 homepage
 
 The full v4 record (changes, decisions A–D, items to confirm, missing assets, backend limits) is in
