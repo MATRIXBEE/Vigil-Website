@@ -1,6 +1,6 @@
 VIGIL Summit 2027 · v4
-18 November update: see README.md and VIGIL-Implementation-Report.md for the
-current local website, 15 partners, experience logos and schedule corrections.
+21 November update: see README.md and VIGIL-Implementation-Report.md for
+the current website, with In Good Company, Category Sponsors and Summit Partners.
 The cleanup and delivery details below describe the 17 November release.
 Final cleanup · 17 November 2026
 
@@ -28,8 +28,11 @@ CURRENT V4
 - Blueprint Day: three Roadmap Labs and two Masterclasses in parallel.
 - Three-question Checkpoint warm-up with no scoring or archetype; restart works.
 - Eleven speaker cards: ten portraits and one reserved keynote slot.
-- Five current partners, accessible looping marquee, nine FAQ disclosures.
-- All registration CTAs: https://summit.wearevigil.global/p/register
+- In Good Company placeholder with no attendee logos or carousel.
+- Three Category Sponsors and twelve Summit Partners; nine FAQ disclosures.
+- Free/Heartbeat CTAs: https://summit.wearevigil.global/p/register
+- VIP, VIP+ and Corporate CTAs: their distinct invitation codes; see README.md.
+- Corporate also offers Request an Invoice by email.
 
 CLEANUP
 Only the two unused HeyLina logos and obsolete v3 ZIP were removed. The three
@@ -37,6 +40,8 @@ Git deletions are included in the v4 publication. V4 implementation and all
 other assets, tests, reports and screenshots are preserved. README.md and the
 implementation report describe known missing assets and external-service limits.
 
-DELIVERY
-VIGIL-Summit-2027-v4-final.zip is the complete source package, excluding .git,
-temporary Python environments and nested ZIPs. Preserve the original repository.
+HISTORICAL DELIVERY
+VIGIL-Summit-2027-v4-final.zip describes the earlier v4 source package. The
+21 November sponsor and payment-link updates supersede that archive. GitHub
+main and Vercel show the current publication status. The separate VIP tickets
+page handoff is documented in VIP-Landing-Page-Update.md.

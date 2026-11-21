@@ -34,9 +34,9 @@
   "organizer": { "@type": "Organization", "name": "VIGIL", "url": "https://wearevigil.global/", "email": "ike@wearevigil.global" },
   "offers": [
     { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "url": "https://summit.wearevigil.global/p/register" },
-    { "@type": "Offer", "name": "VIP", "price": "197", "priceCurrency": "USD", "url": "https://summit.wearevigil.global/p/register" },
-    { "@type": "Offer", "name": "VIP+", "price": "997", "priceCurrency": "USD", "url": "https://summit.wearevigil.global/p/register" },
-    { "@type": "Offer", "name": "Corporate (up to 5 people)", "price": "3997", "priceCurrency": "USD", "url": "https://summit.wearevigil.global/p/register" }
+    { "@type": "Offer", "name": "VIP", "price": "197", "priceCurrency": "USD", "url": "https://summit.wearevigil.global/invitation?code=GC647E" },
+    { "@type": "Offer", "name": "VIP+", "price": "997", "priceCurrency": "USD", "url": "https://summit.wearevigil.global/invitation?code=683CEE" },
+    { "@type": "Offer", "name": "Corporate (up to 5 people)", "price": "3997", "priceCurrency": "USD", "url": "https://summit.wearevigil.global/invitation?code=C7GA72" }
   ]
 }
 </script>
@@ -269,22 +269,12 @@ section{position:relative;padding:var(--sec) 0}
 .stat .num .unit{font-size:.42em;letter-spacing:0;margin-left:4px;color:var(--mist)}
 .stat .what{display:block;margin-top:12px;font-size:16px;font-weight:500}
 .stat .src{display:block;margin-top:8px;font-size:12px;color:var(--mist);line-height:1.45}
-/* Current partners · seamless infinite marquee (two identical groups, track moves -50%) */
+/* Corporate attendee logo space */
 .partners-row{margin-top:clamp(44px,5vw,64px);padding-top:28px;border-top:1px solid var(--line)}
-.partners-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
-.marquee{--mg:24px;--mw:280px;--mh:128px;--dur:130s;position:relative;border-radius:var(--r)}
-.marquee:focus-visible{outline:2px solid var(--teal);outline-offset:6px}
-.marquee-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
-.marquee-track{display:flex;width:max-content;animation:marquee var(--dur) linear infinite;will-change:transform}
-.marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
-.marquee-group{display:flex;flex-shrink:0;gap:var(--mg);padding-right:var(--mg);list-style:none}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mplate{flex-shrink:0;width:var(--mw);height:var(--mh);display:grid;place-items:center;padding:16px 26px;background:var(--paper);border-radius:var(--r)}
-.mplate img{max-width:100%;max-height:calc(var(--mh) * .72);width:auto;height:auto;object-fit:contain}
-.mplate.tall img{max-height:calc(var(--mh) * .84)}
-.mplate.dark{background:var(--deep);border:1px solid var(--line-2)}
-@media (max-width:640px){.marquee{--mg:16px;--mw:220px;--mh:108px;--dur:110s}.mplate{padding:12px 18px}}
-.marquee .mplate img{max-height:calc(var(--mh) * .68)}
+.partners-head h2{font-size:clamp(22px,2.3vw,30px);font-weight:500;line-height:1.2;margin-bottom:18px}
+.company-placeholder{min-height:116px;display:flex;align-items:center;gap:20px;padding:24px clamp(24px,3vw,40px);border:1px solid var(--line-2);border-left:2px solid var(--teal);border-radius:var(--r);background:linear-gradient(110deg,rgba(0,210,197,.07),rgba(11,29,39,.35))}
+.company-placeholder .tri{flex:none;color:var(--teal)}
+.company-placeholder p{font-size:15.5px;line-height:1.5;color:var(--mist)}
 @media (max-width:900px){
   .stats{grid-template-columns:repeat(2,1fr);row-gap:36px}
   .stat:nth-child(3){padding-left:0;border-left:0}
@@ -519,6 +509,9 @@ section{position:relative;padding:var(--sec) 0}
 .pass li .tri{color:var(--teal);transform:translateY(-1px)}
 .pass li.pending{color:#C9D4D9}
 .pass .btn{width:100%;margin-top:auto}.pass .per{margin-bottom:20px}
+.pass-actions{display:grid;gap:14px;margin-top:auto}
+.pass-actions .btn{margin-top:0}
+.pass-actions .link{justify-self:center;font-size:14px}
 .pass .flag{margin:-12px 0 20px}
 .pass-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 24px;margin-top:22px}
 @media (max-width:1080px){.passes{grid-template-columns:repeat(2,1fr)}.pass:nth-child(3){border-left:0}.pass:nth-child(n+3){border-top:1px solid var(--line-2)}}
@@ -559,17 +552,19 @@ section{position:relative;padding:var(--sec) 0}
 .indep{display:flex;gap:14px;align-items:flex-start;margin-top:28px;padding:18px 20px;border:1px solid var(--line-2);border-left:2px solid var(--teal);border-radius:var(--r);font-size:15.5px}
 .indep .tri{color:var(--teal);margin-top:7px}
 .pt-grid .btn{margin-top:32px}
-.headline-sponsor{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px 32px;padding:clamp(28px,4vw,48px);border:1px solid var(--teal);border-left:3px solid var(--teal);background:linear-gradient(115deg,rgba(0,210,197,.12),var(--deep) 70%);border-radius:var(--r)}
-.headline-sponsor .label{color:var(--teal);margin-bottom:12px}
-.headline-sponsor h3{font-size:clamp(23px,2.6vw,36px);font-weight:500;line-height:1.2}
-.headline-sponsor .headline-mark{font-size:clamp(38px,5vw,70px);color:var(--teal);opacity:.65;line-height:1}
-.pt-logos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.pt-logos .plate{height:124px;padding:14px 18px;min-width:0}
-.pt-logos .plate img{display:block;max-height:82px;max-width:100%;width:auto;height:auto;object-fit:contain}
-.pt-logos .plate.tall img{max-height:94px}
-.pt-logos-l{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-@media (max-width:1050px){.pt-logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:640px){.pt-logos{grid-template-columns:repeat(2,minmax(0,1fr))}.headline-sponsor{grid-template-columns:1fr}.headline-sponsor .headline-mark{display:none}}
+.category-sponsors{padding:clamp(26px,3.5vw,42px);border:1px solid var(--teal);border-left:3px solid var(--teal);background:linear-gradient(115deg,rgba(0,210,197,.12),var(--deep) 70%);border-radius:var(--r)}
+.category-sponsors h3,.pt-logos-l h3{font-size:clamp(22px,2.4vw,30px);font-weight:500;line-height:1.2}
+.category-sponsors h3{margin-bottom:24px}
+.category-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.category-logos .plate{height:130px;min-width:0;padding:18px 24px}
+.category-logos .plate img{display:block;max-width:100%;max-height:94px;width:auto;height:auto;object-fit:contain}
+.pt-logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.pt-logos .plate{height:114px;padding:12px 14px;min-width:0}
+.pt-logos .plate img{display:block;max-height:78px;max-width:100%;width:auto;height:auto;object-fit:contain}
+.pt-logos .plate.tall img{max-height:88px}
+.pt-logos-l{margin-bottom:18px}
+@media (max-width:1050px){.pt-logos{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:640px){.pt-logos{grid-template-columns:repeat(2,minmax(0,1fr))}.category-logos{grid-template-columns:1fr}.category-logos .plate{height:120px;padding:12px 18px}}
 @media (max-width:420px){.pt-logos .plate{height:104px;padding:12px}.pt-logos .plate img,.pt-logos .plate.tall img{max-height:68px}.exp-list .plate{width:calc((100% - 20px)/2)}}
 
 /* =========================================================================
@@ -639,12 +634,6 @@ footer ul a:hover{color:var(--teal)}
   .js .tl-stage .day-node{opacity:1}
   .js .bars:not(.in) .fill{width:var(--w)}
   .js .reveal .su::after{transform:scaleX(1)}
-  /* static partner grid instead of the marquee */
-  .marquee-view{-webkit-mask-image:none;mask-image:none}
-  .marquee-track{animation:none;width:auto}
-  .marquee-group{width:100%;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-  .marquee-group[aria-hidden="true"]{display:none}
-  .mplate{width:auto}
   .flap.go .f1,.flap.go .f2{animation:none;visibility:hidden}
 }
 </style>
@@ -720,7 +709,7 @@ footer ul a:hover{color:var(--teal)}
       </ul>
       <div class="cta-row">
         <a class="btn btn-primary" data-register="free" href="https://summit.wearevigil.global/p/register">Register free <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
-        <a class="btn btn-ghost" data-register="vip" href="https://summit.wearevigil.global/p/register">Get your VIP pass</a>
+        <a class="btn btn-ghost" data-register="vip" href="https://summit.wearevigil.global/invitation?code=GC647E">Get your VIP pass</a>
       </div>
     </div>
     <div class="hero-visual" id="heroVisual">
@@ -791,7 +780,7 @@ footer ul a:hover{color:var(--teal)}
 </section>
 
 <!-- =====================================================================
-     02 PROOF STRIP + current partners
+     02 PROOF STRIP + corporate attendee logo space
      ===================================================================== -->
 <section class="proof" aria-label="At a glance">
   <div class="wrap">
@@ -802,47 +791,10 @@ footer ul a:hover{color:var(--teal)}
       <div class="stat stat-format reveal d3"><span class="num">Live</span><span class="what">online, wherever you are</span><span class="src">Streamed via Zoom and Heartbeat · VIGIL Summit 2027</span></div>
     </div>
     <div class="partners-row reveal">
-      <div class="partners-head"><p class="label mist">Current partners</p><p class="fine">Hover or focus to pause</p></div>
-      <!-- Seamless marquee: group 2 is an exact copy of group 1 (hidden from screen readers); the track moves -50% and loops -->
-      <div class="marquee" tabindex="0" role="region" aria-label="Current partners: 15 organisations. Scrolling strip, pauses on hover or focus.">
-        <div class="marquee-view">
-          <div class="marquee-track">
-            <ul class="marquee-group">
-              <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="FloCrunch logo" width="640" height="173"></li>
-              <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory logo" width="221" height="240"></li>
-              <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe logo" width="241" height="240"></li>
-              <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations logo" width="640" height="226"></li>
-              <li class="mplate"><img src="assets/sponsors/shedai.webp" alt="SHEDAI logo" width="352" height="240"></li>
-              <li class="mplate"><img src="assets/sponsors/ai-in-hse.webp" alt="AI in HSE logo" width="1200" height="287"></li>
-              <li class="mplate"><img src="assets/sponsors/ensured-safety.webp" alt="Ensured Safety logo" width="1200" height="260"></li>
-              <li class="mplate"><img src="assets/sponsors/evex-safety.webp" alt="EvexSafety logo" width="1200" height="795"></li>
-              <li class="mplate tall"><img src="assets/sponsors/flowforms.webp" alt="FLOWforms logo" width="908" height="850"></li>
-              <li class="mplate"><img src="assets/sponsors/haop.webp" alt="HAOP logo" width="1200" height="739"></li>
-              <li class="mplate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="HSZ Solutions logo" width="937" height="850"></li>
-              <li class="mplate"><img src="assets/sponsors/korviaone.webp" alt="KorviaOne logo" width="1200" height="221"></li>
-              <li class="mplate"><img src="assets/sponsors/own-the-prompt.webp" alt="OwnThePrompt logo" width="1200" height="309"></li>
-              <li class="mplate"><img src="assets/sponsors/nutheory.webp" alt="nuTheory logo" width="1200" height="320"></li>
-              <li class="mplate"><img src="assets/sponsors/sowshe-a.webp" alt="SOWSHE-A logo" width="1200" height="798"></li>
-            </ul>
-            <ul class="marquee-group" aria-hidden="true">
-              <li class="mplate"><img src="assets/sponsors/flocrunch.webp" alt="" width="640" height="173"></li>
-              <li class="mplate tall"><img src="assets/sponsors/qhse-directory.webp" alt="" width="221" height="240"></li>
-              <li class="mplate tall"><img src="assets/sponsors/cts.webp" alt="" width="241" height="240"></li>
-              <li class="mplate"><img src="assets/sponsors/hse-nations.webp" alt="" width="640" height="226"></li>
-              <li class="mplate"><img src="assets/sponsors/shedai.webp" alt="" width="352" height="240"></li>
-              <li class="mplate"><img src="assets/sponsors/ai-in-hse.webp" alt="" width="1200" height="287"></li>
-              <li class="mplate"><img src="assets/sponsors/ensured-safety.webp" alt="" width="1200" height="260"></li>
-              <li class="mplate"><img src="assets/sponsors/evex-safety.webp" alt="" width="1200" height="795"></li>
-              <li class="mplate tall"><img src="assets/sponsors/flowforms.webp" alt="" width="908" height="850"></li>
-              <li class="mplate"><img src="assets/sponsors/haop.webp" alt="" width="1200" height="739"></li>
-              <li class="mplate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="" width="937" height="850"></li>
-              <li class="mplate"><img src="assets/sponsors/korviaone.webp" alt="" width="1200" height="221"></li>
-              <li class="mplate"><img src="assets/sponsors/own-the-prompt.webp" alt="" width="1200" height="309"></li>
-              <li class="mplate"><img src="assets/sponsors/nutheory.webp" alt="" width="1200" height="320"></li>
-              <li class="mplate"><img src="assets/sponsors/sowshe-a.webp" alt="" width="1200" height="798"></li>
-            </ul>
-          </div>
-        </div>
+      <div class="partners-head"><h2 id="companyTitle">In Good Company</h2></div>
+      <div class="company-placeholder" aria-label="Corporate attendee logos pending confirmation">
+        <span class="tri" aria-hidden="true"></span>
+        <p>Corporate attendee logos will appear here once confirmed.</p>
       </div>
     </div>
   </div>
@@ -997,21 +949,24 @@ footer ul a:hover{color:var(--teal)}
         <p class="price">$197</p><p class="cur">USD</p>
         <p class="per">All five days</p>
         <ul><li><span class="tri"></span>Everything in Free, plus:</li><li><span class="tri"></span>Full access to Day 5, Blueprint Day</li><li><span class="tri"></span>The three Roadmap Labs and two Masterclasses</li><li><span class="tri"></span>Live Zoom rooms</li><li><span class="tri"></span>CPD certificate</li><li><span class="tri"></span>Summit platform access</li><li><span class="tri"></span>Session recordings</li></ul>
-        <a class="btn btn-primary" data-register="vip" href="https://summit.wearevigil.global/p/register">Get your VIP pass</a>
+        <a class="btn btn-primary" data-register="vip" href="https://summit.wearevigil.global/invitation?code=GC647E">Get your VIP pass</a>
       </article>
       <article class="pass">
         <div class="ptop"><h3 class="pname">VIP+</h3></div>
         <p class="price">$997</p><p class="cur">USD</p>
         <p class="per">All five days + clinics</p>
         <ul><li><span class="tri"></span>Everything in VIP, plus:</li><li><span class="tri"></span>Post-summit four-week Digital Sprint: implementation clinics and support to deliver your plan</li></ul>
-        <a class="btn btn-ghost" data-register="vipplus" href="https://summit.wearevigil.global/p/register">Get VIP+</a>
+        <a class="btn btn-ghost" data-register="vipplus" href="https://summit.wearevigil.global/invitation?code=683CEE">Get VIP+</a>
       </article>
       <article class="pass">
         <div class="ptop"><h3 class="pname">Corporate</h3></div>
         <p class="price"><small>from</small>$3,997</p><p class="cur">USD</p>
         <p class="per">Up to 5 people</p>
         <ul><li><span class="tri"></span>Everything in VIP+, for up to 5 people</li><li><span class="tri"></span>Corporate team access</li><li><span class="tri"></span>A CPD certificate for each person</li></ul>
-        <a class="btn btn-ghost" data-register="corporate" href="https://summit.wearevigil.global/p/register">Enquire for your team</a>
+        <div class="pass-actions">
+          <a class="btn btn-primary" data-register="corporate" href="https://summit.wearevigil.global/invitation?code=C7GA72">JOIN NOW</a>
+          <a class="link" href="mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027">Request an Invoice</a>
+        </div>
       </article>
     </div>
     <div class="pass-foot">
@@ -1064,28 +1019,29 @@ footer ul a:hover{color:var(--teal)}
       <p class="indep"><span class="tri"></span><span><b style="font-weight:500">Our independence promise.</b> Sponsors support VIGIL but never steer content, speakers or data.</span></p>
       <a class="btn btn-primary" href="mailto:ike@wearevigil.global?subject=Partnering%20with%20VIGIL">Partner with VIGIL <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
-    <div class="headline-sponsor reveal d1" aria-label="Headline Sponsor space">
-      <div><p class="label">Headline Sponsor</p><h3>Reserved for Headline Sponsor</h3></div>
-      <span class="headline-mark" aria-hidden="true">▽</span>
+    <div class="category-sponsors reveal d1" aria-labelledby="categoryTitle">
+      <h3 id="categoryTitle">Category Sponsors</h3>
+      <div class="category-logos">
+        <div class="plate"><img src="assets/sponsors/flocrunch.webp" alt="FloCrunch logo" loading="lazy" width="1200" height="362"></div>
+        <div class="plate"><img src="assets/sponsors/nutheory.webp" alt="nuTheory logo" loading="lazy" width="1200" height="316"></div>
+        <div class="plate"><img src="assets/sponsors/cts.webp" alt="CTS Globe logo" loading="lazy" width="850" height="850"></div>
+      </div>
     </div>
     <div class="reveal d1">
-      <div class="pt-logos-l"><p class="label mist">Current partners</p></div>
+      <div class="pt-logos-l"><h3 id="summitPartnersTitle">Summit Partners</h3></div>
       <div class="pt-logos">
-        <div class="plate"><img src="assets/sponsors/flocrunch.webp" alt="FloCrunch logo" loading="lazy" width="640" height="173"></div>
-        <div class="plate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory logo" loading="lazy" width="221" height="240"></div>
-        <div class="plate tall"><img src="assets/sponsors/cts.webp" alt="CTS Globe logo" loading="lazy" width="241" height="240"></div>
-        <div class="plate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations logo" loading="lazy" width="640" height="226"></div>
-        <div class="plate"><img src="assets/sponsors/shedai.webp" alt="SHEDAI logo" loading="lazy" width="352" height="240"></div>
-        <div class="plate"><img src="assets/sponsors/ai-in-hse.webp" alt="AI in HSE logo" loading="lazy" width="1200" height="287"></div>
-        <div class="plate"><img src="assets/sponsors/ensured-safety.webp" alt="Ensured Safety logo" loading="lazy" width="1200" height="260"></div>
-        <div class="plate"><img src="assets/sponsors/evex-safety.webp" alt="EvexSafety logo" loading="lazy" width="1200" height="795"></div>
-        <div class="plate tall"><img src="assets/sponsors/flowforms.webp" alt="FLOWforms logo" loading="lazy" width="908" height="850"></div>
-        <div class="plate"><img src="assets/sponsors/haop.webp" alt="HAOP logo" loading="lazy" width="1200" height="739"></div>
-        <div class="plate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="HSZ Solutions logo" loading="lazy" width="937" height="850"></div>
-        <div class="plate"><img src="assets/sponsors/korviaone.webp" alt="KorviaOne logo" loading="lazy" width="1200" height="221"></div>
-        <div class="plate"><img src="assets/sponsors/own-the-prompt.webp" alt="OwnThePrompt logo" loading="lazy" width="1200" height="309"></div>
-        <div class="plate"><img src="assets/sponsors/nutheory.webp" alt="nuTheory logo" loading="lazy" width="1200" height="320"></div>
-        <div class="plate"><img src="assets/sponsors/sowshe-a.webp" alt="SOWSHE-A logo" loading="lazy" width="1200" height="798"></div>
+        <div class="plate"><img src="assets/sponsors/ai-in-hse.webp" alt="AI in HSE logo" loading="lazy" width="1200" height="282"></div>
+        <div class="plate"><img src="assets/sponsors/ensured-safety.webp" alt="Ensured Safety logo" loading="lazy" width="1200" height="253"></div>
+        <div class="plate"><img src="assets/sponsors/evex-safety.webp" alt="EvexSafety logo" loading="lazy" width="1200" height="797"></div>
+        <div class="plate tall"><img src="assets/sponsors/flowforms.webp" alt="FLOWforms logo" loading="lazy" width="903" height="850"></div>
+        <div class="plate dark"><img src="assets/sponsors/haop.webp" alt="HAOP logo" loading="lazy" width="1200" height="740"></div>
+        <div class="plate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="HSZ Solutions logo" loading="lazy" width="938" height="850"></div>
+        <div class="plate"><img src="assets/sponsors/korviaone.webp" alt="KorviaOne logo" loading="lazy" width="1200" height="214"></div>
+        <div class="plate"><img src="assets/sponsors/own-the-prompt.webp" alt="OwnThePrompt logo" loading="lazy" width="1200" height="304"></div>
+        <div class="plate tall"><img src="assets/sponsors/qhse-directory.webp" alt="QHSE Directory logo" loading="lazy" width="804" height="850"></div>
+        <div class="plate tall"><img src="assets/sponsors/shedai.webp" alt="SHEDAI logo" loading="lazy" width="1200" height="835"></div>
+        <div class="plate"><img src="assets/sponsors/hse-nations.webp" alt="HSE Nations logo" loading="lazy" width="1200" height="456"></div>
+        <div class="plate tall"><img src="assets/sponsors/sowshe-a.webp" alt="SOWSHE-A logo" loading="lazy" width="1200" height="797"></div>
       </div>
     </div>
   </div>
@@ -1148,7 +1104,7 @@ footer ul a:hover{color:var(--teal)}
     <p class="sub">Five days with the practitioners moving safety from paperwork to proof.</p>
     <div class="cta-row">
       <a class="btn btn-primary" data-register="free" href="https://summit.wearevigil.global/p/register">Register free <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
-      <a class="btn btn-ghost" data-register="vip" href="https://summit.wearevigil.global/p/register">Get your VIP pass</a>
+      <a class="btn btn-ghost" data-register="vip" href="https://summit.wearevigil.global/invitation?code=GC647E">Get your VIP pass</a>
     </div>
     <p class="fine">2:00–5:00pm GMT · 9:00am–12:00pm EST · 6:00–9:00pm Gulf (GST)</p>
   </div>
@@ -1580,7 +1536,7 @@ footer ul a:hover{color:var(--teal)}
       '<p class="when-line" data-slot="' + i + '"></p>' +
       '<p class="focus">' + esc(d.focus) + '</p>' +
       '<div class="act">' + (d.vip
-        ? '<a class="btn btn-primary btn-sm" data-register="vip" href="https://summit.wearevigil.global/p/register">Get your VIP pass</a>'
+        ? '<a class="btn btn-primary btn-sm" data-register="vip" href="https://summit.wearevigil.global/invitation?code=GC647E">Get your VIP pass</a>'
         : '<a class="btn btn-ghost btn-sm" data-register="free" href="https://summit.wearevigil.global/p/register">Register free</a>') + '</div></div>' +
       '<div><p class="sub-h">' + trackHead + '</p><ul class="tracks">' + tracks + '</ul></div>' +
       '<div><p class="sub-h">Session formats</p><ul class="formats">' + formats + '</ul>' +

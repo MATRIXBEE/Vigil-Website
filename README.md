@@ -1,8 +1,8 @@
 # VIGIL Summit 2027 · v4
 
-Existing homepage implementation, updated locally on 18 November 2026. This is a
+Existing homepage implementation, updated on 21 November 2026. This is a
 buildless HTML/CSS/vanilla JavaScript project. The update keeps the approved v4
-design and uses the newly supplied partner and experience artwork.
+design and uses the supplied transparent sponsor artwork.
 
 ## Open the site
 
@@ -29,14 +29,18 @@ Poppins loads from Google Fonts; external services require internet access.
 - Three-question Checkpoint warm-up, answer recap, suggested sessions and restart.
   It does not score users, assign an archetype or send their answers anywhere.
 - Eleven speaker cards: ten supplied portraits and one reserved keynote card.
-- Fifteen distinct partner logos in the looping marquee and Partners grid, plus
-  a reserved Headline Sponsor area. Hover/focus pauses the marquee; reduced
-  motion presents a static grid.
+- An "In Good Company" placeholder after the countdown, reserved for confirmed
+  corporate attendee logos. It contains no company claims or carousel.
+- Three Category Sponsors (FloCrunch, nuTheory and CTS Globe) and twelve distinct
+  Summit Partners in a compact responsive grid. HeyLina and NEBOSH are excluded.
 - Morrisons, Cority and Unilever logos under the host's experience section.
 - Nine FAQ disclosures, responsive navigation, speaker rail and scroll effects.
 
-Every registration CTA, including VIP/Corporate and the FAQ Heartbeat link, uses:
-https://summit.wearevigil.global/p/register
+Free registration and Heartbeat links use
+https://summit.wearevigil.global/p/register. Paid-pass CTAs use separate
+invitations: VIP `GC647E`, VIP+ `683CEE`, and Corporate `C7GA72` at
+`https://summit.wearevigil.global/invitation?code=...`. The Corporate card
+also has a Request an Invoice email link to `ike@wearevigil.global`.
 
 ## Verification
 
@@ -51,24 +55,27 @@ Playwright and Chromium, or an installed Chrome executable supplied through the
 `CHROME` environment variable. Start the local server first. `VIGIL_URL` overrides
 the page URL; `VIGIL_SHOTS` selects the screenshot directory.
 
-The 17 November cleanup runs are recorded in `VALIDATION.md`, with evidence under
-`verification/`. The 18 November checks are recorded separately there. Existing
+The 17 and 18 November runs are recorded in `VALIDATION.md`, with evidence under
+`verification/`. The 21 November local update is recorded separately there. Existing
 `screenshots/v4-*.jpg` in the repository are earlier supplied v4 captures.
 The 18 November review captures remain local and are excluded from the
 production commit.
 
 ## Cleanup and publication
 
-Removed the unused HeyLina PNG/WebP and obsolete v3 archive. The publication
-includes v4 source, required assets, tests, documentation, curated v4 screenshots
-and portable validation results. Existing Git history and remote are preserved.
+The earlier cleanup removed the unused HeyLina PNG/WebP and obsolete v3 archive.
+The 18 November publication includes v4 source, required assets, tests,
+documentation, curated v4 screenshots and portable validation results. Existing
+Git history and remote are preserved. The 21 November sponsor and payment-link
+updates were validated locally before release. GitHub and Vercel show the
+current publication status.
 
 Local ZIP deliveries, historical implementation diffs, generated browser captures
 and machine-specific audit files are excluded from the source commit. They remain
 available locally. Cleanup-era Git audit and preservation snapshots describe the
 state before publication, rather than the current repository status.
 
-Production uses the existing Vercel project connected to MATRIXBEE/Vigil-Website,
+The published site uses the existing Vercel project connected to MATRIXBEE/Vigil-Website,
 with main as its production branch. Framework: Other; no build or install command;
 output directory: `.`. See GitHub `main` and the Vercel production dashboard
 for the current published revision.
@@ -78,6 +85,11 @@ for the current published revision.
 - The supplied hero is a composite reference with four visible people. CSS shows
   its photograph region; the source image is unchanged.
 - HeyLina remains excluded from the website despite the supplied source file.
+- The presentation of "In Good Company" beyond this placeholder remains a design
+  decision for discussion once corporate attendee logos are confirmed.
+- The separately hosted VIP tickets page already has a Corporate section, but
+  its editable source is unavailable here. Its required link and invoice updates
+  are documented in `VIP-Landing-Page-Update.md`; that page is unchanged.
 - The separate Gmail website-edits PDF was not present with this request; the
   latest connected email and its written corrections were reviewed.
 - Some agenda speakers, Sarah Power/Powers spelling, the 2026 sample size and

@@ -9,6 +9,13 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const official = 'https://summit.wearevigil.global/p/register';
+const destinations = {
+  free: official,
+  heartbeat: official,
+  vip: 'https://summit.wearevigil.global/invitation?code=GC647E',
+  vipplus: 'https://summit.wearevigil.global/invitation?code=683CEE',
+  corporate: 'https://summit.wearevigil.global/invitation?code=C7GA72'
+};
 let checks = 0;
 function check(name, fn) { fn(); checks++; console.log(`PASS ${name}`); }
 function slice(from, to) {
@@ -71,7 +78,7 @@ check('unconfirmed speakers are placeholders, not names', () => {
   assert.equal(DAYS[0].sessions[2][2].tba, 'To be announced');
   assert.equal(DAYS[3].sessions[2][2].tba, 'To be announced');
   assert.equal(DAYS[3].sessions[4][2].tba, 'To be announced');
-  assert.doesNotMatch(html, /Mogollon|Laura|Kraemer|Serhat|Ngozi|Karly|Category Sponsor|AI summit companion/);
+  assert.doesNotMatch(html, /Mogollon|Laura|Kraemer|Serhat|Ngozi|Karly|AI summit companion/);
   assert.match(DAYS[0].sessions[2][1], /\(working title\)$/);
 });
 check('Day 5 offers five parallel rooms: three Roadmap Labs and two Masterclasses', () => {
@@ -191,35 +198,51 @@ check('pass prices and benefits match the approved decisions', () => {
   assert.doesNotMatch(t, /ongoing support|ongoing implementation support/i);
   assert.doesNotMatch(html, /Day 5: Roadmap|Day 5, Roadmap|Recordings are for VIP/);
 });
+check('Corporate pass has JOIN NOW and Request an Invoice without a form', () => {
+  const card = slice('<div class="ptop"><h3 class="pname">Corporate</h3>', '</article>');
+  assert.match(card, /data-register="corporate" href="https:\/\/summit\.wearevigil\.global\/invitation\?code=C7GA72">JOIN NOW<\/a>/);
+  assert.match(card, /href="mailto:ike@wearevigil\.global\?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027">Request an Invoice<\/a>/);
+  assert.doesNotMatch(card, /<form|invoice is automatically/i);
+});
 
-/* ---------- Partners ---------- */
-check('partners: HeyLina removed, no public sponsorship prices, enquiry uses verified email', () => {
-  assert.doesNotMatch(html, /heylina|HeyLina|Heyline/i);
+/* ---------- Corporate attendees and sponsors ---------- */
+check('In Good Company holds no unconfirmed attendee logos or carousel', () => {
+  const company = slice('<div class="partners-row reveal">', '</section>');
+  assert.match(company, /<h2 id="companyTitle">In Good Company<\/h2>/);
+  assert.match(company, /Corporate attendee logos will appear here once confirmed/);
+  assert.doesNotMatch(company, /<img|marquee|Unilever|Cority|Morrisons|sponsors\//i);
+  assert.doesNotMatch(html, /class="marquee|marquee-track|marquee-group/);
+});
+check('partners: HeyLina and NEBOSH excluded, no public prices, verified enquiry', () => {
+  assert.doesNotMatch(html, /heylina|HeyLina|Heyline|NEBOSH/i);
   assert.ok(!fs.existsSync(path.join(root, 'assets/sponsors/heylina.webp')));
   const pt = slice('<section class="rule" id="partners"', '</section>');
   assert.doesNotMatch(pt, /\$|class="tiers"|In-kind/);
   assert.match(pt, /href="mailto:ike@wearevigil\.global\?subject=Partnering%20with%20VIGIL">Partner with VIGIL/);
-  ['flocrunch', 'qhse-directory', 'cts', 'hse-nations', 'shedai'].forEach(l => assert.match(pt, new RegExp(`sponsors/${l}\\.webp`)));
 });
 
-check('all 15 partners appear once in each visible collection with healthy assets', () => {
-  const files = ['flocrunch', 'qhse-directory', 'cts', 'hse-nations', 'shedai', 'ai-in-hse', 'ensured-safety', 'evex-safety', 'flowforms', 'haop', 'hsz-solutions', 'korviaone', 'own-the-prompt', 'nutheory', 'sowshe-a'];
-  const marquee = slice('<ul class="marquee-group">', '<ul class="marquee-group" aria-hidden="true">');
-  const grid = slice('<div class="pt-logos">', '</section>');
-  for (const source of [marquee, grid]) {
-    const refs = [...source.matchAll(/src="assets\/sponsors\/([^\"]+\.webp)" alt="([^\"]+)"/g)];
-    assert.equal(refs.length, 15);
-    assert.equal(new Set(refs.map(x => x[1])).size, 15);
-    assert.deepEqual(refs.map(x => x[1]), files.map(x => `${x}.webp`));
-    refs.forEach(x => { assert.ok(x[2].endsWith(' logo')); assert.ok(fs.existsSync(path.join(root, 'assets/sponsors', x[1]))); });
+check('Category Sponsors and Summit Partners have their exact distinct logo sets', () => {
+  const category = slice('<div class="category-logos">', '<div class="reveal d1">');
+  const summit = slice('<div class="pt-logos">', '</section>');
+  const refs = source => [...source.matchAll(/src="assets\/sponsors\/([^\"]+\.webp)" alt="([^\"]+)"/g)];
+  const categoryFiles = ['flocrunch', 'nutheory', 'cts'];
+  const summitFiles = ['ai-in-hse', 'ensured-safety', 'evex-safety', 'flowforms', 'haop', 'hsz-solutions', 'korviaone', 'own-the-prompt', 'qhse-directory', 'shedai', 'hse-nations', 'sowshe-a'];
+  assert.match(html, /<h3 id="categoryTitle">Category Sponsors<\/h3>/);
+  assert.match(html, /<h3 id="summitPartnersTitle">Summit Partners<\/h3>/);
+  assert.deepEqual(refs(category).map(x => x[1]), categoryFiles.map(x => `${x}.webp`));
+  assert.deepEqual(refs(summit).map(x => x[1]), summitFiles.map(x => `${x}.webp`));
+  for (const [, file, alt] of [...refs(category), ...refs(summit)]) {
+    assert.ok(alt.endsWith(' logo'));
+    assert.ok(fs.statSync(path.join(root, 'assets/sponsors', file)).size > 0);
   }
-  const duplicate = slice('<ul class="marquee-group" aria-hidden="true">', '</ul>');
-  assert.equal((duplicate.match(/alt=""/g) || []).length, 15);
+  assert.equal(new Set([...refs(category), ...refs(summit)].map(x => x[1])).size, 15);
+  assert.match(html, /\.pt-logos\{display:grid;grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/);
 });
-check('headline sponsor space is visible without an invented sponsor', () => {
+check('Category Sponsors replaced the old Headline Sponsor placeholder', () => {
   const pt = slice('<section class="rule" id="partners"', '</section>');
-  assert.match(pt, /<div class="headline-sponsor reveal d1"/);
-  assert.match(pt, /<h3>Reserved for Headline Sponsor<\/h3>/);
+  assert.match(pt, /<div class="category-sponsors reveal d1"/);
+  assert.doesNotMatch(pt, /Headline Sponsor|Current partners/i);
+  assert.doesNotMatch(pt, /assets\/experience\//);
 });
 
 /* ---------- FAQ ---------- */
@@ -242,9 +265,12 @@ check('FAQ links: Heartbeat → registration, Checkpoint → existing destinatio
 });
 
 /* ---------- Site-wide ---------- */
-check('no old registration URLs; every link with data-register uses the official URL', () => {
+check('free registration stays unchanged and paid links use distinct invitations', () => {
   assert.doesNotMatch(html, /href="https?:\/\/(www\.)?wearevigil\.global\/register/);
-  [...html.matchAll(/<a\b[^>]*data-register="[^"]*"[^>]*>/g)].forEach(([t]) => assert.equal(t.match(/href="([^"]+)"/)[1], official));
+  [...html.matchAll(/<a\b[^>]*data-register="([^"]+)"[^>]*>/g)].forEach(([tag, kind]) => {
+    assert.ok(Object.hasOwn(destinations, kind), kind);
+    assert.equal(tag.match(/href="([^"]+)"/)[1], destinations[kind]);
+  });
 });
 check('fixed time lines use EST, not ET; IST only in automatic local-time mapping', () => {
   assert.doesNotMatch(visible, /\bET\b/);

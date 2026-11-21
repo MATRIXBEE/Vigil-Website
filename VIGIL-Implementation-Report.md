@@ -1,6 +1,64 @@
 # VIGIL Summit 2027 · Implementation Report
 
-## 18 November 2026 update (current local state)
+## 21 November 2026 payment CTA update (validated before release)
+
+All homepage VIP CTAs, including the hero, pass card, closing CTA and generated
+Blueprint Day panel, now point to
+`https://summit.wearevigil.global/invitation?code=GC647E`. VIP+ points to
+`https://summit.wearevigil.global/invitation?code=683CEE`. The Corporate card
+now has a primary **JOIN NOW** button pointing to
+`https://summit.wearevigil.global/invitation?code=C7GA72` and a separate
+**Request an Invoice** mailto link to `ike@wearevigil.global` with the subject
+“Corporate Pass Invoice Request – VIGIL Summit 2027”. Free registration and
+Heartbeat links remain at `https://summit.wearevigil.global/p/register`.
+The Event structured-data offer URLs match the pass destinations.
+
+Final local checks passed **32 regression, 43 content and 228 browser checks,
+with zero browser failures**. All four external pass destinations returned
+HTTP 200 in read-only requests. Browser results cover six desktop and mobile
+widths; see `VALIDATION.md` and `verification/` for evidence.
+
+The separate [VIP tickets page](https://wearevigil.global/tickets) already has
+a Corporate section. Its editable source and account access are unavailable
+in this repository, so that page was not modified or duplicated. Exact changes
+for its existing VIP, VIP+, Corporate and Free sections are recorded in
+`VIP-Landing-Page-Update.md` for its editor. This report records the local
+validation; GitHub and Vercel show the subsequent release status.
+
+## 21 November 2026 sponsor layout update (validated before release)
+
+The logo strip after the countdown is now **In Good Company**. It contains a
+simple placeholder for confirmed corporate attendee logos, with no company
+names, attendance claims or rotating carousel. Its final presentation remains
+open for discussion when those logos are supplied.
+
+The former Headline Sponsor placeholder is now **Category Sponsors**, showing
+only FloCrunch, nuTheory and CTS Globe. The **Summit Partners** grid shows
+AI in HSE, Ensured Safety, EvexSafety, FLOWforms, HAOP, HSZ Solutions,
+KorviaOne, OwnThePrompt, QHSE Directory, SHEDAI, HSE Nations and SOWSHE-A.
+It uses six columns and two rows on desktop, four columns and three rows on
+tablets, and two columns on small screens. HeyLina and NEBOSH remain absent.
+
+All fifteen displayed sponsor WebPs were remade from the supplied transparent
+`logos.zip` artwork, cropped to visible bounds and optimised to about 1.1 MB
+combined. The source archive and original artwork remain unchanged. The
+logos retain their colours and proportions; HAOP uses a dark plate so its
+white lettering remains visible. Morrisons, Cority and Unilever stay in the
+separate host experience area and were not changed.
+
+The final local runs passed **31 regression checks, 42 content checks and 216
+browser checks with zero failures**. The browser suite covered six desktop,
+tablet and mobile widths; details and evidence are in `VALIDATION.md` and
+`verification/`. The first run found a four-pixel CTS Globe overflow on mobile;
+the tile height was corrected before the full passing rerun.
+
+Changed locally: `index.html`, fifteen `assets/sponsors/*.webp` files,
+`tests/verify.mjs`, `tests/content.mjs`, `tests/browser_check.py`, `README.md`,
+`README.txt`, `NOTES.md`, `VALIDATION.md` and this report. Existing Git history
+was preserved during implementation. GitHub and Vercel show the release
+status. The 18 November report below describes the prior published version.
+
+## 18 November 2026 published update (historical)
 
 The v4 homepage now displays **15 distinct partners** in both the accessible
 marquee and the static Partners grid. The original five remain: FloCrunch,

@@ -12,6 +12,14 @@ import os
 URL = os.environ.get('VIGIL_URL', 'http://127.0.0.1:5501/index.html')
 OUT = os.environ.get('VIGIL_SHOTS', 'browser-shots'); os.makedirs(OUT, exist_ok=True)
 REG = 'https://summit.wearevigil.global/p/register'
+DESTINATIONS = {
+    'free': REG,
+    'heartbeat': REG,
+    'vip': 'https://summit.wearevigil.global/invitation?code=GC647E',
+    'vipplus': 'https://summit.wearevigil.global/invitation?code=683CEE',
+    'corporate': 'https://summit.wearevigil.global/invitation?code=C7GA72',
+}
+INVOICE = 'mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027'
 results = {}
 
 async def main():
@@ -43,8 +51,11 @@ async def main():
             r['countdownTicks'] = d1 != d2
             r['countdownDays'] = await page.evaluate("document.querySelector('#cdD').dataset.value")
             # registration links
-            hrefs = await page.evaluate("[...document.querySelectorAll('a[data-register]')].map(a=>a.href)")
-            r['registerLinks'] = len(hrefs); r['registerAllOfficial'] = all(x == REG for x in hrefs)
+            hrefs = await page.evaluate("[...document.querySelectorAll('a[data-register]')].map(a=>({kind:a.dataset.register,href:a.href}))")
+            r['registerLinks'] = len(hrefs)
+            r['passLinksCorrect'] = all(x['kind'] in DESTINATIONS and x['href'] == DESTINATIONS[x['kind']] for x in hrefs)
+            r['passLinkKinds'] = sorted(set(x['kind'] for x in hrefs))
+            r['corporateActions'] = await page.evaluate("""(()=>{const card=[...document.querySelectorAll('.pass')].find(e=>e.querySelector('.pname')?.textContent==='Corporate');const primary=card?.querySelector('a[data-register="corporate"]'),invoice=card?.querySelector('a[href^="mailto:"]');const shown=e=>!!e&&e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0;return {cards:[...document.querySelectorAll('.pass')].filter(e=>e.querySelector('.pname')?.textContent==='Corporate').length,primaryText:primary?.textContent.trim(),primaryHref:primary?.href,primaryStyle:primary?.classList.contains('btn-primary'),primaryShown:shown(primary),invoiceText:invoice?.textContent.trim(),invoiceHref:invoice?.href,invoiceShown:shown(invoice)}})()""")
             # agenda: select each day
             mobile = w <= 860
             sel = '#dayTabs [role=tab]' if mobile else '#tlNodes [role=tab]'
@@ -53,7 +64,7 @@ async def main():
                 await page.locator(sel).nth(i).click()
                 await page.wait_for_timeout(120)
                 info = await page.evaluate("""(()=>{const p=document.querySelector('#dayPanel');const vw=document.documentElement.clientWidth;let wide=0;p.querySelectorAll('*').forEach(e=>{if(e.getBoundingClientRect().right>vw+1)wide++});
-                  return {h:p.querySelector('h3').textContent, rows:p.querySelectorAll('.sched-list>li').length, rooms:p.querySelectorAll('.room').length, when:p.querySelector('.when-line').textContent, note:p.querySelector('.sched-note')?.textContent||'', roomTime:p.querySelector('.rooms-bar')?.textContent||'', scheduleOpen:p.querySelector('details.sched')?.open??null, wide}})()""")
+                  return {h:p.querySelector('h3').textContent, rows:p.querySelectorAll('.sched-list>li').length, rooms:p.querySelectorAll('.room').length, when:p.querySelector('.when-line').textContent, note:p.querySelector('.sched-note')?.textContent||'', roomTime:p.querySelector('.rooms-bar')?.textContent||'', scheduleOpen:p.querySelector('details.sched')?.open??null, cta:p.querySelector('.act a')?.href, wide}})()""")
                 days.append(info)
             r['days'] = days
             # Day 5 rooms layout
@@ -102,9 +113,9 @@ async def main():
             await page.evaluate("document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager')"); await page.wait_for_timeout(500)
             await page.wait_for_function("[...document.images].every(i=>i.complete&&i.naturalWidth>0)")
             r['brokenImages'] = await page.evaluate("[...document.images].filter(i=>i.complete&&i.naturalWidth===0).map(i=>i.src)")
-            r['partnerLogos'] = await page.evaluate("""(()=>{const grid=[...document.querySelectorAll('.pt-logos img')], marquee=[...document.querySelectorAll('.marquee-group:not([aria-hidden]) img')], ghost=[...document.querySelectorAll('.marquee-group[aria-hidden] img')];const fits=i=>{const a=i.getBoundingClientRect(),b=i.parentElement.getBoundingClientRect();return i.naturalWidth>0&&a.width>0&&a.height>0&&a.left>=b.left-1&&a.right<=b.right+1&&a.top>=b.top-1&&a.bottom<=b.bottom+1&&Math.abs(a.width/a.height-i.naturalWidth/i.naturalHeight)<.03};return {grid:grid.length,marquee:marquee.length,ghost:ghost.length,unique:new Set(grid.map(i=>i.src)).size,allAlt:grid.every(i=>i.alt.endsWith(' logo')),fit:grid.every(fits)&&marquee.every(fits),ghostHidden:ghost.every(i=>i.alt==='')}})()""")
+            r['sponsorLogos'] = await page.evaluate("""(()=>{const category=[...document.querySelectorAll('.category-logos img')],summit=[...document.querySelectorAll('.pt-logos img')],grid=document.querySelector('.pt-logos');const fits=i=>{const a=i.getBoundingClientRect(),b=i.parentElement.getBoundingClientRect();return i.naturalWidth>0&&a.width>0&&a.height>0&&a.left>=b.left-1&&a.right<=b.right+1&&a.top>=b.top-1&&a.bottom<=b.bottom+1&&Math.abs(a.width/a.height-i.naturalWidth/i.naturalHeight)<.03};return {category:category.map(i=>i.alt),summit:summit.map(i=>i.alt),unique:new Set([...category,...summit].map(i=>i.src)).size,fit:[...category,...summit].every(fits),columns:getComputedStyle(grid).gridTemplateColumns.split(' ').length,rows:new Set([...grid.children].map(e=>Math.round(e.getBoundingClientRect().top))).size,haopDark:document.querySelector('.pt-logos img[alt="HAOP logo"]')?.parentElement.classList.contains('dark')}})()""")
             r['experienceLogos'] = await page.evaluate("""(()=>{const imgs=[...document.querySelectorAll('.exp-list img')];return {names:imgs.map(i=>i.alt),loaded:imgs.every(i=>i.naturalWidth>0)}})()""")
-            r['headlineSponsor'] = await page.evaluate("document.querySelector('.headline-sponsor')?.textContent.includes('Reserved for Headline Sponsor')")
+            r['companyPlaceholder'] = await page.evaluate("""(()=>{const box=document.querySelector('.company-placeholder');return {heading:document.querySelector('#companyTitle')?.textContent,copy:box?.textContent.trim(),images:box?.querySelectorAll('img').length,carousel:!!document.querySelector('.marquee')}})()""")
             # hover check: speaker card computed filter/colour unchanged
             r['hostImgs'] = await page.evaluate("document.querySelectorAll('.host-v img').length")
             # mobile menu
@@ -130,7 +141,7 @@ async def main():
         # reduced motion
         ctx = await b.new_context(viewport={'width': 390, 'height': 844}, reduced_motion='reduce')
         page = await ctx.new_page(); await page.goto(URL); await page.wait_for_timeout(1500)
-        results['reducedMotion'] = await page.evaluate("({anim:getComputedStyle(document.querySelector('.marquee-track')).animationName, flipping:document.querySelectorAll('.flap.go').length})")
+        results['reducedMotion'] = await page.evaluate("({enabled:matchMedia('(prefers-reduced-motion: reduce)').matches, anim:getComputedStyle(document.querySelector('.company-placeholder')).animationName, flipping:document.querySelectorAll('.flap.go').length})")
         await ctx.close()
         # keyboard on timeline
         ctx = await b.new_context(viewport={'width': 1440, 'height': 900}); page = await ctx.new_page(); await page.goto(URL)
@@ -150,15 +161,23 @@ async def main():
             continue
         prefix = f'{width}px '
         verify(prefix + 'document and content fit', r['overflowX'] == 0 and not r['wideEls'])
-        for key in ['flapFits', 'countdownTicks', 'zonesFit', 'registerAllOfficial', 'navigationFixed',
+        for key in ['flapFits', 'countdownTicks', 'zonesFit', 'passLinksCorrect', 'navigationFixed',
                     'faqOpen', 'faqClosed', 'google', 'portraitsLoaded', 'speakerNext', 'speakerPrevious']:
             verify(prefix + key, r[key])
         verify(prefix + 'three-digit days', len(r['countdownDays']) == 3)
         verify(prefix + 'registration links present', r['registerLinks'] > 0)
+        verify(prefix + 'all pass types linked', r['passLinkKinds'] == sorted(DESTINATIONS))
+        actions = r['corporateActions']
+        verify(prefix + 'Corporate JOIN NOW and invoice actions', actions['cards'] == 1
+               and actions['primaryText'] == 'JOIN NOW' and actions['primaryHref'] == DESTINATIONS['corporate']
+               and actions['primaryStyle'] and actions['primaryShown']
+               and actions['invoiceText'] == 'Request an Invoice' and actions['invoiceHref'] == INVOICE
+               and actions['invoiceShown'])
         for i, day in enumerate(r['days']):
             verify(prefix + f'day {i + 1}', day['h'].startswith(names[i]) and day['wide'] == 0
                    and day['rows'] == [10, 8, 8, 8, 0][i] and day['rooms'] == (5 if i == 4 else 0)
-                   and day['when'].endswith('GMT') and (day['scheduleOpen'] is None if i == 4 else day['scheduleOpen'] is False))
+                   and day['when'].endswith('GMT') and (day['scheduleOpen'] is None if i == 4 else day['scheduleOpen'] is False)
+                   and day['cta'] == (DESTINATIONS['vip'] if i == 4 else REG))
         verify(prefix + 'five agenda days', len(r['days']) == 5)
         verify(prefix + 'Day 5 compact programme', '14:00–17:00 GMT' in r['days'][4]['roomTime']
                and 'All five rooms run at the same time' in r['days'][4]['note']
@@ -172,18 +191,25 @@ async def main():
         verify(prefix + 'Outlook ICS', r['ics']['name'] == 'VIGIL-Summit-2027.ics'
                and all(r['ics'][k] for k in ['start', 'rrule', 'outlookToast']))
         verify(prefix + 'all images healthy', not r['brokenImages'])
-        logos = r['partnerLogos']
-        verify(prefix + '15 distinct partner logos', logos['grid'] == logos['marquee'] == logos['ghost'] == logos['unique'] == 15
-               and logos['allAlt'] and logos['fit'] and logos['ghostHidden'])
+        logos = r['sponsorLogos']
+        verify(prefix + 'three Category Sponsors', logos['category'] == ['FloCrunch logo', 'nuTheory logo', 'CTS Globe logo'])
+        verify(prefix + '12 Summit Partners', logos['summit'] == ['AI in HSE logo', 'Ensured Safety logo', 'EvexSafety logo', 'FLOWforms logo', 'HAOP logo', 'HSZ Solutions logo', 'KorviaOne logo', 'OwnThePrompt logo', 'QHSE Directory logo', 'SHEDAI logo', 'HSE Nations logo', 'SOWSHE-A logo'])
+        verify(prefix + 'sponsor logos fit and remain distinct', logos['unique'] == 15 and logos['fit'] and logos['haopDark'])
+        expected_columns = 6 if width > 1050 else 4 if width > 640 else 2
+        verify(prefix + 'compact responsive sponsor grid', logos['columns'] == expected_columns and logos['rows'] == 12 // expected_columns)
         verify(prefix + 'three experience logos', r['experienceLogos']['names'] == ['Morrisons logo', 'Cority logo', 'Unilever logo']
                and r['experienceLogos']['loaded'])
-        verify(prefix + 'headline sponsor placeholder', r['headlineSponsor'])
+        company = r['companyPlaceholder']
+        verify(prefix + 'In Good Company placeholder', company['heading'] == 'In Good Company'
+               and company['copy'] == 'Corporate attendee logos will appear here once confirmed.'
+               and company['images'] == 0 and not company['carousel'])
         verify(prefix + 'speaker and host cards', len(r['speakers']) == 11 and r['hostImgs'] == 1)
         verify(prefix + 'console clean', not r['consoleErrors'])
         verify(prefix + 'local requests successful', not r['failedLocal'])
         if width <= 960:
             verify(prefix + 'mobile menu', r['mobileMenu'])
-    verify('reduced motion', results['reducedMotion']['anim'] == 'none' and results['reducedMotion']['flipping'] == 0)
+    verify('reduced motion', results['reducedMotion']['enabled'] and results['reducedMotion']['anim'] == 'none'
+           and results['reducedMotion']['flipping'] == 0)
     verify('timeline End key', results['keyEnd'].startswith('Blueprint Day'))
     verify('timeline Home key', results['keyHome'].startswith('Vision'))
     failed_checks = [c['name'] for c in checks if not c['passed']]

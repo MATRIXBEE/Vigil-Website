@@ -9,6 +9,12 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const official = 'https://summit.wearevigil.global/p/register';
+const paid = {
+  vip: 'https://summit.wearevigil.global/invitation?code=GC647E',
+  vipplus: 'https://summit.wearevigil.global/invitation?code=683CEE',
+  corporate: 'https://summit.wearevigil.global/invitation?code=C7GA72'
+};
+const destinations = { free: official, heartbeat: official, ...paid };
 let checks = 0;
 function check(name, fn) { fn(); checks++; console.log(`PASS ${name}`); }
 function slice(from, to) {
@@ -18,18 +24,29 @@ function slice(from, to) {
 }
 
 check('application JavaScript compiles', () => new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]));
-check('Event metadata parses and all offers use official registration', () => {
+check('Event metadata parses and each offer uses its correct destination', () => {
   const event = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(event.startDate, '2027-03-01T14:00:00Z');
   assert.equal(event.endDate, '2027-03-05T17:00:00Z');
-  event.offers.forEach(o => assert.equal(o.url, official));
+  assert.deepEqual(event.offers.map(o => o.url), [official, paid.vip, paid.vipplus, paid.corporate]);
 });
-check('all static and generated registration anchors use the exact official URL', () => {
-  const tags = [...html.matchAll(/<a\b[^>]*data-register="[^"]*"[^>]*>/g)];
+check('free and paid pass anchors use their exact distinct destinations', () => {
+  const tags = [...html.matchAll(/<a\b[^>]*data-register="([^"]+)"[^>]*>/g)];
   assert.equal(tags.length, 15); // Thirteen static links (incl. Heartbeat schedule), two timeline alternatives.
-  tags.forEach(([tag]) => assert.equal(tag.match(/href="([^"]+)"/)[1], official));
+  const kinds = new Set();
+  tags.forEach(([tag, kind]) => {
+    assert.ok(Object.hasOwn(destinations, kind), kind);
+    assert.equal(tag.match(/href="([^"]+)"/)[1], destinations[kind]);
+    kinds.add(kind);
+  });
+  assert.deepEqual([...kinds].sort(), Object.keys(destinations).sort());
   assert.doesNotMatch(html, /<button\b[^>]*data-register/);
   assert.doesNotMatch(html, /wearevigil\.global\/register\?pass=/);
+});
+check('Corporate card offers invitation and invoice email as separate actions', () => {
+  const card = slice('<div class="ptop"><h3 class="pname">Corporate</h3>', '</article>');
+  assert.match(card, /data-register="corporate" href="https:\/\/summit\.wearevigil\.global\/invitation\?code=C7GA72">JOIN NOW<\/a>/);
+  assert.match(card, /href="mailto:ike@wearevigil\.global\?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027">Request an Invoice<\/a>/);
 });
 check('no public review controls or bracketed placeholders remain', () => {
   assert.doesNotMatch(html, /class="(?:flag|ph|preview-tag|review-toggle)"/);
@@ -49,15 +66,15 @@ check('static IDs are unique', () => {
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]).filter(id => !id.includes("'"));
   assert.equal(new Set(ids).size, ids.length);
 });
-check('marquee groups match and duplicate is hidden from accessibility tree', () => {
-  const first = html.match(/<ul class="marquee-group">([\s\S]*?)<\/ul>/)[1];
-  const second = html.match(/<ul class="marquee-group" aria-hidden="true">([\s\S]*?)<\/ul>/)[1];
-  assert.equal(first.replace(/alt="[^"]*"/g, 'alt=""').trim(), second.trim());
-  assert.match(html, /to\{transform:translateX\(-50%\)\}/);
+check('corporate attendee space is intentionally empty and separate from sponsors', () => {
+  const company = slice('<div class="partners-row reveal">', '</section>');
+  assert.match(company, /In Good Company/);
+  assert.doesNotMatch(company, /<img|marquee/);
+  assert.match(html, /<div class="category-sponsors reveal d1"/);
+  assert.match(html, /<div class="pt-logos">/);
 });
-check('reduced-motion static marquee and flap overrides exist', () => {
+check('reduced-motion flap override exists', () => {
   assert.match(html, /@media \(prefers-reduced-motion:reduce\)/);
-  assert.match(html, /\.marquee-track\{animation:none;width:auto\}/);
   assert.match(html, /\.flap\.go \.f1,\.flap\.go \.f2\{animation:none;visibility:hidden\}/);
 });
 

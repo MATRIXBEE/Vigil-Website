@@ -1,6 +1,52 @@
 # VIGIL Summit 2027 · v4 final validation
 
-## 18 November 2026 local update
+## 21 November 2026 local payment CTA update
+
+| Command | Result | Evidence |
+|---|---|---|
+| `node tests/verify.mjs` | 32 passed; exit 0 | `verification/node-verify-20261121-payment.txt` |
+| `node tests/content.mjs` | 43 passed; exit 0 | `verification/node-content-20261121-payment.txt` |
+| `python tests/browser_check.py` | 228 passed, 0 failed; exit 0 | `verification/browser-results-20261121-payment.json` |
+
+The browser suite covered 1440×900, 1366×768, 1024×768, 768×1024,
+390×844 and 375×812 in installed Chrome. It checked each Free, VIP, VIP+
+and Corporate CTA destination, the generated Day 5 VIP link, the visible
+Corporate JOIN NOW and Request an Invoice actions, and the existing content,
+image, navigation, countdown, agenda, Checkpoint, FAQ, overflow and console
+checks. All passed. Read-only HTTP requests to the Free and three invitation
+destinations returned 200. The invoice link's mailto address and encoded
+subject were checked; opening a desktop email client was not part of the
+browser suite.
+
+The separate VIP tickets page was inspected: it already has a Corporate
+section. Its editable source is unavailable in this repository, so its
+requested link changes remain pending in `VIP-Landing-Page-Update.md`.
+These checks were run locally before publication. GitHub and Vercel record
+the later release outcome.
+
+## 21 November 2026 local sponsor layout update
+
+| Command | Result | Evidence |
+|---|---|---|
+| `node tests/verify.mjs` | 31 passed; exit 0 | `verification/node-verify-20261121.txt` |
+| `node tests/content.mjs` | 42 passed; exit 0 | `verification/node-content-20261121.txt` |
+| `python tests/browser_check.py` | 216 passed, 0 failed; exit 0 | `verification/browser-results-20261121.json` |
+
+The browser suite used installed Chrome at 1440×900, 1366×768, 1024×768,
+768×1024, 390×844 and 375×812. It checked the empty In Good Company area,
+the three Category Sponsors, all twelve Summit Partners, the three separate
+host experience logos, image loading and fit, responsive grid columns, no
+horizontal overflow, countdown, agenda, Checkpoint, FAQ, registration URLs,
+calendar actions, mobile navigation and console errors. All checks passed.
+The fifteen displayed sponsor WebPs have transparent corners and total
+1,098,270 bytes. Their supplied source artwork remains untouched.
+
+The first browser run found a 4-pixel CTS Globe logo overflow in its mobile
+tile. The tile height was adjusted and the full suite was rerun successfully.
+The checks cover the local site before publication. GitHub and Vercel record
+the later release outcome.
+
+## 18 November 2026 published update (historical)
 
 | Command | Result | Evidence |
 |---|---|---|
