@@ -1,0 +1,2012 @@
+{
+ "1440": {
+  "overflowX": 0,
+  "wideEls": [],
+  "flapFits": true,
+  "zonesFit": true,
+  "sydneyTime": "Shown in: 1:00–4:00am AEDTTue 2 – Sat 6 March",
+  "countdownTicks": true,
+  "countdownDays": "099",
+  "registerLinks": 14,
+  "passLinksCorrect": true,
+  "passLinkKinds": [
+   "corporate",
+   "free",
+   "heartbeat",
+   "vip",
+   "vipplus"
+  ],
+  "corporateActions": {
+   "cards": 1,
+   "primaryText": "JOIN NOW",
+   "primaryHref": "https://summit.wearevigil.global/invitation?code=C7GA72",
+   "primaryStyle": true,
+   "primaryShown": true,
+   "invoiceText": "Request an Invoice",
+   "invoiceHref": "mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027",
+   "invoiceShown": true
+  },
+  "days": [
+   {
+    "h": "Vision Free",
+    "rows": 10,
+    "rooms": 0,
+    "when": "Mon 1 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Diagnose Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Tue 2 March · 2:00–5:00pm GMT",
+    "note": "Checkpoint findings shared during the Summit are interim results from the current respondent sample, not final industry benchmarks.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Challenge Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Wed 3 March · 2:00–5:00pm GMT",
+    "note": "Each track speaker brings their own topic, grounded in Checkpoint evidence. Session titles will be announced.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Evidence in Practice Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Thu 4 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Blueprint Day VIP only",
+    "rows": 0,
+    "rooms": 5,
+    "when": "Fri 5 March · 2:00–5:00pm GMT",
+    "note": "VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.",
+    "roomTime": "14:00–17:00 — Choose a Room (GMT)",
+    "scheduleOpen": null,
+    "cta": "https://summit.wearevigil.global/invitation?code=GC647E",
+    "wide": 0
+   }
+  ],
+  "roomCols": 5,
+  "navigationFixed": true,
+  "quizResult": {
+   "hidden": false,
+   "title": "Get your full Checkpoint result.",
+   "focus": "Follow the Data & Evidence sessions on Days 2–4, then the Data & Evidence Roadmap Lab on Blueprint Day (VIP).",
+   "answers": 3,
+   "cta": "https://checkpoint.wearevigil.global/?utm_source=site&utm_medium=mini-check&utm_campaign=summit2027"
+  },
+  "quizRestart": "Question 1 of 3",
+  "faqOpen": true,
+  "faqClosed": true,
+  "ics": {
+   "name": "VIGIL-Summit-2027.ics",
+   "start": true,
+   "rrule": true,
+   "outlookToast": true
+  },
+  "google": true,
+  "speakers": [
+   "Ike Aigbogun",
+   "Keynote speaker",
+   "Bulat Almukhametov",
+   "Sarah Power",
+   "Funmi Adegbola",
+   "Isaac Ochulor",
+   "Jaina Ko",
+   "Claudia Soares",
+   "Subhrajeet Patra",
+   "Supriya Naidu",
+   "Zoe Borde",
+   "Speaker to be announced",
+   "Speaker to be announced",
+   "Speaker to be announced"
+  ],
+  "portraitsLoaded": true,
+  "speakerNext": true,
+  "speakerPrevious": true,
+  "brokenImages": [],
+  "sponsorLogos": {
+   "category": [
+    "FloCrunch logo",
+    "nuTheory logo",
+    "CTS Globe logo"
+   ],
+   "summit": [
+    "AI in HSE logo",
+    "HeyLina logo",
+    "EvexSafety logo",
+    "FLOWforms logo",
+    "HAOP logo",
+    "HSZ Solutions logo",
+    "KorviaOne logo",
+    "OwnThePrompt logo",
+    "QHSE Directory logo",
+    "SHEDAI logo",
+    "HSE Nations logo",
+    "SOWSHE-A logo"
+   ],
+   "unique": 15,
+   "fit": true,
+   "columns": 6,
+   "rows": 2,
+   "sameCardStyle": true,
+   "haopDark": false
+  },
+  "experienceLogos": {
+   "names": [
+    "Morrisons logo",
+    "Cority logo",
+    "Unilever logo"
+   ],
+   "loaded": true
+  },
+  "logoAlpha": true,
+  "companyPlaceholder": {
+   "heading": "In Good Company",
+   "copy": "Corporate attendee logos will appear here once confirmed.",
+   "images": 0,
+   "carousel": false
+  },
+  "hostImgs": 1,
+  "consoleErrors": [
+   "Failed to load resource: net::ERR_NAME_NOT_RESOLVED https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+  ],
+  "failedLocal": []
+ },
+ "1366": {
+  "overflowX": 0,
+  "wideEls": [],
+  "flapFits": true,
+  "zonesFit": true,
+  "sydneyTime": "Shown in: 1:00–4:00am AEDTTue 2 – Sat 6 March",
+  "countdownTicks": true,
+  "countdownDays": "099",
+  "registerLinks": 14,
+  "passLinksCorrect": true,
+  "passLinkKinds": [
+   "corporate",
+   "free",
+   "heartbeat",
+   "vip",
+   "vipplus"
+  ],
+  "corporateActions": {
+   "cards": 1,
+   "primaryText": "JOIN NOW",
+   "primaryHref": "https://summit.wearevigil.global/invitation?code=C7GA72",
+   "primaryStyle": true,
+   "primaryShown": true,
+   "invoiceText": "Request an Invoice",
+   "invoiceHref": "mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027",
+   "invoiceShown": true
+  },
+  "days": [
+   {
+    "h": "Vision Free",
+    "rows": 10,
+    "rooms": 0,
+    "when": "Mon 1 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Diagnose Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Tue 2 March · 2:00–5:00pm GMT",
+    "note": "Checkpoint findings shared during the Summit are interim results from the current respondent sample, not final industry benchmarks.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Challenge Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Wed 3 March · 2:00–5:00pm GMT",
+    "note": "Each track speaker brings their own topic, grounded in Checkpoint evidence. Session titles will be announced.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Evidence in Practice Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Thu 4 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Blueprint Day VIP only",
+    "rows": 0,
+    "rooms": 5,
+    "when": "Fri 5 March · 2:00–5:00pm GMT",
+    "note": "VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.",
+    "roomTime": "14:00–17:00 — Choose a Room (GMT)",
+    "scheduleOpen": null,
+    "cta": "https://summit.wearevigil.global/invitation?code=GC647E",
+    "wide": 0
+   }
+  ],
+  "roomCols": 5,
+  "navigationFixed": true,
+  "quizResult": {
+   "hidden": false,
+   "title": "Get your full Checkpoint result.",
+   "focus": "Follow the Data & Evidence sessions on Days 2–4, then the Data & Evidence Roadmap Lab on Blueprint Day (VIP).",
+   "answers": 3,
+   "cta": "https://checkpoint.wearevigil.global/?utm_source=site&utm_medium=mini-check&utm_campaign=summit2027"
+  },
+  "quizRestart": "Question 1 of 3",
+  "faqOpen": true,
+  "faqClosed": true,
+  "ics": {
+   "name": "VIGIL-Summit-2027.ics",
+   "start": true,
+   "rrule": true,
+   "outlookToast": true
+  },
+  "google": true,
+  "speakers": [
+   "Ike Aigbogun",
+   "Keynote speaker",
+   "Bulat Almukhametov",
+   "Sarah Power",
+   "Funmi Adegbola",
+   "Isaac Ochulor",
+   "Jaina Ko",
+   "Claudia Soares",
+   "Subhrajeet Patra",
+   "Supriya Naidu",
+   "Zoe Borde",
+   "Speaker to be announced",
+   "Speaker to be announced",
+   "Speaker to be announced"
+  ],
+  "portraitsLoaded": true,
+  "speakerNext": true,
+  "speakerPrevious": true,
+  "brokenImages": [],
+  "sponsorLogos": {
+   "category": [
+    "FloCrunch logo",
+    "nuTheory logo",
+    "CTS Globe logo"
+   ],
+   "summit": [
+    "AI in HSE logo",
+    "HeyLina logo",
+    "EvexSafety logo",
+    "FLOWforms logo",
+    "HAOP logo",
+    "HSZ Solutions logo",
+    "KorviaOne logo",
+    "OwnThePrompt logo",
+    "QHSE Directory logo",
+    "SHEDAI logo",
+    "HSE Nations logo",
+    "SOWSHE-A logo"
+   ],
+   "unique": 15,
+   "fit": true,
+   "columns": 6,
+   "rows": 2,
+   "sameCardStyle": true,
+   "haopDark": false
+  },
+  "experienceLogos": {
+   "names": [
+    "Morrisons logo",
+    "Cority logo",
+    "Unilever logo"
+   ],
+   "loaded": true
+  },
+  "logoAlpha": true,
+  "companyPlaceholder": {
+   "heading": "In Good Company",
+   "copy": "Corporate attendee logos will appear here once confirmed.",
+   "images": 0,
+   "carousel": false
+  },
+  "hostImgs": 1,
+  "consoleErrors": [
+   "Failed to load resource: net::ERR_NAME_NOT_RESOLVED https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+  ],
+  "failedLocal": []
+ },
+ "1024": {
+  "overflowX": 0,
+  "wideEls": [],
+  "flapFits": true,
+  "zonesFit": true,
+  "sydneyTime": "Shown in: 1:00–4:00am AEDTTue 2 – Sat 6 March",
+  "countdownTicks": true,
+  "countdownDays": "099",
+  "registerLinks": 14,
+  "passLinksCorrect": true,
+  "passLinkKinds": [
+   "corporate",
+   "free",
+   "heartbeat",
+   "vip",
+   "vipplus"
+  ],
+  "corporateActions": {
+   "cards": 1,
+   "primaryText": "JOIN NOW",
+   "primaryHref": "https://summit.wearevigil.global/invitation?code=C7GA72",
+   "primaryStyle": true,
+   "primaryShown": true,
+   "invoiceText": "Request an Invoice",
+   "invoiceHref": "mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027",
+   "invoiceShown": true
+  },
+  "days": [
+   {
+    "h": "Vision Free",
+    "rows": 10,
+    "rooms": 0,
+    "when": "Mon 1 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Diagnose Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Tue 2 March · 2:00–5:00pm GMT",
+    "note": "Checkpoint findings shared during the Summit are interim results from the current respondent sample, not final industry benchmarks.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Challenge Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Wed 3 March · 2:00–5:00pm GMT",
+    "note": "Each track speaker brings their own topic, grounded in Checkpoint evidence. Session titles will be announced.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Evidence in Practice Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Thu 4 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Blueprint Day VIP only",
+    "rows": 0,
+    "rooms": 5,
+    "when": "Fri 5 March · 2:00–5:00pm GMT",
+    "note": "VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.",
+    "roomTime": "14:00–17:00 — Choose a Room (GMT)",
+    "scheduleOpen": null,
+    "cta": "https://summit.wearevigil.global/invitation?code=GC647E",
+    "wide": 0
+   }
+  ],
+  "roomCols": 3,
+  "navigationFixed": true,
+  "quizResult": {
+   "hidden": false,
+   "title": "Get your full Checkpoint result.",
+   "focus": "Follow the Data & Evidence sessions on Days 2–4, then the Data & Evidence Roadmap Lab on Blueprint Day (VIP).",
+   "answers": 3,
+   "cta": "https://checkpoint.wearevigil.global/?utm_source=site&utm_medium=mini-check&utm_campaign=summit2027"
+  },
+  "quizRestart": "Question 1 of 3",
+  "faqOpen": true,
+  "faqClosed": true,
+  "ics": {
+   "name": "VIGIL-Summit-2027.ics",
+   "start": true,
+   "rrule": true,
+   "outlookToast": true
+  },
+  "google": true,
+  "speakers": [
+   "Ike Aigbogun",
+   "Keynote speaker",
+   "Bulat Almukhametov",
+   "Sarah Power",
+   "Funmi Adegbola",
+   "Isaac Ochulor",
+   "Jaina Ko",
+   "Claudia Soares",
+   "Subhrajeet Patra",
+   "Supriya Naidu",
+   "Zoe Borde",
+   "Speaker to be announced",
+   "Speaker to be announced",
+   "Speaker to be announced"
+  ],
+  "portraitsLoaded": true,
+  "speakerNext": true,
+  "speakerPrevious": true,
+  "brokenImages": [],
+  "sponsorLogos": {
+   "category": [
+    "FloCrunch logo",
+    "nuTheory logo",
+    "CTS Globe logo"
+   ],
+   "summit": [
+    "AI in HSE logo",
+    "HeyLina logo",
+    "EvexSafety logo",
+    "FLOWforms logo",
+    "HAOP logo",
+    "HSZ Solutions logo",
+    "KorviaOne logo",
+    "OwnThePrompt logo",
+    "QHSE Directory logo",
+    "SHEDAI logo",
+    "HSE Nations logo",
+    "SOWSHE-A logo"
+   ],
+   "unique": 15,
+   "fit": true,
+   "columns": 4,
+   "rows": 3,
+   "sameCardStyle": true,
+   "haopDark": false
+  },
+  "experienceLogos": {
+   "names": [
+    "Morrisons logo",
+    "Cority logo",
+    "Unilever logo"
+   ],
+   "loaded": true
+  },
+  "logoAlpha": true,
+  "companyPlaceholder": {
+   "heading": "In Good Company",
+   "copy": "Corporate attendee logos will appear here once confirmed.",
+   "images": 0,
+   "carousel": false
+  },
+  "hostImgs": 1,
+  "consoleErrors": [
+   "Failed to load resource: net::ERR_NAME_NOT_RESOLVED https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+  ],
+  "failedLocal": []
+ },
+ "768": {
+  "overflowX": 0,
+  "wideEls": [],
+  "flapFits": true,
+  "zonesFit": true,
+  "sydneyTime": "Shown in: 1:00–4:00am AEDTTue 2 – Sat 6 March",
+  "countdownTicks": true,
+  "countdownDays": "099",
+  "registerLinks": 14,
+  "passLinksCorrect": true,
+  "passLinkKinds": [
+   "corporate",
+   "free",
+   "heartbeat",
+   "vip",
+   "vipplus"
+  ],
+  "corporateActions": {
+   "cards": 1,
+   "primaryText": "JOIN NOW",
+   "primaryHref": "https://summit.wearevigil.global/invitation?code=C7GA72",
+   "primaryStyle": true,
+   "primaryShown": true,
+   "invoiceText": "Request an Invoice",
+   "invoiceHref": "mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027",
+   "invoiceShown": true
+  },
+  "days": [
+   {
+    "h": "Vision Free",
+    "rows": 10,
+    "rooms": 0,
+    "when": "Mon 1 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Diagnose Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Tue 2 March · 2:00–5:00pm GMT",
+    "note": "Checkpoint findings shared during the Summit are interim results from the current respondent sample, not final industry benchmarks.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Challenge Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Wed 3 March · 2:00–5:00pm GMT",
+    "note": "Each track speaker brings their own topic, grounded in Checkpoint evidence. Session titles will be announced.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Evidence in Practice Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Thu 4 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Blueprint Day VIP only",
+    "rows": 0,
+    "rooms": 5,
+    "when": "Fri 5 March · 2:00–5:00pm GMT",
+    "note": "VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.",
+    "roomTime": "14:00–17:00 — Choose a Room (GMT)",
+    "scheduleOpen": null,
+    "cta": "https://summit.wearevigil.global/invitation?code=GC647E",
+    "wide": 0
+   }
+  ],
+  "roomCols": 3,
+  "navigationFixed": true,
+  "quizResult": {
+   "hidden": false,
+   "title": "Get your full Checkpoint result.",
+   "focus": "Follow the Data & Evidence sessions on Days 2–4, then the Data & Evidence Roadmap Lab on Blueprint Day (VIP).",
+   "answers": 3,
+   "cta": "https://checkpoint.wearevigil.global/?utm_source=site&utm_medium=mini-check&utm_campaign=summit2027"
+  },
+  "quizRestart": "Question 1 of 3",
+  "faqOpen": true,
+  "faqClosed": true,
+  "ics": {
+   "name": "VIGIL-Summit-2027.ics",
+   "start": true,
+   "rrule": true,
+   "outlookToast": true
+  },
+  "google": true,
+  "speakers": [
+   "Ike Aigbogun",
+   "Keynote speaker",
+   "Bulat Almukhametov",
+   "Sarah Power",
+   "Funmi Adegbola",
+   "Isaac Ochulor",
+   "Jaina Ko",
+   "Claudia Soares",
+   "Subhrajeet Patra",
+   "Supriya Naidu",
+   "Zoe Borde",
+   "Speaker to be announced",
+   "Speaker to be announced",
+   "Speaker to be announced"
+  ],
+  "portraitsLoaded": true,
+  "speakerNext": true,
+  "speakerPrevious": true,
+  "brokenImages": [],
+  "sponsorLogos": {
+   "category": [
+    "FloCrunch logo",
+    "nuTheory logo",
+    "CTS Globe logo"
+   ],
+   "summit": [
+    "AI in HSE logo",
+    "HeyLina logo",
+    "EvexSafety logo",
+    "FLOWforms logo",
+    "HAOP logo",
+    "HSZ Solutions logo",
+    "KorviaOne logo",
+    "OwnThePrompt logo",
+    "QHSE Directory logo",
+    "SHEDAI logo",
+    "HSE Nations logo",
+    "SOWSHE-A logo"
+   ],
+   "unique": 15,
+   "fit": true,
+   "columns": 4,
+   "rows": 3,
+   "sameCardStyle": true,
+   "haopDark": false
+  },
+  "experienceLogos": {
+   "names": [
+    "Morrisons logo",
+    "Cority logo",
+    "Unilever logo"
+   ],
+   "loaded": true
+  },
+  "logoAlpha": true,
+  "companyPlaceholder": {
+   "heading": "In Good Company",
+   "copy": "Corporate attendee logos will appear here once confirmed.",
+   "images": 0,
+   "carousel": false
+  },
+  "hostImgs": 1,
+  "mobileMenu": true,
+  "consoleErrors": [
+   "Failed to load resource: net::ERR_NAME_NOT_RESOLVED https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+  ],
+  "failedLocal": []
+ },
+ "390": {
+  "overflowX": 0,
+  "wideEls": [],
+  "flapFits": true,
+  "zonesFit": true,
+  "sydneyTime": "Shown in: 1:00–4:00am AEDTTue 2 – Sat 6 March",
+  "countdownTicks": true,
+  "countdownDays": "099",
+  "registerLinks": 14,
+  "passLinksCorrect": true,
+  "passLinkKinds": [
+   "corporate",
+   "free",
+   "heartbeat",
+   "vip",
+   "vipplus"
+  ],
+  "corporateActions": {
+   "cards": 1,
+   "primaryText": "JOIN NOW",
+   "primaryHref": "https://summit.wearevigil.global/invitation?code=C7GA72",
+   "primaryStyle": true,
+   "primaryShown": true,
+   "invoiceText": "Request an Invoice",
+   "invoiceHref": "mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027",
+   "invoiceShown": true
+  },
+  "days": [
+   {
+    "h": "Vision Free",
+    "rows": 10,
+    "rooms": 0,
+    "when": "Mon 1 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Diagnose Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Tue 2 March · 2:00–5:00pm GMT",
+    "note": "Checkpoint findings shared during the Summit are interim results from the current respondent sample, not final industry benchmarks.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Challenge Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Wed 3 March · 2:00–5:00pm GMT",
+    "note": "Each track speaker brings their own topic, grounded in Checkpoint evidence. Session titles will be announced.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Evidence in Practice Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Thu 4 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Blueprint Day VIP only",
+    "rows": 0,
+    "rooms": 5,
+    "when": "Fri 5 March · 2:00–5:00pm GMT",
+    "note": "VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.",
+    "roomTime": "14:00–17:00 — Choose a Room (GMT)",
+    "scheduleOpen": null,
+    "cta": "https://summit.wearevigil.global/invitation?code=GC647E",
+    "wide": 0
+   }
+  ],
+  "roomCols": 1,
+  "navigationFixed": true,
+  "quizResult": {
+   "hidden": false,
+   "title": "Get your full Checkpoint result.",
+   "focus": "Follow the Data & Evidence sessions on Days 2–4, then the Data & Evidence Roadmap Lab on Blueprint Day (VIP).",
+   "answers": 3,
+   "cta": "https://checkpoint.wearevigil.global/?utm_source=site&utm_medium=mini-check&utm_campaign=summit2027"
+  },
+  "quizRestart": "Question 1 of 3",
+  "faqOpen": true,
+  "faqClosed": true,
+  "ics": {
+   "name": "VIGIL-Summit-2027.ics",
+   "start": true,
+   "rrule": true,
+   "outlookToast": true
+  },
+  "google": true,
+  "speakers": [
+   "Ike Aigbogun",
+   "Keynote speaker",
+   "Bulat Almukhametov",
+   "Sarah Power",
+   "Funmi Adegbola",
+   "Isaac Ochulor",
+   "Jaina Ko",
+   "Claudia Soares",
+   "Subhrajeet Patra",
+   "Supriya Naidu",
+   "Zoe Borde",
+   "Speaker to be announced",
+   "Speaker to be announced",
+   "Speaker to be announced"
+  ],
+  "portraitsLoaded": true,
+  "speakerNext": true,
+  "speakerPrevious": true,
+  "brokenImages": [],
+  "sponsorLogos": {
+   "category": [
+    "FloCrunch logo",
+    "nuTheory logo",
+    "CTS Globe logo"
+   ],
+   "summit": [
+    "AI in HSE logo",
+    "HeyLina logo",
+    "EvexSafety logo",
+    "FLOWforms logo",
+    "HAOP logo",
+    "HSZ Solutions logo",
+    "KorviaOne logo",
+    "OwnThePrompt logo",
+    "QHSE Directory logo",
+    "SHEDAI logo",
+    "HSE Nations logo",
+    "SOWSHE-A logo"
+   ],
+   "unique": 15,
+   "fit": true,
+   "columns": 2,
+   "rows": 6,
+   "sameCardStyle": true,
+   "haopDark": false
+  },
+  "experienceLogos": {
+   "names": [
+    "Morrisons logo",
+    "Cority logo",
+    "Unilever logo"
+   ],
+   "loaded": true
+  },
+  "logoAlpha": true,
+  "companyPlaceholder": {
+   "heading": "In Good Company",
+   "copy": "Corporate attendee logos will appear here once confirmed.",
+   "images": 0,
+   "carousel": false
+  },
+  "hostImgs": 1,
+  "mobileMenu": true,
+  "consoleErrors": [
+   "Failed to load resource: net::ERR_NAME_NOT_RESOLVED https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+  ],
+  "failedLocal": []
+ },
+ "375": {
+  "overflowX": 0,
+  "wideEls": [],
+  "flapFits": true,
+  "zonesFit": true,
+  "sydneyTime": "Shown in: 1:00–4:00am AEDTTue 2 – Sat 6 March",
+  "countdownTicks": true,
+  "countdownDays": "099",
+  "registerLinks": 14,
+  "passLinksCorrect": true,
+  "passLinkKinds": [
+   "corporate",
+   "free",
+   "heartbeat",
+   "vip",
+   "vipplus"
+  ],
+  "corporateActions": {
+   "cards": 1,
+   "primaryText": "JOIN NOW",
+   "primaryHref": "https://summit.wearevigil.global/invitation?code=C7GA72",
+   "primaryStyle": true,
+   "primaryShown": true,
+   "invoiceText": "Request an Invoice",
+   "invoiceHref": "mailto:ike@wearevigil.global?subject=Corporate%20Pass%20Invoice%20Request%20%E2%80%93%20VIGIL%20Summit%202027",
+   "invoiceShown": true
+  },
+  "days": [
+   {
+    "h": "Vision Free",
+    "rows": 10,
+    "rooms": 0,
+    "when": "Mon 1 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Diagnose Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Tue 2 March · 2:00–5:00pm GMT",
+    "note": "Checkpoint findings shared during the Summit are interim results from the current respondent sample, not final industry benchmarks.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Challenge Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Wed 3 March · 2:00–5:00pm GMT",
+    "note": "Each track speaker brings their own topic, grounded in Checkpoint evidence. Session titles will be announced.",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Evidence in Practice Free",
+    "rows": 8,
+    "rooms": 0,
+    "when": "Thu 4 March · 2:00–5:00pm GMT",
+    "note": "",
+    "roomTime": "",
+    "scheduleOpen": false,
+    "cta": "https://summit.wearevigil.global/p/register",
+    "wide": 0
+   },
+   {
+    "h": "Blueprint Day VIP only",
+    "rows": 0,
+    "rooms": 5,
+    "when": "Fri 5 March · 2:00–5:00pm GMT",
+    "note": "VIP only. All five rooms run at the same time: choose one as your primary experience. The day closes with an overview of the rooms you did not attend.",
+    "roomTime": "14:00–17:00 — Choose a Room (GMT)",
+    "scheduleOpen": null,
+    "cta": "https://summit.wearevigil.global/invitation?code=GC647E",
+    "wide": 0
+   }
+  ],
+  "roomCols": 1,
+  "navigationFixed": true,
+  "quizResult": {
+   "hidden": false,
+   "title": "Get your full Checkpoint result.",
+   "focus": "Follow the Data & Evidence sessions on Days 2–4, then the Data & Evidence Roadmap Lab on Blueprint Day (VIP).",
+   "answers": 3,
+   "cta": "https://checkpoint.wearevigil.global/?utm_source=site&utm_medium=mini-check&utm_campaign=summit2027"
+  },
+  "quizRestart": "Question 1 of 3",
+  "faqOpen": true,
+  "faqClosed": true,
+  "ics": {
+   "name": "VIGIL-Summit-2027.ics",
+   "start": true,
+   "rrule": true,
+   "outlookToast": true
+  },
+  "google": true,
+  "speakers": [
+   "Ike Aigbogun",
+   "Keynote speaker",
+   "Bulat Almukhametov",
+   "Sarah Power",
+   "Funmi Adegbola",
+   "Isaac Ochulor",
+   "Jaina Ko",
+   "Claudia Soares",
+   "Subhrajeet Patra",
+   "Supriya Naidu",
+   "Zoe Borde",
+   "Speaker to be announced",
+   "Speaker to be announced",
+   "Speaker to be announced"
+  ],
+  "portraitsLoaded": true,
+  "speakerNext": true,
+  "speakerPrevious": true,
+  "brokenImages": [],
+  "sponsorLogos": {
+   "category": [
+    "FloCrunch logo",
+    "nuTheory logo",
+    "CTS Globe logo"
+   ],
+   "summit": [
+    "AI in HSE logo",
+    "HeyLina logo",
+    "EvexSafety logo",
+    "FLOWforms logo",
+    "HAOP logo",
+    "HSZ Solutions logo",
+    "KorviaOne logo",
+    "OwnThePrompt logo",
+    "QHSE Directory logo",
+    "SHEDAI logo",
+    "HSE Nations logo",
+    "SOWSHE-A logo"
+   ],
+   "unique": 15,
+   "fit": true,
+   "columns": 2,
+   "rows": 6,
+   "sameCardStyle": true,
+   "haopDark": false
+  },
+  "experienceLogos": {
+   "names": [
+    "Morrisons logo",
+    "Cority logo",
+    "Unilever logo"
+   ],
+   "loaded": true
+  },
+  "logoAlpha": true,
+  "companyPlaceholder": {
+   "heading": "In Good Company",
+   "copy": "Corporate attendee logos will appear here once confirmed.",
+   "images": 0,
+   "carousel": false
+  },
+  "hostImgs": 1,
+  "mobileMenu": true,
+  "consoleErrors": [
+   "Failed to load resource: net::ERR_NAME_NOT_RESOLVED https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+  ],
+  "failedLocal": []
+ },
+ "reducedMotion": {
+  "enabled": true,
+  "anim": "none",
+  "flipping": 0
+ },
+ "keyEnd": "Blueprint Day VIP only",
+ "keyHome": "Vision Free",
+ "verification": {
+  "passed": 234,
+  "failed": 6,
+  "failures": [
+   "1440px console clean",
+   "1366px console clean",
+   "1024px console clean",
+   "768px console clean",
+   "390px console clean",
+   "375px console clean"
+  ],
+  "checks": [
+   {
+    "name": "1440px document and content fit",
+    "passed": true
+   },
+   {
+    "name": "1440px flapFits",
+    "passed": true
+   },
+   {
+    "name": "1440px countdownTicks",
+    "passed": true
+   },
+   {
+    "name": "1440px zonesFit",
+    "passed": true
+   },
+   {
+    "name": "1440px passLinksCorrect",
+    "passed": true
+   },
+   {
+    "name": "1440px navigationFixed",
+    "passed": true
+   },
+   {
+    "name": "1440px faqOpen",
+    "passed": true
+   },
+   {
+    "name": "1440px faqClosed",
+    "passed": true
+   },
+   {
+    "name": "1440px google",
+    "passed": true
+   },
+   {
+    "name": "1440px portraitsLoaded",
+    "passed": true
+   },
+   {
+    "name": "1440px speakerNext",
+    "passed": true
+   },
+   {
+    "name": "1440px speakerPrevious",
+    "passed": true
+   },
+   {
+    "name": "1440px Sydney local-time conversion",
+    "passed": true
+   },
+   {
+    "name": "1440px three-digit days",
+    "passed": true
+   },
+   {
+    "name": "1440px registration links present",
+    "passed": true
+   },
+   {
+    "name": "1440px all pass types linked",
+    "passed": true
+   },
+   {
+    "name": "1440px Corporate JOIN NOW and invoice actions",
+    "passed": true
+   },
+   {
+    "name": "1440px day 1",
+    "passed": true
+   },
+   {
+    "name": "1440px day 2",
+    "passed": true
+   },
+   {
+    "name": "1440px day 3",
+    "passed": true
+   },
+   {
+    "name": "1440px day 4",
+    "passed": true
+   },
+   {
+    "name": "1440px day 5",
+    "passed": true
+   },
+   {
+    "name": "1440px five agenda days",
+    "passed": true
+   },
+   {
+    "name": "1440px Day 5 compact programme",
+    "passed": true
+   },
+   {
+    "name": "1440px room columns",
+    "passed": true
+   },
+   {
+    "name": "1440px Checkpoint result",
+    "passed": true
+   },
+   {
+    "name": "1440px Checkpoint restart",
+    "passed": true
+   },
+   {
+    "name": "1440px Outlook ICS",
+    "passed": true
+   },
+   {
+    "name": "1440px all images healthy",
+    "passed": true
+   },
+   {
+    "name": "1440px three Category Sponsors",
+    "passed": true
+   },
+   {
+    "name": "1440px 12 Summit Partners",
+    "passed": true
+   },
+   {
+    "name": "1440px sponsor logos fit and share card style",
+    "passed": true
+   },
+   {
+    "name": "1440px all organisation logos genuinely transparent",
+    "passed": true
+   },
+   {
+    "name": "1440px compact responsive sponsor grid",
+    "passed": true
+   },
+   {
+    "name": "1440px three experience logos",
+    "passed": true
+   },
+   {
+    "name": "1440px In Good Company placeholder",
+    "passed": true
+   },
+   {
+    "name": "1440px speaker and host cards",
+    "passed": true
+   },
+   {
+    "name": "1440px console clean",
+    "passed": false
+   },
+   {
+    "name": "1440px local requests successful",
+    "passed": true
+   },
+   {
+    "name": "1366px document and content fit",
+    "passed": true
+   },
+   {
+    "name": "1366px flapFits",
+    "passed": true
+   },
+   {
+    "name": "1366px countdownTicks",
+    "passed": true
+   },
+   {
+    "name": "1366px zonesFit",
+    "passed": true
+   },
+   {
+    "name": "1366px passLinksCorrect",
+    "passed": true
+   },
+   {
+    "name": "1366px navigationFixed",
+    "passed": true
+   },
+   {
+    "name": "1366px faqOpen",
+    "passed": true
+   },
+   {
+    "name": "1366px faqClosed",
+    "passed": true
+   },
+   {
+    "name": "1366px google",
+    "passed": true
+   },
+   {
+    "name": "1366px portraitsLoaded",
+    "passed": true
+   },
+   {
+    "name": "1366px speakerNext",
+    "passed": true
+   },
+   {
+    "name": "1366px speakerPrevious",
+    "passed": true
+   },
+   {
+    "name": "1366px Sydney local-time conversion",
+    "passed": true
+   },
+   {
+    "name": "1366px three-digit days",
+    "passed": true
+   },
+   {
+    "name": "1366px registration links present",
+    "passed": true
+   },
+   {
+    "name": "1366px all pass types linked",
+    "passed": true
+   },
+   {
+    "name": "1366px Corporate JOIN NOW and invoice actions",
+    "passed": true
+   },
+   {
+    "name": "1366px day 1",
+    "passed": true
+   },
+   {
+    "name": "1366px day 2",
+    "passed": true
+   },
+   {
+    "name": "1366px day 3",
+    "passed": true
+   },
+   {
+    "name": "1366px day 4",
+    "passed": true
+   },
+   {
+    "name": "1366px day 5",
+    "passed": true
+   },
+   {
+    "name": "1366px five agenda days",
+    "passed": true
+   },
+   {
+    "name": "1366px Day 5 compact programme",
+    "passed": true
+   },
+   {
+    "name": "1366px room columns",
+    "passed": true
+   },
+   {
+    "name": "1366px Checkpoint result",
+    "passed": true
+   },
+   {
+    "name": "1366px Checkpoint restart",
+    "passed": true
+   },
+   {
+    "name": "1366px Outlook ICS",
+    "passed": true
+   },
+   {
+    "name": "1366px all images healthy",
+    "passed": true
+   },
+   {
+    "name": "1366px three Category Sponsors",
+    "passed": true
+   },
+   {
+    "name": "1366px 12 Summit Partners",
+    "passed": true
+   },
+   {
+    "name": "1366px sponsor logos fit and share card style",
+    "passed": true
+   },
+   {
+    "name": "1366px all organisation logos genuinely transparent",
+    "passed": true
+   },
+   {
+    "name": "1366px compact responsive sponsor grid",
+    "passed": true
+   },
+   {
+    "name": "1366px three experience logos",
+    "passed": true
+   },
+   {
+    "name": "1366px In Good Company placeholder",
+    "passed": true
+   },
+   {
+    "name": "1366px speaker and host cards",
+    "passed": true
+   },
+   {
+    "name": "1366px console clean",
+    "passed": false
+   },
+   {
+    "name": "1366px local requests successful",
+    "passed": true
+   },
+   {
+    "name": "1024px document and content fit",
+    "passed": true
+   },
+   {
+    "name": "1024px flapFits",
+    "passed": true
+   },
+   {
+    "name": "1024px countdownTicks",
+    "passed": true
+   },
+   {
+    "name": "1024px zonesFit",
+    "passed": true
+   },
+   {
+    "name": "1024px passLinksCorrect",
+    "passed": true
+   },
+   {
+    "name": "1024px navigationFixed",
+    "passed": true
+   },
+   {
+    "name": "1024px faqOpen",
+    "passed": true
+   },
+   {
+    "name": "1024px faqClosed",
+    "passed": true
+   },
+   {
+    "name": "1024px google",
+    "passed": true
+   },
+   {
+    "name": "1024px portraitsLoaded",
+    "passed": true
+   },
+   {
+    "name": "1024px speakerNext",
+    "passed": true
+   },
+   {
+    "name": "1024px speakerPrevious",
+    "passed": true
+   },
+   {
+    "name": "1024px Sydney local-time conversion",
+    "passed": true
+   },
+   {
+    "name": "1024px three-digit days",
+    "passed": true
+   },
+   {
+    "name": "1024px registration links present",
+    "passed": true
+   },
+   {
+    "name": "1024px all pass types linked",
+    "passed": true
+   },
+   {
+    "name": "1024px Corporate JOIN NOW and invoice actions",
+    "passed": true
+   },
+   {
+    "name": "1024px day 1",
+    "passed": true
+   },
+   {
+    "name": "1024px day 2",
+    "passed": true
+   },
+   {
+    "name": "1024px day 3",
+    "passed": true
+   },
+   {
+    "name": "1024px day 4",
+    "passed": true
+   },
+   {
+    "name": "1024px day 5",
+    "passed": true
+   },
+   {
+    "name": "1024px five agenda days",
+    "passed": true
+   },
+   {
+    "name": "1024px Day 5 compact programme",
+    "passed": true
+   },
+   {
+    "name": "1024px room columns",
+    "passed": true
+   },
+   {
+    "name": "1024px Checkpoint result",
+    "passed": true
+   },
+   {
+    "name": "1024px Checkpoint restart",
+    "passed": true
+   },
+   {
+    "name": "1024px Outlook ICS",
+    "passed": true
+   },
+   {
+    "name": "1024px all images healthy",
+    "passed": true
+   },
+   {
+    "name": "1024px three Category Sponsors",
+    "passed": true
+   },
+   {
+    "name": "1024px 12 Summit Partners",
+    "passed": true
+   },
+   {
+    "name": "1024px sponsor logos fit and share card style",
+    "passed": true
+   },
+   {
+    "name": "1024px all organisation logos genuinely transparent",
+    "passed": true
+   },
+   {
+    "name": "1024px compact responsive sponsor grid",
+    "passed": true
+   },
+   {
+    "name": "1024px three experience logos",
+    "passed": true
+   },
+   {
+    "name": "1024px In Good Company placeholder",
+    "passed": true
+   },
+   {
+    "name": "1024px speaker and host cards",
+    "passed": true
+   },
+   {
+    "name": "1024px console clean",
+    "passed": false
+   },
+   {
+    "name": "1024px local requests successful",
+    "passed": true
+   },
+   {
+    "name": "768px document and content fit",
+    "passed": true
+   },
+   {
+    "name": "768px flapFits",
+    "passed": true
+   },
+   {
+    "name": "768px countdownTicks",
+    "passed": true
+   },
+   {
+    "name": "768px zonesFit",
+    "passed": true
+   },
+   {
+    "name": "768px passLinksCorrect",
+    "passed": true
+   },
+   {
+    "name": "768px navigationFixed",
+    "passed": true
+   },
+   {
+    "name": "768px faqOpen",
+    "passed": true
+   },
+   {
+    "name": "768px faqClosed",
+    "passed": true
+   },
+   {
+    "name": "768px google",
+    "passed": true
+   },
+   {
+    "name": "768px portraitsLoaded",
+    "passed": true
+   },
+   {
+    "name": "768px speakerNext",
+    "passed": true
+   },
+   {
+    "name": "768px speakerPrevious",
+    "passed": true
+   },
+   {
+    "name": "768px Sydney local-time conversion",
+    "passed": true
+   },
+   {
+    "name": "768px three-digit days",
+    "passed": true
+   },
+   {
+    "name": "768px registration links present",
+    "passed": true
+   },
+   {
+    "name": "768px all pass types linked",
+    "passed": true
+   },
+   {
+    "name": "768px Corporate JOIN NOW and invoice actions",
+    "passed": true
+   },
+   {
+    "name": "768px day 1",
+    "passed": true
+   },
+   {
+    "name": "768px day 2",
+    "passed": true
+   },
+   {
+    "name": "768px day 3",
+    "passed": true
+   },
+   {
+    "name": "768px day 4",
+    "passed": true
+   },
+   {
+    "name": "768px day 5",
+    "passed": true
+   },
+   {
+    "name": "768px five agenda days",
+    "passed": true
+   },
+   {
+    "name": "768px Day 5 compact programme",
+    "passed": true
+   },
+   {
+    "name": "768px room columns",
+    "passed": true
+   },
+   {
+    "name": "768px Checkpoint result",
+    "passed": true
+   },
+   {
+    "name": "768px Checkpoint restart",
+    "passed": true
+   },
+   {
+    "name": "768px Outlook ICS",
+    "passed": true
+   },
+   {
+    "name": "768px all images healthy",
+    "passed": true
+   },
+   {
+    "name": "768px three Category Sponsors",
+    "passed": true
+   },
+   {
+    "name": "768px 12 Summit Partners",
+    "passed": true
+   },
+   {
+    "name": "768px sponsor logos fit and share card style",
+    "passed": true
+   },
+   {
+    "name": "768px all organisation logos genuinely transparent",
+    "passed": true
+   },
+   {
+    "name": "768px compact responsive sponsor grid",
+    "passed": true
+   },
+   {
+    "name": "768px three experience logos",
+    "passed": true
+   },
+   {
+    "name": "768px In Good Company placeholder",
+    "passed": true
+   },
+   {
+    "name": "768px speaker and host cards",
+    "passed": true
+   },
+   {
+    "name": "768px console clean",
+    "passed": false
+   },
+   {
+    "name": "768px local requests successful",
+    "passed": true
+   },
+   {
+    "name": "768px mobile menu",
+    "passed": true
+   },
+   {
+    "name": "390px document and content fit",
+    "passed": true
+   },
+   {
+    "name": "390px flapFits",
+    "passed": true
+   },
+   {
+    "name": "390px countdownTicks",
+    "passed": true
+   },
+   {
+    "name": "390px zonesFit",
+    "passed": true
+   },
+   {
+    "name": "390px passLinksCorrect",
+    "passed": true
+   },
+   {
+    "name": "390px navigationFixed",
+    "passed": true
+   },
+   {
+    "name": "390px faqOpen",
+    "passed": true
+   },
+   {
+    "name": "390px faqClosed",
+    "passed": true
+   },
+   {
+    "name": "390px google",
+    "passed": true
+   },
+   {
+    "name": "390px portraitsLoaded",
+    "passed": true
+   },
+   {
+    "name": "390px speakerNext",
+    "passed": true
+   },
+   {
+    "name": "390px speakerPrevious",
+    "passed": true
+   },
+   {
+    "name": "390px Sydney local-time conversion",
+    "passed": true
+   },
+   {
+    "name": "390px three-digit days",
+    "passed": true
+   },
+   {
+    "name": "390px registration links present",
+    "passed": true
+   },
+   {
+    "name": "390px all pass types linked",
+    "passed": true
+   },
+   {
+    "name": "390px Corporate JOIN NOW and invoice actions",
+    "passed": true
+   },
+   {
+    "name": "390px day 1",
+    "passed": true
+   },
+   {
+    "name": "390px day 2",
+    "passed": true
+   },
+   {
+    "name": "390px day 3",
+    "passed": true
+   },
+   {
+    "name": "390px day 4",
+    "passed": true
+   },
+   {
+    "name": "390px day 5",
+    "passed": true
+   },
+   {
+    "name": "390px five agenda days",
+    "passed": true
+   },
+   {
+    "name": "390px Day 5 compact programme",
+    "passed": true
+   },
+   {
+    "name": "390px room columns",
+    "passed": true
+   },
+   {
+    "name": "390px Checkpoint result",
+    "passed": true
+   },
+   {
+    "name": "390px Checkpoint restart",
+    "passed": true
+   },
+   {
+    "name": "390px Outlook ICS",
+    "passed": true
+   },
+   {
+    "name": "390px all images healthy",
+    "passed": true
+   },
+   {
+    "name": "390px three Category Sponsors",
+    "passed": true
+   },
+   {
+    "name": "390px 12 Summit Partners",
+    "passed": true
+   },
+   {
+    "name": "390px sponsor logos fit and share card style",
+    "passed": true
+   },
+   {
+    "name": "390px all organisation logos genuinely transparent",
+    "passed": true
+   },
+   {
+    "name": "390px compact responsive sponsor grid",
+    "passed": true
+   },
+   {
+    "name": "390px three experience logos",
+    "passed": true
+   },
+   {
+    "name": "390px In Good Company placeholder",
+    "passed": true
+   },
+   {
+    "name": "390px speaker and host cards",
+    "passed": true
+   },
+   {
+    "name": "390px console clean",
+    "passed": false
+   },
+   {
+    "name": "390px local requests successful",
+    "passed": true
+   },
+   {
+    "name": "390px mobile menu",
+    "passed": true
+   },
+   {
+    "name": "375px document and content fit",
+    "passed": true
+   },
+   {
+    "name": "375px flapFits",
+    "passed": true
+   },
+   {
+    "name": "375px countdownTicks",
+    "passed": true
+   },
+   {
+    "name": "375px zonesFit",
+    "passed": true
+   },
+   {
+    "name": "375px passLinksCorrect",
+    "passed": true
+   },
+   {
+    "name": "375px navigationFixed",
+    "passed": true
+   },
+   {
+    "name": "375px faqOpen",
+    "passed": true
+   },
+   {
+    "name": "375px faqClosed",
+    "passed": true
+   },
+   {
+    "name": "375px google",
+    "passed": true
+   },
+   {
+    "name": "375px portraitsLoaded",
+    "passed": true
+   },
+   {
+    "name": "375px speakerNext",
+    "passed": true
+   },
+   {
+    "name": "375px speakerPrevious",
+    "passed": true
+   },
+   {
+    "name": "375px Sydney local-time conversion",
+    "passed": true
+   },
+   {
+    "name": "375px three-digit days",
+    "passed": true
+   },
+   {
+    "name": "375px registration links present",
+    "passed": true
+   },
+   {
+    "name": "375px all pass types linked",
+    "passed": true
+   },
+   {
+    "name": "375px Corporate JOIN NOW and invoice actions",
+    "passed": true
+   },
+   {
+    "name": "375px day 1",
+    "passed": true
+   },
+   {
+    "name": "375px day 2",
+    "passed": true
+   },
+   {
+    "name": "375px day 3",
+    "passed": true
+   },
+   {
+    "name": "375px day 4",
+    "passed": true
+   },
+   {
+    "name": "375px day 5",
+    "passed": true
+   },
+   {
+    "name": "375px five agenda days",
+    "passed": true
+   },
+   {
+    "name": "375px Day 5 compact programme",
+    "passed": true
+   },
+   {
+    "name": "375px room columns",
+    "passed": true
+   },
+   {
+    "name": "375px Checkpoint result",
+    "passed": true
+   },
+   {
+    "name": "375px Checkpoint restart",
+    "passed": true
+   },
+   {
+    "name": "375px Outlook ICS",
+    "passed": true
+   },
+   {
+    "name": "375px all images healthy",
+    "passed": true
+   },
+   {
+    "name": "375px three Category Sponsors",
+    "passed": true
+   },
+   {
+    "name": "375px 12 Summit Partners",
+    "passed": true
+   },
+   {
+    "name": "375px sponsor logos fit and share card style",
+    "passed": true
+   },
+   {
+    "name": "375px all organisation logos genuinely transparent",
+    "passed": true
+   },
+   {
+    "name": "375px compact responsive sponsor grid",
+    "passed": true
+   },
+   {
+    "name": "375px three experience logos",
+    "passed": true
+   },
+   {
+    "name": "375px In Good Company placeholder",
+    "passed": true
+   },
+   {
+    "name": "375px speaker and host cards",
+    "passed": true
+   },
+   {
+    "name": "375px console clean",
+    "passed": false
+   },
+   {
+    "name": "375px local requests successful",
+    "passed": true
+   },
+   {
+    "name": "375px mobile menu",
+    "passed": true
+   },
+   {
+    "name": "reduced motion",
+    "passed": true
+   },
+   {
+    "name": "timeline End key",
+    "passed": true
+   },
+   {
+    "name": "timeline Home key",
+    "passed": true
+   }
+  ]
+ }
+}

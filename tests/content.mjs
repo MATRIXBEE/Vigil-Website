@@ -99,7 +99,8 @@ check('Day 5 has no detailed timeline and preserves the parallel-room explanatio
 });
 check('panel renderer shows outcome, collapsed Days 1–4 schedule and Day 5 rooms', () => {
   const r = slice('  function select(i, user) {', '  /* ---------- Mini-Checkpoint');
-  ['You leave with', '<details class="sched">', 'sched-list', 'rooms-bar', '14:00–17:00 GMT', 'roomCard', 'programme · times in GMT'].forEach(k => assert.ok(r.includes(k), k));
+  ['You leave with', '<details class="sched">', 'sched-list', '14:00–17:00 — Choose a Room', 'roomCard', 'programme · times in GMT'].forEach(k => assert.ok(r.includes(k), k));
+  assert.doesNotMatch(r, /rooms-bar|Co-facilitator to be announced/i);
   assert.match(slice('  function roomCard(r)', '  function select'), /access-tag vip">VIP</);
 });
 
@@ -109,13 +110,14 @@ check('agenda link uses verified Heartbeat registration and day times stay GMT',
 });
 
 /* ---------- Event strip ---------- */
-check('time-zone cards: GMT, US Eastern (EST), Gulf (GST); no IST option', () => {
+check('fixed schedule shows GMT only; local calculator includes Australia', () => {
   const z = slice('<ul class="zones">', '</ul>');
   assert.match(z, /<span>GMT<\/span><b>2:00 PM – 5:00 PM<\/b>/);
-  assert.match(z, /<span>US Eastern \(EST\)<\/span><b>9:00 AM – 12:00 PM<\/b>/);
-  assert.match(z, /<span>Gulf \(GST\)<\/span><b>6:00 PM – 9:00 PM<\/b>/);
+  assert.equal((z.match(/<li>/g) || []).length, 1);
+  assert.doesNotMatch(z, /US Eastern|Gulf|EST|GST/);
   assert.doesNotMatch(slice('<select id="tzSelect">', '</select>'), /IST|Kolkata/);
   assert.match(slice('<select id="tzSelect">', '</select>'), /Australia\/Sydney/);
+  assert.doesNotMatch(visible, /9:00am–12:00pm EST|6:00–9:00pm Gulf/);
 });
 check('countdown units are DAYS, HOURS, MINS, SECS', () => {
   assert.deepEqual([...slice('<div class="count-board"', '</div>\n        <span').matchAll(/class="lbl">([^<]+)</g)].map(m => m[1]), ['Days', 'Hours', 'Mins', 'Secs']);
@@ -138,10 +140,11 @@ check('mini-Checkpoint asks three questions and never produces an archetype', ()
   assert.doesNotMatch(html, /id="rMeter"|id="rIcon"|Your first read/);
   assert.match(slice('<div class="result" id="qResult"', '</div>\n      <p class="disclaimer">'), /Take the full Checkpoint/);
 });
-check('Checkpoint content uses the three dimensions', () => {
+check('Checkpoint content uses three lenses without calling them dimensions', () => {
   ['Data & Evidence', 'Digital Tools & Systems', 'AI & Automation'].forEach(d => assert.ok(text(slice('<section class="check"', '</section>')).includes(d)));
   assert.doesNotMatch(html, /pillar radar|across five pillars|5<\/span><span class="what">pillars/);
-  assert.match(visible, /3 Checkpoint dimensions/);
+  assert.match(visible, /3 lenses for digital HSE/);
+  assert.doesNotMatch(visible, /Checkpoint dimensions|three dimensions/i);
 });
 
 /* ---------- Speakers ---------- */
@@ -150,8 +153,10 @@ check('speaker order: Ike, keynote placeholder, Sarah and Claudia swapped', () =
   vm.runInContext(slice('  var SPEAKERS = ', '  var rail =') + ';this.S=JSON.parse(JSON.stringify(SPEAKERS));', ctx);
   ctx.S = plain(ctx.S);
   assert.deepEqual(ctx.S.map(s => s.n), ['Ike Aigbogun', 'Keynote speaker', 'Bulat Almukhametov', 'Sarah Power', 'Funmi Adegbola',
-    'Isaac Ochulor', 'Jaina Ko', 'Claudia Soares', 'Subhrajeet Patra', 'Supriya Naidu', 'Zoe Borde']);
+    'Isaac Ochulor', 'Jaina Ko', 'Claudia Soares', 'Subhrajeet Patra', 'Supriya Naidu', 'Zoe Borde',
+    'Speaker to be announced', 'Speaker to be announced', 'Speaker to be announced']);
   assert.equal(ctx.S[1].tba, true); assert.equal(ctx.S[1].f, undefined);
+  assert.equal(ctx.S.slice(-3).filter(s => s.tba && !s.f && s.r.length === 0).length, 3);
 });
 check('no Speak at VIGIL links, cards or buttons', () => {
   assert.doesNotMatch(html, /href="\/speak"|>Speak at VIGIL<|Have evidence worth sharing/);
@@ -164,6 +169,7 @@ check('speaker cards and host photo have no duotone or colour-swap hover', () =>
 /* ---------- Host ---------- */
 check('host profile: new title, digital specialist, experience logos', () => {
   const h = text(slice('<section class="host rule"', '</section>'));
+  assert.match(h, /UK-based/);
   assert.match(h, /HSE Digital Transformation & Workforce Capability Specialist/);
   assert.match(h, /Digital specialist Implementation, training and adoption specialist for global teams\./);
   const host = slice('<section class="host rule"', '</section>');
@@ -213,9 +219,10 @@ check('In Good Company holds no unconfirmed attendee logos or carousel', () => {
   assert.doesNotMatch(company, /<img|marquee|Unilever|Cority|Morrisons|sponsors\//i);
   assert.doesNotMatch(html, /class="marquee|marquee-track|marquee-group/);
 });
-check('partners: HeyLina and NEBOSH excluded, no public prices, verified enquiry', () => {
-  assert.doesNotMatch(html, /heylina|HeyLina|Heyline|NEBOSH/i);
-  assert.ok(!fs.existsSync(path.join(root, 'assets/sponsors/heylina.webp')));
+check('partners: HeyLina replaces Ensured Safety; NEBOSH excluded; no public prices', () => {
+  assert.match(html, /src="assets\/sponsors\/heylina\.webp" alt="HeyLina logo"/);
+  assert.doesNotMatch(html, /src="assets\/sponsors\/ensured-safety\.webp"|NEBOSH/i);
+  assert.ok(fs.existsSync(path.join(root, 'assets/sponsors/heylina.webp')));
   const pt = slice('<section class="rule" id="partners"', '</section>');
   assert.doesNotMatch(pt, /\$|class="tiers"|In-kind/);
   assert.match(pt, /href="mailto:ike@wearevigil\.global\?subject=Partnering%20with%20VIGIL">Partner with VIGIL/);
@@ -226,9 +233,12 @@ check('Category Sponsors and Summit Partners have their exact distinct logo sets
   const summit = slice('<div class="pt-logos">', '</section>');
   const refs = source => [...source.matchAll(/src="assets\/sponsors\/([^\"]+\.webp)" alt="([^\"]+)"/g)];
   const categoryFiles = ['flocrunch', 'nutheory', 'cts'];
-  const summitFiles = ['ai-in-hse', 'ensured-safety', 'evex-safety', 'flowforms', 'haop', 'hsz-solutions', 'korviaone', 'own-the-prompt', 'qhse-directory', 'shedai', 'hse-nations', 'sowshe-a'];
+  const summitFiles = ['ai-in-hse', 'heylina', 'evex-safety', 'flowforms', 'haop-light', 'hsz-solutions', 'korviaone', 'own-the-prompt', 'qhse-directory', 'shedai', 'hse-nations', 'sowshe-a'];
   assert.match(html, /<h3 id="categoryTitle">Category Sponsors<\/h3>/);
   assert.match(html, /<h3 id="summitPartnersTitle">Summit Partners<\/h3>/);
+  assert.doesNotMatch(summit, /class="plate dark"/);
+  assert.doesNotMatch(summit, /src="assets\/sponsors\/haop\.webp"/);
+  assert.ok(fs.existsSync(path.join(root, 'assets/sponsors/haop.webp')));
   assert.deepEqual(refs(category).map(x => x[1]), categoryFiles.map(x => `${x}.webp`));
   assert.deepEqual(refs(summit).map(x => x[1]), summitFiles.map(x => `${x}.webp`));
   for (const [, file, alt] of [...refs(category), ...refs(summit)]) {
@@ -272,8 +282,8 @@ check('free registration stays unchanged and paid links use distinct invitations
     assert.equal(tag.match(/href="([^"]+)"/)[1], destinations[kind]);
   });
 });
-check('fixed time lines use EST, not ET; IST only in automatic local-time mapping', () => {
-  assert.doesNotMatch(visible, /\bET\b/);
+check('fixed schedule copy is GMT only', () => {
+  assert.doesNotMatch(visible, /9:00am–12:00pm|6:00–9:00pm|Times shown in GMT first/);
   assert.doesNotMatch(visible, /\bIST\b/);
 });
 check('no review notes, bracketed placeholders or TODO markers in visible copy', () => {

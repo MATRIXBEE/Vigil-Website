@@ -283,7 +283,6 @@ section{position:relative;padding:var(--sec) 0}
 /* Logo plates · logos never recoloured; light plate keeps every original legible on Night */
 .plate{display:grid;place-items:center;background:var(--paper);border-radius:var(--r);height:72px;padding:12px 18px;transition:transform .3s var(--ease)}
 .plate img{max-height:42px;max-width:100%;width:auto;height:auto;object-fit:contain}
-.plate.dark{background:var(--deep);border:1px solid var(--line-2)}
 .plate.tall img{max-height:52px}
 .plate:hover{transform:translateY(-2px)}
 
@@ -356,10 +355,6 @@ section{position:relative;padding:var(--sec) 0}
 .sched .sched-list{margin-top:8px}
 .rooms-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 24px;margin-bottom:14px}
 .rooms-head .sub-h{margin:0}
-.rooms-bar{flex:1 1 320px;max-width:640px;display:flex;align-items:center;gap:12px;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--teal)}
-.rooms-bar i{flex:1;height:1.5px;background:var(--teal);position:relative}
-.rooms-bar i::before,.rooms-bar i::after{content:"";position:absolute;top:-4px;width:1.5px;height:9px;background:var(--teal)}
-.rooms-bar i::before{left:0}.rooms-bar i::after{right:0}
 .rooms{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
 .room{display:flex;flex-direction:column;gap:10px;min-width:0;background:var(--deep);border:1px solid var(--line-2);border-top:2px solid var(--c);border-radius:var(--r);padding:20px 18px}
 .room-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -687,7 +682,7 @@ footer ul a:hover{color:var(--teal)}
   <a class="m" href="#partners">Partners <span class="tri"></span></a>
   <a class="m" href="#host">About <span class="tri"></span></a>
   <a class="btn btn-primary" data-register="free" href="https://summit.wearevigil.global/p/register">Register free</a>
-  <p class="fine">1–5 March 2027 · 2:00–5:00pm GMT · 9:00am–12:00pm EST · 6:00–9:00pm Gulf (GST)</p>
+  <p class="fine">1–5 March 2027 · 2:00–5:00pm GMT</p>
 </nav>
 
 <main id="main">
@@ -733,11 +728,9 @@ footer ul a:hover{color:var(--teal)}
       </ul>
     </div>
     <div class="event-area">
-      <h3 class="strip-label">Global time zones</h3>
+      <h3 class="strip-label">Summit time (GMT)</h3>
       <ul class="zones">
         <li><span>GMT</span><b>2:00 PM – 5:00 PM</b></li>
-        <li><span>US Eastern (EST)</span><b>9:00 AM – 12:00 PM</b></li>
-        <li><span>Gulf (GST)</span><b>6:00 PM – 9:00 PM</b></li>
       </ul>
       <details class="timezone-tools"><summary>Show your local time</summary>
       <div class="yours">
@@ -786,7 +779,7 @@ footer ul a:hover{color:var(--teal)}
   <div class="wrap">
     <div class="stats">
       <div class="stat reveal"><span class="num" data-count="15">15<span class="unit">hrs</span></span><span class="what">of live programme</span><span class="src">5 days × 3 hours · VIGIL Summit 2027 schedule</span></div>
-      <div class="stat reveal d1"><span class="num" data-count="3">3</span><span class="what">Checkpoint dimensions</span><span class="src">Data &amp; Evidence · Digital Tools &amp; Systems · AI &amp; Automation</span></div>
+      <div class="stat reveal d1"><span class="num" data-count="3">3</span><span class="what">lenses for digital HSE</span><span class="src">Data &amp; Evidence · Digital Tools &amp; Systems · AI &amp; Automation</span></div>
       <div class="stat reveal d2"><span class="num" data-count="4">4</span><span class="what">days free to attend live</span><span class="src">Days 1–4 · Day 5, Blueprint Day, for VIP pass holders</span></div>
       <div class="stat stat-format reveal d3"><span class="num">Live</span><span class="what">online, wherever you are</span><span class="src">Streamed via Zoom and Heartbeat · VIGIL Summit 2027</span></div>
     </div>
@@ -842,8 +835,8 @@ footer ul a:hover{color:var(--teal)}
       <p class="label"><span class="tri"></span>VIGIL Checkpoint</p>
       <h2 class="h2" id="checkTitle">Where does your safety team <span class="su">really</span> stand?</h2>
       <p class="lead">Start with three quick questions. For a real answer, take the full VIGIL Checkpoint: a free 10-minute, 30-question digital HSE maturity assessment.</p>
-      <p class="dims-h">The full Checkpoint covers three dimensions</p>
-      <ul class="ladder dims" aria-label="VIGIL Checkpoint dimensions">
+      <p class="dims-h">Explore three lenses for digital HSE</p>
+      <ul class="ladder dims" aria-label="Three digital HSE lenses">
         <li class="rung" style="--c:var(--p-data)"><svg class="ic" viewBox="-3 -3 84 89" aria-hidden="true"><polygon points="0,0 58.38,0 27.6,62.19"/></svg><div><b>Data &amp; Evidence</b><span>Data ownership, quality and how data drives decisions.</span></div></li>
         <li class="rung" style="--c:var(--p-tools)"><svg class="ic" viewBox="-3 -3 84 89" aria-hidden="true"><polygon points="0,0 58.38,0 27.6,62.19"/></svg><div><b>Digital Tools &amp; Systems</b><span>From digitised processes to connected systems.</span></div></li>
         <li class="rung" style="--c:var(--p-ai)"><svg class="ic" viewBox="-3 -3 84 89" aria-hidden="true"><polygon points="0,0 58.38,0 27.6,62.19"/></svg><div><b>AI &amp; Automation</b><span>AI readiness, governance and awareness.</span></div></li>
@@ -862,7 +855,7 @@ footer ul a:hover{color:var(--teal)}
       <div class="result" id="qResult" hidden>
         <p class="label">Your next step</p>
         <h3 class="r-title" id="rTitle" tabindex="-1">Get your full Checkpoint result.</h3>
-        <p class="r-intro">Three questions can’t measure digital maturity. The full VIGIL Checkpoint can: 30 questions in about 10 minutes, across Data &amp; Evidence, Digital Tools &amp; Systems, and AI &amp; Automation.</p>
+        <p class="r-intro">Three questions can’t measure digital maturity. The full VIGIL Checkpoint can: 30 questions in about 10 minutes, exploring Data &amp; Evidence, Digital Tools &amp; Systems, and AI &amp; Automation.</p>
         <p class="sub-h">Your answers</p>
         <ul class="formats r-answers" id="rAnswers"></ul>
         <p class="r-pillar" id="rPillar"></p>
@@ -987,7 +980,7 @@ footer ul a:hover{color:var(--teal)}
       <p class="label"><span class="tri"></span>Your host</p>
       <h2 class="h2" id="hostTitle">Meet your <span class="su">summit host.</span></h2>
       <p class="host-name">Ike Aigbogun</p>
-      <p class="host-bio">HSE Digital Transformation &amp; Workforce Capability Specialist</p>
+      <p class="host-bio">UK-based · HSE Digital Transformation &amp; Workforce Capability Specialist</p>
       <div class="host-years"><b data-count="17">17+</b><span>years in health and safety</span></div>
       <div class="proofs">
         <div><h4><span class="tri"></span>Practitioner-built</h4><p>Created by an HSE professional with 17+ years in the field.</p></div>
@@ -1031,10 +1024,10 @@ footer ul a:hover{color:var(--teal)}
       <div class="pt-logos-l"><h3 id="summitPartnersTitle">Summit Partners</h3></div>
       <div class="pt-logos">
         <div class="plate"><img src="assets/sponsors/ai-in-hse.webp" alt="AI in HSE logo" loading="lazy" width="1200" height="282"></div>
-        <div class="plate"><img src="assets/sponsors/ensured-safety.webp" alt="Ensured Safety logo" loading="lazy" width="1200" height="253"></div>
+        <div class="plate"><img src="assets/sponsors/heylina.webp" alt="HeyLina logo" loading="lazy" width="1200" height="280"></div>
         <div class="plate"><img src="assets/sponsors/evex-safety.webp" alt="EvexSafety logo" loading="lazy" width="1200" height="797"></div>
         <div class="plate tall"><img src="assets/sponsors/flowforms.webp" alt="FLOWforms logo" loading="lazy" width="903" height="850"></div>
-        <div class="plate dark"><img src="assets/sponsors/haop.webp" alt="HAOP logo" loading="lazy" width="1200" height="740"></div>
+        <div class="plate"><img src="assets/sponsors/haop-light.webp" alt="HAOP logo" loading="lazy" width="1200" height="740"></div>
         <div class="plate tall"><img src="assets/sponsors/hsz-solutions.webp" alt="HSZ Solutions logo" loading="lazy" width="938" height="850"></div>
         <div class="plate"><img src="assets/sponsors/korviaone.webp" alt="KorviaOne logo" loading="lazy" width="1200" height="214"></div>
         <div class="plate"><img src="assets/sponsors/own-the-prompt.webp" alt="OwnThePrompt logo" loading="lazy" width="1200" height="304"></div>
@@ -1106,7 +1099,7 @@ footer ul a:hover{color:var(--teal)}
       <a class="btn btn-primary" data-register="free" href="https://summit.wearevigil.global/p/register">Register free <svg class="arr" viewBox="0 0 14 10" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
       <a class="btn btn-ghost" data-register="vip" href="https://summit.wearevigil.global/invitation?code=GC647E">Get your VIP pass</a>
     </div>
-    <p class="fine">2:00–5:00pm GMT · 9:00am–12:00pm EST · 6:00–9:00pm Gulf (GST)</p>
+    <p class="fine">2:00–5:00pm GMT</p>
   </div>
 </section>
 </main>
@@ -1127,7 +1120,7 @@ footer ul a:hover{color:var(--teal)}
       <div><h4>Get involved</h4><ul><li><a href="/partners" data-proto="/partners">Partners</a></li><li><a href="/contact" data-proto="/contact">Contact</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="/privacy" data-proto="/privacy">Privacy</a></li><li><a href="/terms" data-proto="/terms">Terms</a></li><li><a href="/code-of-conduct" data-proto="/code-of-conduct">Code of conduct</a></li></ul></div>
     </div>
-    <div class="f-bottom"><span>© 2027 VIGIL · Times shown in GMT first, then US Eastern (EST) and Gulf (GST)</span><span class="so">Keep watch. Lead with evidence.</span></div>
+    <div class="f-bottom"><span>© 2027 VIGIL · Summit times shown in GMT</span><span class="so">Keep watch. Lead with evidence.</span></div>
   </div>
 </footer>
 
@@ -1310,7 +1303,7 @@ footer ul a:hover{color:var(--teal)}
 
   /* ---------- Add to calendar: Google link + .ics (repeats daily for 5 days) ---------- */
   var TITLE = 'VIGIL Summit 2027';
-  var DESC = 'The global summit for evidence-led safety leaders. Live online, 1–5 March 2027, 2:00–5:00pm GMT (9:00am–12:00pm EST, 6:00–9:00pm Gulf GST). Days 1–4 free; Day 5, Blueprint Day, for VIP pass holders. Register once and join on Heartbeat: https://summit.wearevigil.global/p/register';
+  var DESC = 'The global summit for evidence-led safety leaders. Live online, 1–5 March 2027, 2:00–5:00pm GMT. Days 1–4 free; Day 5, Blueprint Day, for VIP pass holders. Register once and join on Heartbeat: https://summit.wearevigil.global/p/register';
   var gUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
     '&text=' + encodeURIComponent(TITLE) +
     '&dates=20270301T140000Z/20270301T170000Z' +
@@ -1541,8 +1534,7 @@ footer ul a:hover{color:var(--teal)}
       '<div><p class="sub-h">' + trackHead + '</p><ul class="tracks">' + tracks + '</ul></div>' +
       '<div><p class="sub-h">Session formats</p><ul class="formats">' + formats + '</ul>' +
       '<div class="outcome"><p class="sub-h">You leave with</p><p>' + esc(d.outcome) + '</p></div></div>' +
-      (d.rooms ? '<div class="rooms-wrap"><div class="rooms-head"><p class="sub-h">Choose one room</p>' +
-        '<p class="rooms-bar"><span>14:00–17:00 GMT</span><i aria-hidden="true"></i><span class="sr-only"> All five rooms run at the same time.</span></p></div>' +
+      (d.rooms ? '<div class="rooms-wrap"><div class="rooms-head"><p class="sub-h">14:00–17:00 — Choose a Room <span class="teal">(GMT)</span></p></div>' +
         '<ul class="rooms">' + d.rooms.map(roomCard).join('') + '</ul></div>' : '') +
       (d.rooms ? '<p class="sched-note"><span class="tri" aria-hidden="true"></span><span>' + esc(d.note) + '</span></p>' :
         '<details class="sched"><summary>Day ' + d.n + ' programme · times in GMT</summary><ol class="sched-list">' + d.sessions.map(schedRow).join('') + '</ol></details>' +
@@ -1609,7 +1601,10 @@ footer ul a:hover{color:var(--teal)}
     { n: 'Claudia Soares', f: 'claudia-soares', r: ['Day 3 · Challenge: Tools & Systems', 'Day 5 · AI & Automation Roadmap Lab'] },
     { n: 'Subhrajeet Patra', f: 'subhrajeet-patra', r: ['Day 2 · Diagnose: AI & Automation'] },
     { n: 'Supriya Naidu', f: 'supriya-naidu', r: ['Day 5 · Human + AI Masterclass'] },
-    { n: 'Zoe Borde', f: 'zoe-borde', r: ['Day 2 · Diagnose: Tools & Systems', 'Day 5 · Tools & Systems Roadmap Lab'] }
+    { n: 'Zoe Borde', f: 'zoe-borde', r: ['Day 2 · Diagnose: Tools & Systems', 'Day 5 · Tools & Systems Roadmap Lab'] },
+    { tba: true, n: 'Speaker to be announced', r: [] },
+    { tba: true, n: 'Speaker to be announced', r: [] },
+    { tba: true, n: 'Speaker to be announced', r: [] }
   ];
   var rail = $('#rail');
   rail.innerHTML = SPEAKERS.map(function (sp) {

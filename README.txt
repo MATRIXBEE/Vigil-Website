@@ -1,6 +1,8 @@
 VIGIL Summit 2027 · v4
-21 November update: see README.md and VIGIL-Implementation-Report.md for
-the current website, with In Good Company, Category Sponsors and Summit Partners.
+22 November update: see README.md and VIGIL-Implementation-Report.md for
+the current GMT-only schedule, HeyLina partner logo, uniform off-white partner
+cards, a separate HAOP light-card logo with navy lettering, three-lens wording
+and reserved speaker slots.
 The cleanup and delivery details below describe the 17 November release.
 Final cleanup · 17 November 2026
 
@@ -22,20 +24,22 @@ Start the server first. VIGIL_URL sets its URL; VIGIL_SHOTS sets the capture fol
 Actual final-run results and limits are in VALIDATION.md and verification/.
 
 CURRENT V4
-- Countdown: 1 March 2027, 14:00 UTC; fixed GMT/EST/GST and local-time conversion.
+- Countdown: 1 March 2027, 14:00 UTC; fixed GMT schedule and optional local-time conversion.
 - Google Calendar template URL and Microsoft Outlook ICS (daily x5).
 - Vision, Diagnose, Challenge, Evidence in Practice and Blueprint Day agendas.
 - Blueprint Day: three Roadmap Labs and two Masterclasses in parallel.
 - Three-question Checkpoint warm-up with no scoring or archetype; restart works.
-- Eleven speaker cards: ten portraits and one reserved keynote slot.
+- Fourteen speaker cards: ten portraits, a reserved keynote slot and three
+  additional unnamed slots.
 - In Good Company placeholder with no attendee logos or carousel.
-- Three Category Sponsors and twelve Summit Partners; nine FAQ disclosures.
+- Three Category Sponsors and twelve Summit Partners, including HeyLina in
+  place of Ensured Safety; NEBOSH remains excluded. Nine FAQ disclosures.
 - Free/Heartbeat CTAs: https://summit.wearevigil.global/p/register
 - VIP, VIP+ and Corporate CTAs: their distinct invitation codes; see README.md.
 - Corporate also offers Request an Invoice by email.
 
 CLEANUP
-Only the two unused HeyLina logos and obsolete v3 ZIP were removed. The three
+The earlier cleanup removed two then-unused HeyLina logos and obsolete v3 ZIP. The three
 Git deletions are included in the v4 publication. V4 implementation and all
 other assets, tests, reports and screenshots are preserved. README.md and the
 implementation report describe known missing assets and external-service limits.

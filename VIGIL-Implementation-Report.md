@@ -1,5 +1,59 @@
 # VIGIL Summit 2027 · Implementation Report
 
+## 22 November 2026 client update
+
+The existing v4 homepage was updated in place without changing its overall
+design. The supplied transparent HeyLina artwork now replaces Ensured Safety
+in the twelve-logo Summit Partners grid. FloCrunch, nuTheory and CTS Globe
+remain the only Category Sponsors. NEBOSH remains excluded. All partner cards,
+including HAOP, now use the same off-white background, radius and border
+styling. HeyLina's lime mark remains in its original colour. The original
+transparent `haop.webp` remains untouched with its white lettering. A
+separate lossless `haop-light.webp` is displayed on the off-white card: only
+the lettering changes to navy `#172B3A`. The decoded blue, orange and green
+wave pixels, full alpha channel, dimensions, letter shapes and spacing were
+checked against the original. HeyLina's light mark has limited contrast on
+the required off-white surface. The three separate
+experience logos remain Morrisons, Cority and Unilever. The displayed
+organisation logo files have genuine transparency.
+
+The fixed schedule now shows GMT only. The optional local-time calculator
+still supports other locations, including Sydney, Australia. Google Calendar
+and the five-day Outlook ICS export remain the two calendar actions. Day 5
+keeps its five simultaneous rooms, VIP explanation and colour legend; the
+room heading now reads **14:00–17:00 — Choose a Room (GMT)** without a detailed
+Day 5 time breakdown. The proof and mini-Checkpoint sections call Data &
+Evidence, Digital Tools & Systems, and AI & Automation **three lenses**, not
+Checkpoint dimensions. The three-question warm-up still does not score or
+assign an archetype.
+
+Ike remains the first speaker with her approved photograph; Sarah and Claudia
+remain in their previously approved swapped order. Three unnamed speaker
+slots were added after the ten named speaker portraits, in addition to the
+reserved keynote card. Ike's host description now says **UK-based**. No
+speaker names, biographies, locations or session assignments were invented.
+Free, VIP, VIP+ and Corporate destinations remain unchanged and correct;
+Corporate still has separate JOIN NOW and Request an Invoice actions. The
+VIP+ card retains only the approved four-week Digital Sprint implementation
+clinic and support-to-deliver wording. In Good Company remains an empty
+corporate-attendee placeholder without a carousel or attendance claims.
+
+Final verification passed **32 regression, 43 content and 240 browser checks**
+at six desktop, tablet and mobile widths. The restricted-network browser run
+passed 234 checks and failed six console checks because Google Fonts could not
+resolve. The full browser suite was rerun with network access against the
+final HAOP asset and passed all 240 checks with no console errors.
+Details are in `VALIDATION.md` and the dated `verification/` results.
+
+Changed in this update: `index.html`, `assets/sponsors/heylina.webp`,
+`assets/sponsors/haop-light.webp`, the content
+and browser tests, current documentation and dated validation evidence. The
+source archive and original logo files were preserved. The separate VIP tickets page remains
+outside this repository; its required link and Corporate action changes are
+documented in `VIP-Landing-Page-Update.md` for its own editor. The In Good
+Company logo presentation remains a client decision once attendees are
+confirmed.
+
 ## 21 November 2026 payment CTA update (validated before release)
 
 All homepage VIP CTAs, including the hero, pass card, closing CTA and generated

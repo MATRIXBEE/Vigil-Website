@@ -44,7 +44,11 @@ async def main():
             # Keep content overflow checks, excluding only known scroll/crop surfaces.
             r['wideEls'] = await page.evaluate("""(()=>{const vw=document.documentElement.clientWidth;const out=[];document.querySelectorAll('body *').forEach(e=>{const b=e.getBoundingClientRect();if(b.width>0&&(b.right>vw+1)&&!e.closest('.marquee,.rail,.day-tabs,.mobile-menu,.hero-visual,.mark-crop'))out.push(e.className.baseVal||e.className||e.tagName)});return [...new Set(out)].slice(0,8)})()""")
             r['flapFits'] = await page.evaluate("(()=>{const a=document.querySelector('.count-area').getBoundingClientRect();const bd=document.querySelector('.count-board').getBoundingClientRect();return bd.right<=a.right+1 && bd.left>=a.left-1})()")
-            r['zonesFit'] = await page.evaluate("(()=>{const rows=[...document.querySelectorAll('.zones li')];return rows.length===3 && rows.every(e=>e.scrollWidth<=e.clientWidth+1) && new Set(rows.map(e=>e.clientHeight)).size===1})()")
+            r['zonesFit'] = await page.evaluate("(()=>{const rows=[...document.querySelectorAll('.zones li')];return rows.length===1 && rows[0].textContent.includes('GMT') && rows[0].scrollWidth<=rows[0].clientWidth+1})()")
+            await page.locator('.timezone-tools summary').click()
+            await page.select_option('#tzSelect', 'Australia/Sydney')
+            r['sydneyTime'] = await page.evaluate("document.querySelector('#yourTime').textContent")
+            await page.locator('.timezone-tools summary').click()
             d1 = await page.evaluate("document.querySelector('#cdS').dataset.value")
             await page.wait_for_timeout(1300)
             d2 = await page.evaluate("document.querySelector('#cdS').dataset.value")
@@ -64,7 +68,7 @@ async def main():
                 await page.locator(sel).nth(i).click()
                 await page.wait_for_timeout(120)
                 info = await page.evaluate("""(()=>{const p=document.querySelector('#dayPanel');const vw=document.documentElement.clientWidth;let wide=0;p.querySelectorAll('*').forEach(e=>{if(e.getBoundingClientRect().right>vw+1)wide++});
-                  return {h:p.querySelector('h3').textContent, rows:p.querySelectorAll('.sched-list>li').length, rooms:p.querySelectorAll('.room').length, when:p.querySelector('.when-line').textContent, note:p.querySelector('.sched-note')?.textContent||'', roomTime:p.querySelector('.rooms-bar')?.textContent||'', scheduleOpen:p.querySelector('details.sched')?.open??null, cta:p.querySelector('.act a')?.href, wide}})()""")
+                  return {h:p.querySelector('h3').textContent, rows:p.querySelectorAll('.sched-list>li').length, rooms:p.querySelectorAll('.room').length, when:p.querySelector('.when-line').textContent, note:p.querySelector('.sched-note')?.textContent||'', roomTime:p.querySelector('.rooms-head .sub-h')?.textContent||'', scheduleOpen:p.querySelector('details.sched')?.open??null, cta:p.querySelector('.act a')?.href, wide}})()""")
                 days.append(info)
             r['days'] = days
             # Day 5 rooms layout
@@ -113,8 +117,9 @@ async def main():
             await page.evaluate("document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager')"); await page.wait_for_timeout(500)
             await page.wait_for_function("[...document.images].every(i=>i.complete&&i.naturalWidth>0)")
             r['brokenImages'] = await page.evaluate("[...document.images].filter(i=>i.complete&&i.naturalWidth===0).map(i=>i.src)")
-            r['sponsorLogos'] = await page.evaluate("""(()=>{const category=[...document.querySelectorAll('.category-logos img')],summit=[...document.querySelectorAll('.pt-logos img')],grid=document.querySelector('.pt-logos');const fits=i=>{const a=i.getBoundingClientRect(),b=i.parentElement.getBoundingClientRect();return i.naturalWidth>0&&a.width>0&&a.height>0&&a.left>=b.left-1&&a.right<=b.right+1&&a.top>=b.top-1&&a.bottom<=b.bottom+1&&Math.abs(a.width/a.height-i.naturalWidth/i.naturalHeight)<.03};return {category:category.map(i=>i.alt),summit:summit.map(i=>i.alt),unique:new Set([...category,...summit].map(i=>i.src)).size,fit:[...category,...summit].every(fits),columns:getComputedStyle(grid).gridTemplateColumns.split(' ').length,rows:new Set([...grid.children].map(e=>Math.round(e.getBoundingClientRect().top))).size,haopDark:document.querySelector('.pt-logos img[alt="HAOP logo"]')?.parentElement.classList.contains('dark')}})()""")
+            r['sponsorLogos'] = await page.evaluate("""(()=>{const category=[...document.querySelectorAll('.category-logos img')],summit=[...document.querySelectorAll('.pt-logos img')],grid=document.querySelector('.pt-logos');const fits=i=>{const a=i.getBoundingClientRect(),b=i.parentElement.getBoundingClientRect();return i.naturalWidth>0&&a.width>0&&a.height>0&&a.left>=b.left-1&&a.right<=b.right+1&&a.top>=b.top-1&&a.bottom<=b.bottom+1&&Math.abs(a.width/a.height-i.naturalWidth/i.naturalHeight)<.03};const style=i=>{const s=getComputedStyle(i.parentElement);return [s.backgroundColor,s.border,s.borderRadius].join('|')};return {category:category.map(i=>i.alt),summit:summit.map(i=>i.alt),unique:new Set([...category,...summit].map(i=>i.src)).size,fit:[...category,...summit].every(fits),columns:getComputedStyle(grid).gridTemplateColumns.split(' ').length,rows:new Set([...grid.children].map(e=>Math.round(e.getBoundingClientRect().top))).size,sameCardStyle:new Set(summit.map(style)).size===1,haopDark:document.querySelector('.pt-logos img[alt="HAOP logo"]')?.parentElement.classList.contains('dark')}})()""")
             r['experienceLogos'] = await page.evaluate("""(()=>{const imgs=[...document.querySelectorAll('.exp-list img')];return {names:imgs.map(i=>i.alt),loaded:imgs.every(i=>i.naturalWidth>0)}})()""")
+            r['logoAlpha'] = await page.evaluate("""(()=>{const imgs=[...document.querySelectorAll('.exp-list img,.category-logos img,.pt-logos img')];const canvas=document.createElement('canvas');const c=canvas.getContext('2d',{willReadFrequently:true});return imgs.every(i=>{canvas.width=i.naturalWidth;canvas.height=i.naturalHeight;c.clearRect(0,0,canvas.width,canvas.height);c.drawImage(i,0,0);return c.getImageData(0,0,1,1).data[3]===0&&c.getImageData(canvas.width-1,canvas.height-1,1,1).data[3]===0})})()""")
             r['companyPlaceholder'] = await page.evaluate("""(()=>{const box=document.querySelector('.company-placeholder');return {heading:document.querySelector('#companyTitle')?.textContent,copy:box?.textContent.trim(),images:box?.querySelectorAll('img').length,carousel:!!document.querySelector('.marquee')}})()""")
             # hover check: speaker card computed filter/colour unchanged
             r['hostImgs'] = await page.evaluate("document.querySelectorAll('.host-v img').length")
@@ -164,6 +169,7 @@ async def main():
         for key in ['flapFits', 'countdownTicks', 'zonesFit', 'passLinksCorrect', 'navigationFixed',
                     'faqOpen', 'faqClosed', 'google', 'portraitsLoaded', 'speakerNext', 'speakerPrevious']:
             verify(prefix + key, r[key])
+        verify(prefix + 'Sydney local-time conversion', '1:00–4:00am' in r['sydneyTime'] and 'AEDT' in r['sydneyTime'])
         verify(prefix + 'three-digit days', len(r['countdownDays']) == 3)
         verify(prefix + 'registration links present', r['registerLinks'] > 0)
         verify(prefix + 'all pass types linked', r['passLinkKinds'] == sorted(DESTINATIONS))
@@ -179,7 +185,8 @@ async def main():
                    and day['when'].endswith('GMT') and (day['scheduleOpen'] is None if i == 4 else day['scheduleOpen'] is False)
                    and day['cta'] == (DESTINATIONS['vip'] if i == 4 else REG))
         verify(prefix + 'five agenda days', len(r['days']) == 5)
-        verify(prefix + 'Day 5 compact programme', '14:00–17:00 GMT' in r['days'][4]['roomTime']
+        verify(prefix + 'Day 5 compact programme', '14:00–17:00 — Choose a Room' in r['days'][4]['roomTime']
+               and '(GMT)' in r['days'][4]['roomTime']
                and 'All five rooms run at the same time' in r['days'][4]['note']
                and 'overview of the rooms you did not attend' in r['days'][4]['note'])
         verify(prefix + 'room columns', r['roomCols'] == (5 if width > 1180 else 3 if width > 760 else 1))
@@ -193,8 +200,9 @@ async def main():
         verify(prefix + 'all images healthy', not r['brokenImages'])
         logos = r['sponsorLogos']
         verify(prefix + 'three Category Sponsors', logos['category'] == ['FloCrunch logo', 'nuTheory logo', 'CTS Globe logo'])
-        verify(prefix + '12 Summit Partners', logos['summit'] == ['AI in HSE logo', 'Ensured Safety logo', 'EvexSafety logo', 'FLOWforms logo', 'HAOP logo', 'HSZ Solutions logo', 'KorviaOne logo', 'OwnThePrompt logo', 'QHSE Directory logo', 'SHEDAI logo', 'HSE Nations logo', 'SOWSHE-A logo'])
-        verify(prefix + 'sponsor logos fit and remain distinct', logos['unique'] == 15 and logos['fit'] and logos['haopDark'])
+        verify(prefix + '12 Summit Partners', logos['summit'] == ['AI in HSE logo', 'HeyLina logo', 'EvexSafety logo', 'FLOWforms logo', 'HAOP logo', 'HSZ Solutions logo', 'KorviaOne logo', 'OwnThePrompt logo', 'QHSE Directory logo', 'SHEDAI logo', 'HSE Nations logo', 'SOWSHE-A logo'])
+        verify(prefix + 'sponsor logos fit and share card style', logos['unique'] == 15 and logos['fit'] and logos['sameCardStyle'] and not logos['haopDark'])
+        verify(prefix + 'all organisation logos genuinely transparent', r['logoAlpha'])
         expected_columns = 6 if width > 1050 else 4 if width > 640 else 2
         verify(prefix + 'compact responsive sponsor grid', logos['columns'] == expected_columns and logos['rows'] == 12 // expected_columns)
         verify(prefix + 'three experience logos', r['experienceLogos']['names'] == ['Morrisons logo', 'Cority logo', 'Unilever logo']
@@ -203,7 +211,7 @@ async def main():
         verify(prefix + 'In Good Company placeholder', company['heading'] == 'In Good Company'
                and company['copy'] == 'Corporate attendee logos will appear here once confirmed.'
                and company['images'] == 0 and not company['carousel'])
-        verify(prefix + 'speaker and host cards', len(r['speakers']) == 11 and r['hostImgs'] == 1)
+        verify(prefix + 'speaker and host cards', len(r['speakers']) == 14 and r['speakers'][-3:] == ['Speaker to be announced'] * 3 and r['hostImgs'] == 1)
         verify(prefix + 'console clean', not r['consoleErrors'])
         verify(prefix + 'local requests successful', not r['failedLocal'])
         if width <= 960:

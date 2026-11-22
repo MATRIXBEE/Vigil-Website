@@ -1,6 +1,6 @@
 # VIGIL Summit 2027 · v4
 
-Existing homepage implementation, updated on 21 November 2026. This is a
+Existing homepage implementation, updated on 22 November 2026. This is a
 buildless HTML/CSS/vanilla JavaScript project. The update keeps the approved v4
 design and uses the supplied transparent sponsor artwork.
 
@@ -20,20 +20,25 @@ Poppins loads from Google Fonts; external services require internet access.
 - Team-image hero and a responsive four-area event/countdown strip.
 - Split-flap countdown to 1 March 2027 at 14:00 UTC, with three day digits,
   per-second updates, zero clamping and reduced-motion handling.
-- Fixed GMT, US Eastern (EST) and Gulf (GST) rows; optional local-time conversion.
+- A GMT-only fixed schedule row, with optional local-time conversion including Sydney.
 - Google Calendar event-template URL and Microsoft Outlook ICS download, covering
   1–5 March, daily 14:00–17:00 UTC, with a 30-minute reminder.
 - Five agenda days: Vision, Diagnose, Challenge, Evidence in Practice and Blueprint
   Day. Days 1–4 have expandable GMT programmes; Blueprint Day presents three
   Roadmap Labs and two Masterclasses in parallel, without the detailed timeline.
+  The room heading reads “14:00–17:00 — Choose a Room” (GMT).
 - Three-question Checkpoint warm-up, answer recap, suggested sessions and restart.
   It does not score users, assign an archetype or send their answers anywhere.
-- Eleven speaker cards: ten supplied portraits and one reserved keynote card.
+- Fourteen speaker cards: ten supplied portraits, one reserved keynote card and
+  three additional unnamed speaker slots.
 - An "In Good Company" placeholder after the countdown, reserved for confirmed
   corporate attendee logos. It contains no company claims or carousel.
 - Three Category Sponsors (FloCrunch, nuTheory and CTS Globe) and twelve distinct
-  Summit Partners in a compact responsive grid. HeyLina and NEBOSH are excluded.
+  Summit Partners in a compact responsive grid. HeyLina replaces Ensured Safety;
+  NEBOSH remains excluded. HAOP uses the same off-white card as every partner,
+  with a separate transparent light-card asset and navy lettering.
 - Morrisons, Cority and Unilever logos under the host's experience section.
+  All displayed organisation logos have transparent image backgrounds.
 - Nine FAQ disclosures, responsive navigation, speaker rail and scroll effects.
 
 Free registration and Heartbeat links use
@@ -56,19 +61,20 @@ Playwright and Chromium, or an installed Chrome executable supplied through the
 the page URL; `VIGIL_SHOTS` selects the screenshot directory.
 
 The 17 and 18 November runs are recorded in `VALIDATION.md`, with evidence under
-`verification/`. The 21 November local update is recorded separately there. Existing
+`verification/`. The 21 and 22 November updates are recorded separately there. Existing
 `screenshots/v4-*.jpg` in the repository are earlier supplied v4 captures.
 The 18 November review captures remain local and are excluded from the
 production commit.
 
 ## Cleanup and publication
 
-The earlier cleanup removed the unused HeyLina PNG/WebP and obsolete v3 archive.
+The earlier cleanup removed the then-unused HeyLina PNG/WebP and obsolete v3 archive.
 The 18 November publication includes v4 source, required assets, tests,
 documentation, curated v4 screenshots and portable validation results. Existing
 Git history and remote are preserved. The 21 November sponsor and payment-link
-updates were validated locally before release. GitHub and Vercel show the
-current publication status.
+updates were validated locally before release. The 22 November update includes
+HeyLina, the HAOP light-card asset, schedule and speaker changes. GitHub and
+Vercel show the current published revision.
 
 Local ZIP deliveries, historical implementation diffs, generated browser captures
 and machine-specific audit files are excluded from the source commit. They remain
@@ -84,7 +90,9 @@ for the current published revision.
 
 - The supplied hero is a composite reference with four visible people. CSS shows
   its photograph region; the source image is unchanged.
-- HeyLina remains excluded from the website despite the supplied source file.
+- HeyLina's supplied lime lettering has limited contrast on the required
+  off-white card; its brand colour is preserved. HAOP's original transparent
+  asset is retained, alongside a light-card copy with navy lettering.
 - The presentation of "In Good Company" beyond this placeholder remains a design
   decision for discussion once corporate attendee logos are confirmed.
 - The separately hosted VIP tickets page already has a Corporate section, but
@@ -100,6 +108,8 @@ for the current published revision.
   Checkpoint reports are handled by external services, not this static homepage.
 - Google Calendar saving, Outlook import, screen readers, non-Chromium browsers
   and physical devices are not implied by automated local verification.
+- The final HAOP light-card browser run passed 240 checks at six widths with
+  network access. See `VALIDATION.md` for the earlier restricted-network result.
 
 `VIGIL-Implementation-Report.md` describes the implementation, cleanup and open
 items. `NOTES.md` preserves the historical design/approval record; its old version

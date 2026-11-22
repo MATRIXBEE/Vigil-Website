@@ -1,0 +1,45 @@
+PASS five days with the approved public names
+PASS each day has its own purpose, outcome and track text (no generic repetition)
+PASS Days 2–4 tracks run Data → Tools → AI
+PASS Day 2 track descriptions match the brief
+PASS Day 3 uses Challenge Voices and the approved description
+PASS Day 4 uses the confirmed case-study description
+PASS Days 1–4 session times follow Detailed Plan V3
+PASS Days 1–4 named speakers sit in the correct slots
+PASS unconfirmed speakers are placeholders, not names
+PASS Day 5 offers five parallel rooms: three Roadmap Labs and two Masterclasses
+PASS Day 5 has no detailed timeline and preserves the parallel-room explanation
+PASS panel renderer shows outcome, collapsed Days 1–4 schedule and Day 5 rooms
+PASS agenda link uses verified Heartbeat registration and day times stay GMT
+PASS fixed schedule shows GMT only; local calculator includes Australia
+PASS countdown units are DAYS, HOURS, MINS, SECS
+PASS calendar actions are Google Calendar and Microsoft Outlook only
+PASS mini-Checkpoint asks three questions and never produces an archetype
+PASS Checkpoint content uses three lenses without calling them dimensions
+PASS speaker order: Ike, keynote placeholder, Sarah and Claudia swapped
+PASS no Speak at VIGIL links, cards or buttons
+PASS speaker cards and host photo have no duotone or colour-swap hover
+PASS host profile: new title, digital specialist, experience logos
+PASS role chart runs senior → practitioner → Other and totals 100%
+PASS chart highlights C-suite and Leader, not Advisor
+PASS pass prices and benefits match the approved decisions
+PASS Corporate pass has JOIN NOW and Request an Invoice without a form
+PASS In Good Company holds no unconfirmed attendee logos or carousel
+PASS partners: HeyLina replaces Ensured Safety; NEBOSH excluded; no public prices
+PASS Category Sponsors and Summit Partners have their exact distinct logo sets
+PASS Category Sponsors replaced the old Headline Sponsor placeholder
+PASS FAQ approved answer Q1 is present word for word
+PASS FAQ approved answer Q2 is present word for word
+PASS FAQ approved answer Q3 is present word for word
+PASS FAQ approved answer Q4 is present word for word
+PASS FAQ approved answer Q5 is present word for word
+PASS FAQ approved answer Q6 is present word for word
+PASS FAQ approved answer Q7 is present word for word
+PASS FAQ links: Heartbeat → registration, Checkpoint → existing destination
+PASS free registration stays unchanged and paid links use distinct invitations
+PASS fixed schedule copy is GMT only
+PASS no review notes, bracketed placeholders or TODO markers in visible copy
+PASS all local asset references resolve
+PASS day panel script compiles with the new renderer
+
+43 v4 content checks passed.

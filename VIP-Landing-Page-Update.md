@@ -3,7 +3,12 @@
 The separately hosted [VIP tickets page](https://wearevigil.global/tickets)
 already contains VIP, VIP+, Corporate and Free pass sections. Its editable
 source is not in this repository. The page was not modified or recreated as
-part of the local website update.
+part of this repository update.
+
+Read-only inspection on 22 November 2026 confirmed the page still has its
+Corporate section but does not contain the three invitation codes or the
+Request an Invoice action below. It requires an update through its own
+publishing platform.
 
 When its editor or source becomes available, make these changes to the
 existing page:

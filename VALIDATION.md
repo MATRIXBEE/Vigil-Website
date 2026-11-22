@@ -1,5 +1,57 @@
 # VIGIL Summit 2027 · v4 final validation
 
+## 22 November 2026 HAOP light-card follow-up
+
+| Check | Result | Evidence |
+|---|---|---|
+| `node tests/verify.mjs` | 32 passed; exit 0 | `verification/node-verify-20261122.txt` |
+| `node tests/content.mjs` | 43 passed; exit 0 | `verification/node-content-20261122.txt` |
+| `python tests/browser_check.py` in the restricted sandbox | 234 passed, 6 failed; exit 1 | `verification/browser-results-20261122-haop.json` |
+| `python tests/browser_check.py` with network access | 240 passed, 0 failed; exit 0 | `verification/browser-results-20261122-final.json` |
+
+All six browser failures are the console check at each viewport. The browser
+could not resolve the external Google Fonts URL in the restricted network;
+there were no page JavaScript errors. The other checks passed, including the
+HAOP light asset loading, genuine alpha, uniform off-white partner cards,
+logo fit, no broken images and no horizontal overflow. The desktop and mobile
+partner screenshots were visually inspected. The complete browser suite was
+then rerun with network access against the final HAOP asset and passed all 240
+checks at six widths with no console errors. The earlier 240/0 run below
+predates the HAOP light-card asset.
+
+Pixel comparison of `assets/sponsors/haop-light.webp` against the untouched
+`haop.webp` confirms identical dimensions, full alpha channel and every
+decoded wave pixel. Only the separated lettering region is navy `#172B3A`.
+The new WebP is lossless with transparency and is used only on the off-white
+Summit Partners card.
+
+## 22 November 2026 local client update
+
+| Command | Result | Evidence |
+|---|---|---|
+| `node tests/verify.mjs` | 32 passed; exit 0 | `verification/node-verify-20261122.txt` |
+| `node tests/content.mjs` | 43 passed; exit 0 | `verification/node-content-20261122.txt` |
+| `python tests/browser_check.py` | 240 passed, 0 failed; exit 0 | `verification/browser-results-20261122.json` |
+
+The browser run used installed Chrome at 1440×900, 1366×768, 1024×768,
+768×1024, 390×844 and 375×812. It checked the approved fifteen sponsor
+logos, three experience logos, genuine transparent corners, matching Summit
+Partner card styling, HeyLina replacing Ensured Safety, GMT-only fixed
+schedule, Sydney local conversion, all five agenda days, the compact Day 5
+heading and rooms, speaker placeholders, pass destinations, Corporate invoice
+link, Outlook ICS and Google Calendar options, countdown, Checkpoint, FAQ,
+navigation, image loading, horizontal overflow and console output. All
+checks passed.
+
+The first sandboxed browser run passed 234 checks but had six console failures:
+Google Fonts could not resolve in the restricted test network. A read-only
+request to Google Fonts returned HTTP 200 with network access; the complete
+browser suite was rerun with network access and passed all 240 checks. The
+client-provided HeyLina PNG and WebP, HAOP WebP and NEBOSH files were inspected
+for actual alpha channels. HeyLina and HAOP have genuine transparency;
+NEBOSH is opaque and remains excluded. The original source files were not
+changed. These results were recorded before publication.
+
 ## 21 November 2026 local payment CTA update
 
 | Command | Result | Evidence |
