@@ -1,9 +1,10 @@
 # VIGIL Summit 2027 · Implementation update
 
-The sections below are the historical design and approval record. For the
-22 November client updates and the 21 November published changes, see README.md and
-VIGIL-Implementation-Report.md. The separate VIP page handoff is in
-VIP-Landing-Page-Update.md.
+The sections below are the historical design and approval record. The
+24 November local additions (`/agenda/`, `/speakers/`, `/about/`, `/partners/`
+and an inactive thank-you preview) are described in README.md and
+VIGIL-Implementation-Report.md. Earlier published changes are recorded there
+as well. The separate VIP page handoff is in VIP-Landing-Page-Update.md.
 
 17 November 2026 · v4 · Content and programme update to the approved v3 homepage
 

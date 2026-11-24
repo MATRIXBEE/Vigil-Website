@@ -1,21 +1,34 @@
 # VIGIL Summit 2027 · v4
 
-Existing homepage implementation, updated on 22 November 2026. This is a
-buildless HTML/CSS/vanilla JavaScript project. The update keeps the approved v4
-design and uses the supplied transparent sponsor artwork.
+Buildless HTML/CSS/vanilla JavaScript project. The approved v4 homepage is
+preserved. The 24 November 2026 update adds four static page routes and an
+inactive registration-confirmation preview.
 
 ## Open the site
 
-Open `index.html` directly, or serve this folder:
+Serve this folder so the page routes and absolute asset paths resolve:
 
 ```text
 python -m http.server 5501 --bind 127.0.0.1
 ```
 
-Visit http://localhost:5501/. No npm installation or framework build is required.
+Visit http://localhost:5501/, plus `/agenda/`, `/speakers/`, `/about/` and
+`/partners/`. No npm installation or framework build is required.
 Poppins loads from Google Fonts; external services require internet access.
 
 ## Current behaviour
+
+- Dedicated static Agenda, Speakers, About and Partners routes share the v4
+  branding, navigation and responsive design. The homepage section links still
+  work; completed directory/footer links open their corresponding routes.
+- The Speakers directory has combined day/track filters. The Agenda route has
+  five day tabs, applicable track filters, GMT and local-time tools, and calendar
+  downloads. The About route includes the host and platform cycle. The Partners
+  route uses the current respondent chart and approved logo sets.
+- A registration confirmation dialog has a local fixture at
+  `/tests/fixtures/thank-you.html`. It is **inactive on public pages** pending a
+  verified Heartbeat registration-success callback. The fixture only simulates
+  that callback for testing and submits no form.
 
 - Team-image hero and a responsive four-area event/countdown strip.
 - Split-flap countdown to 1 March 2027 at 14:00 UTC, with three day digits,
@@ -52,13 +65,17 @@ also has a Request an Invoice email link to `ike@wearevigil.global`.
 ```text
 node tests/verify.mjs
 node tests/content.mjs
+node tests/pages.mjs
 python tests/browser_check.py
+python tests/pages_browser_check.py
 ```
 
-The Node suites use built-in modules only. The browser script requires Python
+The Node suites use built-in modules only. The browser scripts require Python
 Playwright and Chromium, or an installed Chrome executable supplied through the
-`CHROME` environment variable. Start the local server first. `VIGIL_URL` overrides
-the page URL; `VIGIL_SHOTS` selects the screenshot directory.
+`CHROME` environment variable. Start the local server before
+`tests/browser_check.py`; `tests/pages_browser_check.py` starts its own server.
+`VIGIL_URL` overrides the homepage test URL; `VIGIL_SHOTS` selects a screenshot
+directory. See `VALIDATION.md` for dated results and environment limits.
 
 The 17 and 18 November runs are recorded in `VALIDATION.md`, with evidence under
 `verification/`. The 21 and 22 November updates are recorded separately there. Existing
@@ -98,6 +115,12 @@ for the current published revision.
 - The separately hosted VIP tickets page already has a Corporate section, but
   its editable source is unavailable here. Its required link and invoice updates
   are documented in `VIP-Landing-Page-Update.md`; that page is unchanged.
+- The VIP price/early-bird conflict still needs a commercial decision before
+  new sales copy or checkout changes. No `/vip` route was created.
+- The sponsor deck and enquiry form need approved destinations. The Partners
+  route offers the official email contact meanwhile.
+- The Heartbeat registration-success mechanism is not verified, so the local
+  confirmation component is not connected to public registration links.
 - The separate Gmail website-edits PDF was not present with this request; the
   latest connected email and its written corrections were reviewed.
 - Some agenda speakers, Sarah Power/Powers spelling, the 2026 sample size and

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Local registration confirmation fixture · VIGIL</title>
+  <link rel="icon" href="/assets/branding/vigil-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/pages.css">
+  <link rel="stylesheet" href="/assets/registration-thank-you.css">
+  <script src="/assets/pages-shared.js" defer></script>
+  <script src="/assets/registration-thank-you.js" defer></script>
+</head>
+<body>
+  <main id="main"><section class="section"><div class="wrap">
+    <p class="label">Local test fixture</p>
+    <h1>Registration confirmation preview</h1>
+    <p class="lead">These buttons simulate a verified provider success event. This page is for local testing only and does not submit a registration.</p>
+    <div class="actions">
+      <button class="btn btn-primary" id="mockFree" type="button">Simulate Free success</button>
+      <button class="btn btn-ghost" id="mockVip" type="button">Simulate VIP success</button>
+    </div>
+  </div></section></main>
+  <script>
+    document.querySelector('#mockFree').addEventListener('click', () => window.VigilThankYou.open({verified:true,pass:'free'}));
+    document.querySelector('#mockVip').addEventListener('click', () => window.VigilThankYou.open({verified:true,pass:'vip'}));
+  </script>
+</body>
+</html>

@@ -1,5 +1,38 @@
 # VIGIL Summit 2027 · Implementation Report
 
+## 24 November 2026 page implementation
+
+Four static routes were added for local review: `/speakers/`, `/agenda/`,
+`/about/` and `/partners/`. They use the existing buildless hosting approach,
+v4 palette and typography, approved portraits and logos, a shared page
+stylesheet and a small shared navigation/calendar helper. The homepage rail,
+timeline, countdown, Checkpoint and pricing mechanics remain in place. Its
+directory and footer links now open completed routes; deferred links keep their
+existing fallback. The approved VIP+ copy now names the four-week Digital
+Sprint implementation clinics without the separate support-to-deliver claim.
+
+The Speakers route has the current 14-card roster and combined day/track
+filters. The Agenda route has five accessible day tabs, Days 2–4 track filters,
+concise expandable public information and five simultaneous VIP-only Day 5
+rooms. About reuses Ike's approved host details and experience logos. Partners
+reuses the 2026 Checkpoint respondent chart, three Category Sponsors and twelve
+Summit Partners, with an official email action. No sponsor deck or enquiry form
+was linked because neither an approved deck nor a submission endpoint was
+supplied.
+
+An inactive registration confirmation component and local fixture were added
+for review. The fixture simulates a provider success event to check the dialog,
+calendar actions and browser-generated badge. No public page loads the
+component or treats a URL query, visit or CTA click as proof of registration.
+Activating it requires a verified Heartbeat success mechanism.
+
+The separate `wearevigil.global/tickets` publisher is unavailable; its VIP
+sales page, paid actions and Corporate invoice option were not edited here.
+The existing homepage price remains $197 while the reported $147 early-bird
+request awaits confirmation against the later brief and checkout. See
+`VALIDATION.md` for the local test record. GitHub and Vercel show the current
+publication state.
+
 ## 22 November 2026 client update
 
 The existing v4 homepage was updated in place without changing its overall
@@ -34,8 +67,9 @@ reserved keynote card. Ike's host description now says **UK-based**. No
 speaker names, biographies, locations or session assignments were invented.
 Free, VIP, VIP+ and Corporate destinations remain unchanged and correct;
 Corporate still has separate JOIN NOW and Request an Invoice actions. The
-VIP+ card retains only the approved four-week Digital Sprint implementation
-clinic and support-to-deliver wording. In Good Company remains an empty
+At that time the VIP+ card used four-week Digital Sprint implementation
+clinic and support-to-deliver wording; the 24 November local edit above removes
+the latter. In Good Company remains an empty
 corporate-attendee placeholder without a carousel or attendance claims.
 
 Final verification passed **32 regression, 43 content and 240 browser checks**

@@ -199,9 +199,10 @@ check('pass prices and benefits match the approved decisions', () => {
   const t = text(slice('<div class="passes', '<div class="pass-foot">'));
   ['$0', '$197', '$997', 'from $3,997', 'Up to 5 people', 'Access to Days 1–4 live sessions', '48-hour access to session recordings',
     'Full access to Day 5, Blueprint Day', 'The three Roadmap Labs and two Masterclasses', 'Live Zoom rooms', 'CPD certificate',
-    'Summit platform access', 'four-week Digital Sprint: implementation clinics and support to deliver your plan', 'Corporate team access']
+    'Summit platform access', 'Post-summit four-week Digital Sprint implementation clinics', 'Corporate team access']
     .forEach(k => assert.ok(t.includes(k), k));
   assert.doesNotMatch(t, /ongoing support|ongoing implementation support/i);
+  assert.doesNotMatch(t, /support to deliver your plan/i);
   assert.doesNotMatch(html, /Day 5: Roadmap|Day 5, Roadmap|Recordings are for VIP/);
 });
 check('Corporate pass has JOIN NOW and Request an Invoice without a form', () => {

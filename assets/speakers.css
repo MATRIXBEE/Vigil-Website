@@ -1,0 +1,52 @@
+/* Speaker directory only. Keep the shared homepage speaker rail untouched. */
+body[data-page="speakers"] .speaker-card .vframe,
+body[data-page="speakers"] .host-panel .portrait {
+  clip-path: none;
+  border-radius: var(--r);
+  border: 1px solid var(--line-2);
+}
+body[data-page="speakers"] .speaker-card .vframe img {
+  object-fit: cover;
+  object-position: center top;
+}
+body[data-page="speakers"] .host-feature {
+  padding: 48px 0;
+}
+body[data-page="speakers"] .host-feature .host-panel {
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+body[data-page="speakers"] .host-feature .portrait {
+  width: 240px;
+  height: 300px;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+body[data-page="speakers"] .tba-section {
+  border-top: 1px solid var(--line-2);
+  margin-top: clamp(56px, 7vw, 92px);
+  padding-top: clamp(36px, 5vw, 56px);
+}
+body[data-page="speakers"] .tba-section h3 {
+  font-size: clamp(28px, 3vw, 40px);
+  margin: 12px 0;
+}
+body[data-page="speakers"] .tba-section .speaker-grid {
+  margin-top: 24px;
+}
+@media (max-width: 700px) {
+  body[data-page="speakers"] .host-feature {
+    padding: 40px 0;
+  }
+  body[data-page="speakers"] .host-feature .host-panel {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  body[data-page="speakers"] .host-feature .portrait {
+    width: 180px;
+    height: 225px;
+  }
+}

@@ -1,5 +1,66 @@
 # VIGIL Summit 2027 · v4 final validation
 
+## Final predeployment checks · 24 November 2026
+
+The current local checkout passed `node tests/verify.mjs` (32/32),
+`node tests/content.mjs` (43/43) and `node tests/pages.mjs` (9/9).
+Chrome with network access passed `python tests/browser_check.py` (240/240)
+and `python tests/pages_browser_check.py` (315/315), with no missing local
+assets, horizontal overflow, application console errors or blocked Google
+Fonts requests. The browser checks covered six widths from 375px to 1440px.
+These are local checks; production deployment and live verification are
+reported separately.
+
+# Local page implementation verification · 24 November 2026
+
+This section records the pre-publication local verification of the 24 November
+update. Older entries below are historical results for earlier versions and
+releases.
+
+| Check | Result |
+| --- | --- |
+| `node tests/verify.mjs` | 32/32 passed |
+| `node tests/content.mjs` | 43/43 passed after updating the approved VIP+ wording assertion |
+| `node tests/pages.mjs` | 9/9 passed |
+| `python tests/pages_browser_check.py` | 315/315 passed across 1440, 1366, 1024, 768, 390 and 375px after the compact Speakers host update |
+| `python tests/browser_check.py` | 234/240 passed in this restricted environment; six console-clean assertions failed because `fonts.googleapis.com` could not resolve, once per viewport |
+
+The new-page browser checks directly loaded all four routes, decoded their
+images, checked for horizontal overflow and local 4xx requests, exercised
+mobile navigation, combined speaker filters, agenda days/tracks/history/hash,
+calendar actions and the inactive thank-you fixture. They found no page script
+errors or application console errors. All 25 recorded console resource errors
+were blocked external Google Fonts requests in this environment. The homepage
+browser results likewise show only the external font failure; its other 234
+checks passed. No production browser or live registration form was tested in
+this local run. The homepage's earlier unrestricted 240/240 run is historical
+evidence, not a result of this run.
+
+The Speakers follow-up uses rectangular portrait frames on that route only.
+Its ten named cards keep their prior order, while the keynote and three other
+unnamed slots sit in a separate section. The browser run checked named counts,
+combined filters and the separate section at all six widths. The homepage
+speaker rail was not changed for this follow-up.
+
+Ike's featured host portrait now measures 240 × 300px on desktop and
+180 × 225px on mobile. Browser geometry checks confirmed the directory's left
+alignment, a 32px side gap on desktop, a 24px stacked gap on mobile and
+vertical centring on desktop. Focused desktop and mobile captures were
+visually inspected with her full face visible.
+
+Desktop and mobile screenshots for Agenda, Speakers, About and Partners, plus
+the dialog preview, were captured and visually inspected under the separate
+Codex visualization folder `vigil-pages/` (outside this repository). The
+current logo groupings and off-white cards appear intact. The screenshots use
+a fallback font because Google Fonts was unavailable to the browser sandbox;
+the site still requests its approved Poppins font. Safari, Firefox, physical
+devices and screen-reader use remain untested.
+
+No commit, push, deployment, purchase, registration or live enquiry was made
+during this validation run.
+The external tickets page, sponsor deck/form destination and Heartbeat success
+callback remain outside this checkout or unverified.
+
 ## 22 November 2026 HAOP light-card follow-up
 
 | Check | Result | Evidence |
