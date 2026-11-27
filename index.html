@@ -728,9 +728,11 @@ footer ul a:hover{color:var(--teal)}
       </ul>
     </div>
     <div class="event-area">
-      <h3 class="strip-label">Summit time (GMT)</h3>
+      <h3 class="strip-label">Global time zones</h3>
       <ul class="zones">
         <li><span>GMT</span><b>2:00 PM – 5:00 PM</b></li>
+        <li><span>US Eastern (EST)</span><b>9:00 AM – 12:00 PM</b></li>
+        <li><span>Gulf (GST)</span><b>6:00 PM – 9:00 PM</b></li>
       </ul>
       <details class="timezone-tools"><summary>Show your local time</summary>
       <div class="yours">
@@ -1588,11 +1590,10 @@ footer ul a:hover{color:var(--teal)}
   });
   showQ(false);
 
-  /* ---------- Speakers rail · order per latest instructions: Ike first, keynote slot, Sarah and Claudia swapped.
+  /* ---------- Speakers rail · Ike first, reserved keynote slot last; other speaker order preserved.
      Session lines come from the 2027 programme; no roles, organisations or bios are invented. ---------- */
   var SPEAKERS = [
     { n: 'Ike Aigbogun', f: 'ike-aigbogun', r: ['Summit host · Days 1–5', 'Day 5 · Digital Skills Masterclass'] },
-    { tba: true, n: 'Keynote speaker', r: ['Day 1 · Keynote'] },
     { n: 'Bulat Almukhametov', f: 'bulat-almukhametov', r: ['Day 3 · Challenge: Data & Evidence', 'Day 5 · Data & Evidence Roadmap Lab'] },
     { n: 'Sarah Power', f: 'sarah-powers', r: ['Day 2 · Diagnose: Data & Evidence'] },
     { n: 'Funmi Adegbola', f: 'funmi-adegbola', r: ['Day 3 · Challenge Voices'] },
@@ -1604,7 +1605,8 @@ footer ul a:hover{color:var(--teal)}
     { n: 'Zoe Borde', f: 'zoe-borde', r: ['Day 2 · Diagnose: Tools & Systems', 'Day 5 · Tools & Systems Roadmap Lab'] },
     { tba: true, n: 'Speaker to be announced', r: [] },
     { tba: true, n: 'Speaker to be announced', r: [] },
-    { tba: true, n: 'Speaker to be announced', r: [] }
+    { tba: true, n: 'Speaker to be announced', r: [] },
+    { tba: true, n: 'Keynote speaker', r: ['Day 1 · Keynote'] }
   ];
   var rail = $('#rail');
   rail.innerHTML = SPEAKERS.map(function (sp) {

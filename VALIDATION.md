@@ -1,5 +1,34 @@
 # VIGIL Summit 2027 · v4 final validation
 
+## Local timezone and speaker-filter update · 27 November 2026
+
+The homepage event strip now displays GMT (2:00 PM – 5:00 PM), US Eastern
+(EST, 9:00 AM – 12:00 PM) and Gulf (GST, 6:00 PM – 9:00 PM). Its optional
+local-time calculator, UTC countdown and calendar actions remain in place.
+The daily Agenda continues to show GMT. The Speakers directory offers Vision,
+Tools & Systems, Data & Evidence, AI & Automation and Roadmap alongside its Day
+filter. Vision uses confirmed Day 1 sessions, Roadmap uses confirmed Day 5
+sessions, and the other pillars use existing session track assignments.
+Unassigned sessions remain visible under All pillars.
+The homepage carousel keeps Ike Aigbogun first and its reserved keynote card
+last, without changing the order of the other speaker cards.
+
+| Local check | Result |
+| --- | --- |
+| `node tests/verify.mjs` | 32/32 passed |
+| `node tests/content.mjs` | 43/43 passed |
+| `node tests/pages.mjs` | 9/9 passed |
+| `python tests/browser_check.py` | 240/240 passed |
+| `python tests/pages_browser_check.py` | 363/363 passed |
+
+The browser checks used Chrome at 1440, 1366, 1024, 768, 390 and 375px.
+They reported no horizontal overflow, missing local assets or browser console
+errors. Homepage event-strip screenshots were compared before and after at
+1440 and 390px; carousel start and end were inspected at desktop and mobile
+widths. Screenshots are saved outside the repository. Registration
+forms and external Tickets publishing were not exercised or changed. The
+registration-confirmation dialog remains detached from production flows.
+
 ## Final predeployment checks · 24 November 2026
 
 The current local checkout passed `node tests/verify.mjs` (32/32),

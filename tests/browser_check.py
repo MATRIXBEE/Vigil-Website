@@ -44,7 +44,7 @@ async def main():
             # Keep content overflow checks, excluding only known scroll/crop surfaces.
             r['wideEls'] = await page.evaluate("""(()=>{const vw=document.documentElement.clientWidth;const out=[];document.querySelectorAll('body *').forEach(e=>{const b=e.getBoundingClientRect();if(b.width>0&&(b.right>vw+1)&&!e.closest('.marquee,.rail,.day-tabs,.mobile-menu,.hero-visual,.mark-crop'))out.push(e.className.baseVal||e.className||e.tagName)});return [...new Set(out)].slice(0,8)})()""")
             r['flapFits'] = await page.evaluate("(()=>{const a=document.querySelector('.count-area').getBoundingClientRect();const bd=document.querySelector('.count-board').getBoundingClientRect();return bd.right<=a.right+1 && bd.left>=a.left-1})()")
-            r['zonesFit'] = await page.evaluate("(()=>{const rows=[...document.querySelectorAll('.zones li')];return rows.length===1 && rows[0].textContent.includes('GMT') && rows[0].scrollWidth<=rows[0].clientWidth+1})()")
+            r['zonesFit'] = await page.evaluate("(()=>{const rows=[...document.querySelectorAll('.zones li')];const expected=[['GMT','2:00 PM – 5:00 PM'],['US Eastern (EST)','9:00 AM – 12:00 PM'],['Gulf (GST)','6:00 PM – 9:00 PM']];return rows.length===3 && rows.every((row,i)=>row.querySelector('span')?.textContent===expected[i][0] && row.querySelector('b')?.textContent===expected[i][1] && row.scrollWidth<=row.clientWidth+1 && [...row.children].every(child=>child.getBoundingClientRect().right<=row.getBoundingClientRect().right+1))})()")
             await page.locator('.timezone-tools summary').click()
             await page.select_option('#tzSelect', 'Australia/Sydney')
             r['sydneyTime'] = await page.evaluate("document.querySelector('#yourTime').textContent")
@@ -211,7 +211,12 @@ async def main():
         verify(prefix + 'In Good Company placeholder', company['heading'] == 'In Good Company'
                and company['copy'] == 'Corporate attendee logos will appear here once confirmed.'
                and company['images'] == 0 and not company['carousel'])
-        verify(prefix + 'speaker and host cards', len(r['speakers']) == 14 and r['speakers'][-3:] == ['Speaker to be announced'] * 3 and r['hostImgs'] == 1)
+        verify(prefix + 'speaker and host cards', r['speakers'] == [
+            'Ike Aigbogun', 'Bulat Almukhametov', 'Sarah Power', 'Funmi Adegbola',
+            'Isaac Ochulor', 'Jaina Ko', 'Claudia Soares', 'Subhrajeet Patra',
+            'Supriya Naidu', 'Zoe Borde', 'Speaker to be announced',
+            'Speaker to be announced', 'Speaker to be announced', 'Keynote speaker'
+        ] and r['hostImgs'] == 1)
         verify(prefix + 'console clean', not r['consoleErrors'])
         verify(prefix + 'local requests successful', not r['failedLocal'])
         if width <= 960:

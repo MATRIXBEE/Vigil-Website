@@ -46,9 +46,11 @@ check('all free and VIP page actions use the approved invitations', () => {
   }
   assert.ok(read('assets/agenda-page.js').includes(vip));
 });
-check('speaker directory has combined filters and no unbuilt profile links', () => {
+check('speaker directory has combined day and pillar filters and no unbuilt profile links', () => {
   assert.match(pages.speakers, /id="speakerDay"/);
-  assert.match(pages.speakers, /id="speakerTrack"/);
+  assert.match(pages.speakers, /id="speakerPillar"/);
+  assert.deepEqual([...pages.speakers.matchAll(/<option value="(vision|tools|data|ai|roadmap)">/g)].map(match => match[1]),
+    ['vision', 'tools', 'data', 'ai', 'roadmap']);
   assert.match(pages.speakers, /id="speakerEmpty"/);
   assert.match(pages.speakers, /class="section band host-feature"/);
   assert.match(pages.speakers, /id="speakerTbaGrid"/);
@@ -64,7 +66,9 @@ check('speaker directory has combined filters and no unbuilt profile links', () 
   assert.match(script, /named speaker/);
   assert.match(script, /speaker\.sessions\.some\(session =>/);
   assert.match(script, /session\.day === Number\(day\.value\)/);
-  assert.match(script, /session\.track === track\.value/);
+  assert.match(script, /session\.track === pillar\.value/);
+  assert.match(script, /pillar\.value === 'vision' && session\.day === 1/);
+  assert.match(script, /pillar\.value === 'roadmap' && session\.day === 5/);
   assert.doesNotMatch(script, /href=.*profile/);
   const css = read('assets/speakers.css');
   assert.match(css, /clip-path: none/);

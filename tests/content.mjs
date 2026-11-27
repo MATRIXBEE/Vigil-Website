@@ -110,14 +110,14 @@ check('agenda link uses verified Heartbeat registration and day times stay GMT',
 });
 
 /* ---------- Event strip ---------- */
-check('fixed schedule shows GMT only; local calculator includes Australia', () => {
+check('homepage shows three summit time zones; local calculator includes Australia', () => {
   const z = slice('<ul class="zones">', '</ul>');
   assert.match(z, /<span>GMT<\/span><b>2:00 PM – 5:00 PM<\/b>/);
-  assert.equal((z.match(/<li>/g) || []).length, 1);
-  assert.doesNotMatch(z, /US Eastern|Gulf|EST|GST/);
+  assert.match(z, /<span>US Eastern \(EST\)<\/span><b>9:00 AM – 12:00 PM<\/b>/);
+  assert.match(z, /<span>Gulf \(GST\)<\/span><b>6:00 PM – 9:00 PM<\/b>/);
+  assert.equal((z.match(/<li>/g) || []).length, 3);
   assert.doesNotMatch(slice('<select id="tzSelect">', '</select>'), /IST|Kolkata/);
   assert.match(slice('<select id="tzSelect">', '</select>'), /Australia\/Sydney/);
-  assert.doesNotMatch(visible, /9:00am–12:00pm EST|6:00–9:00pm Gulf/);
 });
 check('countdown units are DAYS, HOURS, MINS, SECS', () => {
   assert.deepEqual([...slice('<div class="count-board"', '</div>\n        <span').matchAll(/class="lbl">([^<]+)</g)].map(m => m[1]), ['Days', 'Hours', 'Mins', 'Secs']);
@@ -148,15 +148,16 @@ check('Checkpoint content uses three lenses without calling them dimensions', ()
 });
 
 /* ---------- Speakers ---------- */
-check('speaker order: Ike, keynote placeholder, Sarah and Claudia swapped', () => {
+check('homepage speaker rail keeps Ike first and the reserved keynote last', () => {
   const ctx = vm.createContext({});
   vm.runInContext(slice('  var SPEAKERS = ', '  var rail =') + ';this.S=JSON.parse(JSON.stringify(SPEAKERS));', ctx);
   ctx.S = plain(ctx.S);
-  assert.deepEqual(ctx.S.map(s => s.n), ['Ike Aigbogun', 'Keynote speaker', 'Bulat Almukhametov', 'Sarah Power', 'Funmi Adegbola',
+  assert.deepEqual(ctx.S.map(s => s.n), ['Ike Aigbogun', 'Bulat Almukhametov', 'Sarah Power', 'Funmi Adegbola',
     'Isaac Ochulor', 'Jaina Ko', 'Claudia Soares', 'Subhrajeet Patra', 'Supriya Naidu', 'Zoe Borde',
-    'Speaker to be announced', 'Speaker to be announced', 'Speaker to be announced']);
-  assert.equal(ctx.S[1].tba, true); assert.equal(ctx.S[1].f, undefined);
-  assert.equal(ctx.S.slice(-3).filter(s => s.tba && !s.f && s.r.length === 0).length, 3);
+    'Speaker to be announced', 'Speaker to be announced', 'Speaker to be announced', 'Keynote speaker']);
+  assert.equal(ctx.S.at(-1).tba, true); assert.equal(ctx.S.at(-1).f, undefined);
+  assert.deepEqual(ctx.S.at(-1).r, ['Day 1 · Keynote']);
+  assert.equal(ctx.S.slice(-4, -1).filter(s => s.tba && !s.f && s.r.length === 0).length, 3);
 });
 check('no Speak at VIGIL links, cards or buttons', () => {
   assert.doesNotMatch(html, /href="\/speak"|>Speak at VIGIL<|Have evidence worth sharing/);

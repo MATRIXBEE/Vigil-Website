@@ -21,7 +21,7 @@ Poppins loads from Google Fonts; external services require internet access.
 - Dedicated static Agenda, Speakers, About and Partners routes share the v4
   branding, navigation and responsive design. The homepage section links still
   work; completed directory/footer links open their corresponding routes.
-- The Speakers directory has combined day/track filters. The Agenda route has
+- The Speakers directory has combined day/five-pillar filters. The Agenda route has
   five day tabs, applicable track filters, GMT and local-time tools, and calendar
   downloads. The About route includes the host and platform cycle. The Partners
   route uses the current respondent chart and approved logo sets.
@@ -33,7 +33,8 @@ Poppins loads from Google Fonts; external services require internet access.
 - Team-image hero and a responsive four-area event/countdown strip.
 - Split-flap countdown to 1 March 2027 at 14:00 UTC, with three day digits,
   per-second updates, zero clamping and reduced-motion handling.
-- A GMT-only fixed schedule row, with optional local-time conversion including Sydney.
+- GMT, US Eastern (EST) and Gulf (GST) rows in the homepage event strip, with
+  optional local-time conversion including Sydney. The daily Agenda stays GMT-only.
 - Google Calendar event-template URL and Microsoft Outlook ICS download, covering
   1–5 March, daily 14:00–17:00 UTC, with a 30-minute reminder.
 - Five agenda days: Vision, Diagnose, Challenge, Evidence in Practice and Blueprint

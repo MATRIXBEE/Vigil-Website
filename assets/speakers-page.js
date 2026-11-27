@@ -32,16 +32,21 @@
   grid.innerHTML = namedSpeakers.map(renderCard).join('');
   tbaGrid.innerHTML = unannouncedSpeakers.map(renderCard).join('');
   const day = document.querySelector('#speakerDay');
-  const track = document.querySelector('#speakerTrack');
+  const pillar = document.querySelector('#speakerPillar');
   const empty = document.querySelector('#speakerEmpty');
   const count = document.querySelector('#speakerCount');
   function applyFilters() {
     let visible = 0;
     grid.querySelectorAll('.speaker-card').forEach((card, index) => {
       const speaker = namedSpeakers[index];
+      // Day 1 is Vision and Day 5 is Roadmap in the approved programme.
+      // Other pillars use only confirmed session track assignments.
       const match = speaker.sessions.some(session =>
         (day.value === 'all' || session.day === Number(day.value)) &&
-        (track.value === 'all' || session.track === track.value));
+        (pillar.value === 'all' ||
+          (pillar.value === 'vision' && session.day === 1) ||
+          (pillar.value === 'roadmap' && session.day === 5) ||
+          session.track === pillar.value));
       card.hidden = !match;
       if (match) visible++;
     });
@@ -49,7 +54,7 @@
     count.textContent = `${visible} named speaker${visible === 1 ? '' : 's'} shown`;
   }
   day.addEventListener('change', applyFilters);
-  track.addEventListener('change', applyFilters);
-  document.querySelector('#speakerReset').addEventListener('click', () => { day.value = 'all'; track.value = 'all'; applyFilters(); day.focus(); });
+  pillar.addEventListener('change', applyFilters);
+  document.querySelector('#speakerReset').addEventListener('click', () => { day.value = 'all'; pillar.value = 'all'; applyFilters(); day.focus(); });
   applyFilters();
 })();
